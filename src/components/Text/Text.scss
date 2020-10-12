@@ -1,0 +1,273 @@
+@import '~styles/variables';
+@import '~styles/mixins';
+
+.root {
+  line-height: 1.2;
+}
+
+.fontType {
+  &-GTSectra {
+    font-family: 'GTSectra', Arial, Helvetica, sans-serif;
+  }
+
+  &-DINNextLTPro {
+    font-family: 'DINNextLTPro', Arial, sans-serif;
+  }
+}
+
+.color {
+  &-main-black {
+    color: $main-black;
+  }
+
+  &-main-green {
+    color: $main-green;
+  }
+
+  &-main-white {
+    color: $main-white;
+  }
+
+  &-main-dark-gray {
+    color: $main-dark-gray;
+  }
+
+  &-main-red {
+    color: red;
+  }
+}
+
+@mixin fontSize {
+  &-100 { font-size: 100px; }
+  &-72 { font-size: 72px; }
+  &-60 { font-size: 60px; }
+  &-55 { font-size: 55px; }
+  &-50 { font-size: 50px; }
+  &-48 { font-size: 48px; }
+  &-36 { font-size: 36px; }
+  &-35 { font-size: 35px; }
+  &-30 { font-size: 30px; }
+  &-25 { font-size: 25px; }
+  &-20 { font-size: 20px; }
+  &-18 { font-size: 18px; }
+  &-17 { font-size: 17px; }
+  &-16 { font-size: 16px; }
+  &-14 { font-size: 14px; }
+  &-13 { font-size: 13px; }
+  &-11 { font-size: 11px; }
+  &-9 { font-size: 9px; }
+}
+
+@mixin fontWeight {
+  &-book { font-weight: 900; }
+  &-bold { font-weight: 800; }
+  &-semi-bold { font-weight: 600; }
+  &-medium { font-weight: 500; }
+  &-normal { font-weight: normal; }
+  &-thin { font-weight: 300; }
+}
+
+@mixin letterSpacingSize {
+  &-300 {
+    letter-spacing: remsize(3);
+  }
+
+  &-175 {
+    letter-spacing: remsize(1.75);
+  }
+
+  &-125 {
+    letter-spacing: remsize(1.25);
+  }
+
+  &-11 {
+    letter-spacing: remsize(1.1);
+  }
+
+  &-085 {
+    letter-spacing: remsize(0.85);
+  }
+
+  &-015 {
+    letter-spacing: remsize(0.15);
+  }
+
+  &-1 {
+    letter-spacing: remsize(1);
+  }
+
+  &-negative01 {
+    letter-spacing: remsize(-0.1);
+  }
+
+  &-negative02 {
+    letter-spacing: remsize(-0.2);
+  }
+
+  &-negative1 {
+    letter-spacing: remsize(-1);
+  }
+
+  &-negative18 {
+    letter-spacing: remsize(-18);
+  }
+
+  &-negative10 {
+    letter-spacing: remsize(-10);
+  }
+
+  &-negative27 {
+    letter-spacing: remsize(-27);
+  }
+
+  &-negative7 {
+    letter-spacing: remsize(-7);
+  }
+
+  &-negative6 {
+    letter-spacing: remsize(-6);
+  }
+
+  &-negative282 {
+    letter-spacing: remsize(-2.82);
+  }
+
+  &-negative2 {
+    letter-spacing: remsize(-2);
+  }
+
+  &-negative8 {
+    letter-spacing: remsize(-8);
+  }
+
+  &-0 {
+    letter-spacing: 0;
+  }
+}
+
+@mixin textAlign {
+  &-left { text-align: left; }
+  &-center { text-align: center; }
+  &-right { text-align: right; }
+}
+
+.size {
+  @include fontSize;
+}
+
+.tabletAlbomSize {
+  @include media-tablet-albom {
+    @include fontSize;
+  }
+}
+
+.tabletMiddleSize {
+  @include media-tablet-middle {
+    @include fontSize;
+  }
+}
+
+.tabletSize {
+  @include media-tablet {
+    @include fontSize;
+  }
+}
+
+.mobileSize {
+  @include media-mobile {
+    @include fontSize;
+  }
+}
+
+.fontWeight {
+  @include fontWeight;
+}
+
+.tabletFontWeight {
+  @include media-tablet {
+    @include fontWeight;
+  }
+}
+
+.mobileFontWeight {
+  @include media-mobile {
+    @include fontWeight;
+  }
+}
+
+.letterSpacingSize {
+  @include letterSpacingSize;
+}
+
+.tabletSpacingSize {
+  @include media-tablet {
+    @include letterSpacingSize;
+  }
+}
+
+.mobileSpacingSize {
+  @include media-mobile {
+    @include letterSpacingSize;
+  }
+}
+
+.opacity {
+  &-light {
+    opacity: 0.2;
+  }
+
+  &-middle {
+    opacity: 0.3;
+  }
+
+  &-dark {
+    opacity: 0.4;
+  }
+}
+
+.textAlign {
+  @include textAlign;
+}
+
+.tabletAlign {
+  @include media-tablet {
+    @include textAlign;
+  }
+}
+
+.mobileAlign {
+  @include media-mobile {
+    @include textAlign;
+  }
+}
+
+.textTransform {
+  &-uppercase {
+    text-transform: uppercase;
+  }
+
+  &-none {
+    text-transform: none;
+  }
+
+  &-capitalize {
+    text-transform: capitalize;
+  }
+}
+
+.whiteSpace {
+  &-normal { white-space: normal; }
+  &-nowrap { white-space: nowrap; }
+  &-prewrap { white-space: pre-wrap; }
+}
+
+.pointerEvents {
+  &-none {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  &-cursor {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,14 @@
+@keyframes slideOutUpSmall {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, -20%, 0);
+  }
+}
+
+.slideOutUpSmall {
+  animation-name: slideOutUpSmall;
+}

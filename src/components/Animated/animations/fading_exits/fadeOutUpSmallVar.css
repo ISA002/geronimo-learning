@@ -1,0 +1,17 @@
+@keyframes fadeOutUpSmallVar {
+  from {
+    opacity: 1;
+    font-variation-settings: 'wght' 600;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -70px, 0);
+    font-variation-settings: 'wght' 1;
+  }
+}
+
+.fadeOutUpSmallVar {
+  backface-visibility: hidden;
+  animation-name: fadeOutUpSmallVar;
+}

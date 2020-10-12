@@ -1,0 +1,14 @@
+@keyframes slideOutRightLine {
+  from {
+    transform: translate3d(var(--page--line-right), 0, 0);
+  }
+
+  to {
+    transform: translate3d(calc(-1 * var(--page-line-left)), 0, 0);
+    /*visibility: hidden;*/
+  }
+}
+
+.slideOutRightLine {
+  animation-name: slideOutRightLine;
+}

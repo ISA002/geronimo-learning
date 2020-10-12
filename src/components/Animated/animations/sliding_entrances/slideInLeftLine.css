@@ -1,0 +1,14 @@
+@keyframes slideInLeftLine {
+  from {
+    transform: translate3d(calc(var(--page--line-right) + var(--scroll-size) - 100vw), 0, 0);
+    /*visibility: visible;*/
+  }
+
+  to {
+    transform: translate3d(calc(-1 * var(--page-line-left)), 0, 0);
+  }
+}
+
+.slideInLeftLine {
+  animation-name: slideInLeftLine;
+}

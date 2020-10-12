@@ -1,0 +1,16 @@
+@keyframes slideOutDown {
+  from {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+.slideOutDown {
+  backface-visibility: hidden;
+  animation-name: slideOutDown;
+}

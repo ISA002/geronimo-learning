@@ -1,0 +1,65 @@
+@keyframes blinkIn {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  5% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  10% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  15% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  20% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  30% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  40% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  60% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  70% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  80% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.blinkIn {
+  animation-name: blinkIn;
+}

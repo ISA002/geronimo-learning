@@ -1,0 +1,14 @@
+@keyframes slideInRightLine {
+  from {
+    transform: translate3d(calc(100vw - var(--page-line-left) - var(--scroll-size) - var(--page--line-right)), 0, 0);
+    /*visibility: visible;*/
+  }
+
+  to {
+    transform: translate3d(100vw - calc(var(--page--line-right) + var(--scroll-size)), 0, 0);
+  }
+}
+
+.slideInRightLine {
+  animation-name: slideInRightLine;
+}

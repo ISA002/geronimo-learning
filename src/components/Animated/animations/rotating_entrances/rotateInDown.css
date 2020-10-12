@@ -1,0 +1,17 @@
+@keyframes rotateInDown {
+  from {
+    transform: rotateX(90deg);
+    visibility: visible;
+  }
+
+  to {
+    visibility: visible;
+    transform: rotateX(0deg);
+  }
+}
+
+.rotateInDown {
+  transform-origin: bottom;
+  backface-visibility: hidden;
+  animation-name: rotateInDown;
+}

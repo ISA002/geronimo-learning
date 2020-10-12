@@ -1,0 +1,14 @@
+@keyframes slideOutLeftPage {
+from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    visibility: hidden;
+    transform: translate3d(calc(-100vw + var(--page-dif)), 0, 0);
+  }
+}
+
+.slideOutLeftPage {
+  animation-name: slideOutLeftPage;
+}

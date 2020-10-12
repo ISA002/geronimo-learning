@@ -1,0 +1,16 @@
+@keyframes slideInUp {
+  from {
+    transform: translate3d(0, 100%, 0);
+    visibility: hidden;
+  }
+
+  to {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInUp {
+  backface-visibility: hidden;
+  animation-name: slideInUp;
+}

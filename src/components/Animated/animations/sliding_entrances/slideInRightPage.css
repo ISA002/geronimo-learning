@@ -1,0 +1,14 @@
+@keyframes slideInRightPage {
+  from {
+    transform: translate3d(calc(100% - var(--page-dif)), 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInRightPage {
+  animation-name: slideInRightPage;
+}

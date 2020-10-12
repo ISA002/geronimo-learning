@@ -1,0 +1,14 @@
+@keyframes fadeOutUpAverageS {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -40%, 0);
+  }
+}
+
+.fadeOutUpAverageS {
+  animation-name: fadeOutUpAverageS;
+}

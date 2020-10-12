@@ -1,0 +1,56 @@
+@keyframes blinkInfinity {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  20% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  30% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  40% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  50% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  60% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  70% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  80% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  90% {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.blinkInfinity {
+  animation-name: blinkInfinity;
+  animation-iteration-count: infinite;
+}

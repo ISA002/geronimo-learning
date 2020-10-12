@@ -1,0 +1,16 @@
+@keyframes slideInLeftTitle {
+from {
+    transform: translate3d(calc(-100vw + var(--page-dif-title)), 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+}
+
+.slideInLeftTitle {
+  backface-visibility: hidden;
+  animation-name: slideInLeftTitle;
+}

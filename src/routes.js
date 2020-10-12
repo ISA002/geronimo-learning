@@ -8,7 +8,7 @@ export default [
     exact: true,
     cache: false,
     component: Home,
-    sagasToRun: [fetchUsers],
+    sagasToRun: [],
     title: 'Home',
   },
 ];

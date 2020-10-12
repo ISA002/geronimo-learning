@@ -1,0 +1,244 @@
+@import '~styles/variables';
+@import '~styles/mixins';
+
+@keyframes lineTranslate {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+
+  51% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.root {
+  --hover_duration: 0.5s;
+
+  cursor: pointer;
+  transition-property: color, opacity;
+  transition-duration: 0.5s;
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+  color: inherit;
+
+  @include hover-touch {
+    .underline::after {
+      animation-name: lineTranslate;
+      animation-duration: var(--hover_duration);
+      animation-iteration-count: 1;
+    }
+
+    .greenUnderline::after {
+      animation-name: lineTranslate;
+      animation-duration: var(--hover_duration);
+      animation-iteration-count: 1;
+    }
+
+    .homeMenuHover::after {
+      transform: translateX(0);
+    }
+
+    .headerItemHover::after {
+      transform: translateX(0);
+    }
+
+    .headerItemDarkHover::after {
+      transform: translateX(0);
+    }
+  }
+
+  @include hover {
+    .underline::after {
+      animation-name: lineTranslate;
+      animation-duration: var(--hover_duration);
+      animation-iteration-count: 1;
+    }
+
+    .greenUnderline::after {
+      animation-name: lineTranslate;
+      animation-duration: var(--hover_duration);
+      animation-iteration-count: 1;
+    }
+
+    .homeMenuHover::after {
+      transform: translateX(0);
+    }
+
+    .headerItemHover::after {
+      transform: translateX(0);
+    }
+
+    .headerItemDarkHover::after {
+      transform: translateX(0);
+    }
+  }
+}
+
+.root::after {
+  pointer-events: none;
+}
+
+.hover {
+  &-white {
+    @include hover {
+      color: white;
+    }
+  }
+
+  &-black {
+    @include hover {
+      color: red;
+    }
+  }
+}
+
+.wrapperUnderline {
+  padding-bottom: 3px;
+}
+
+.wrapperGreenUnderline {
+  padding-bottom: 0;
+}
+
+.wrapperHomeMenuHover {
+  padding-bottom: 3px;
+}
+
+.wrapperHomeMenuHover:hover {
+  color: $main-green;
+}
+
+.wrapperHeaderItemHover:hover {
+  color: $main-green;
+}
+
+.wrapperHeaderItemDarkHover:hover {
+  color: rgb(71, 71, 71);
+}
+
+.underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  overflow: hidden;
+
+  &::after {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    opacity: 1;
+  }
+}
+
+.greenUnderline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  overflow: hidden;
+
+  &::after {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $main-green;
+    opacity: 1;
+  }
+}
+
+.homeMenuHover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  overflow: hidden;
+
+  &::after {
+    will-change: transform;
+    transition: transform 0.5s;
+    content: '';
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $main-green;
+    transform: translateX(-101%);
+    opacity: 1;
+  }
+}
+
+.headerItemHover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  overflow: hidden;
+
+  &::after {
+    will-change: transform;
+    transition: transform 0.5s;
+    transform: translateX(-101%);
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: $main-green;
+    opacity: 1;
+  }
+}
+
+.headerItemDarkHover {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  overflow: hidden;
+
+  &::after {
+    will-change: transform;
+    transition: transform 0.5s;
+    transform: translateX(-101%);
+    content: '';
+    display: block;
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: rgb(71, 71, 71);
+    opacity: 1;
+  }
+}
