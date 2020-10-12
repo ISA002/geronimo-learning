@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import modsClasses from 'utils/modsClasses';
 import styles from './Text.scss';
 
-
 class Text extends PureComponent {
   handleClick = () => {
     const { data, onClick } = this.props;
@@ -14,13 +13,10 @@ class Text extends PureComponent {
   };
 
   renderedText = () => {
-    const {
-      children,
-      isHtml,
-    } = this.props;
+    const { children, isHtml } = this.props;
 
     /* eslint-disable react/no-danger */
-    if (isHtml) return (<div dangerouslySetInnerHTML={{ __html: children }} />);
+    if (isHtml) return <div dangerouslySetInnerHTML={{ __html: children }} />;
     /* eslint-enable react/no-danger */
     return children;
   };
@@ -102,7 +98,26 @@ class Text extends PureComponent {
 
 // {!html ? children : renderHTML(children)}
 
-const textPropsSize = ['100', '72', '60', '55', '50', '48', '36', '35', '30', '25', '20', '18', '17', '16', '14', '13', '11', '9'];
+const textPropsSize = [
+  '100',
+  '72',
+  '60',
+  '55',
+  '50',
+  '48',
+  '36',
+  '35',
+  '30',
+  '25',
+  '20',
+  '18',
+  '17',
+  '16',
+  '14',
+  '13',
+  '11',
+  '9',
+];
 
 const textWeight = ['book', 'bold', 'semi-bold', 'medium', 'normal', 'thin'];
 
@@ -140,12 +155,18 @@ Text.propTypes = {
   letterSpacingSize: PropTypes.oneOf(letterSpacingPropSize),
   tabletSpacingSize: PropTypes.oneOf(letterSpacingPropSize),
   mobileSpacingSize: PropTypes.oneOf(letterSpacingPropSize),
-  fontType: PropTypes.oneOf(['GTSectra', 'DINNextLTPro']),
+  fontType: PropTypes.oneOf(['']),
   fontWeight: PropTypes.oneOf(textWeight),
   tabletFontWeight: PropTypes.oneOf(textWeight),
   mobileFontWeight: PropTypes.oneOf(textWeight),
 
-  color: PropTypes.oneOf(['main-black', 'main-green', 'main-white', 'main-dark-gray', 'main-red']),
+  color: PropTypes.oneOf([
+    'main-black',
+    'main-green',
+    'main-white',
+    'main-dark-gray',
+    'main-red',
+  ]),
   textTransform: PropTypes.oneOf(['uppercase', 'none', 'capitalize']),
   whiteSpace: PropTypes.oneOf(['normal', 'nowrap', 'prewrap']),
   opacity: PropTypes.oneOf(['light', 'middle', 'dark']),
@@ -170,6 +191,33 @@ Text.defaultProps = {
   color: 'main-black',
   fontWeight: 'normal',
   isHtml: false,
+  className: '',
+  size: '18',
+  mobileSize: '18',
+  tabletAlbomSize: '18',
+  tabletMiddleSize: '18',
+  tabletSize: '18',
+  letterSpacing: '0',
+  tabletSpacingSize: '0',
+  mobileSpacingSize: '0',
+  letterSpacingSize: '0',
+  fontType: '',
+  innerRef: () => {},
+  style: {},
+  onClick: () => {},
+  children: null,
+  data: {},
+  fontSize: '18',
+  tabletFontWeight: 'normal',
+  mobileFontWeight: 'normal',
+  textTransform: 'none',
+  opacity: 'dark',
+  textAlign: 'left',
+  tabletAlign: 'left',
+  mobileAlign: 'left',
+  pointerEvents: 'auto',
+  whiteSpace: 'normal',
+  lineHeight: '',
 };
 
 export default Text;
