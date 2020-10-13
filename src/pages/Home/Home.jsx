@@ -1,21 +1,23 @@
 import React, { Fragment } from 'react';
 import Column from './Column';
 import style from './Home.scss';
-import image1 from 'images/version_case_image.jpg';
+import Text from 'components/Text';
+import { homePageData } from 'constants/index.js';
 
 const Home = () => {
-  const data = [
-    { id: 0, title: 'TV', image: image1 },
-    { id: 1, title: 'FILM', image: image1 },
-    { id: 2, title: 'PUB', image: image1 },
-  ];
-
   const renderColumns = React.useMemo(() => {
-    return data.map(item => <Column data={item} />);
-  }, [data]);
+    return homePageData.map((item, index) => (
+      <Column index={index} key={item.id} data={item} />
+    ));
+  }, []);
 
   return (
     <Fragment>
+      <div className={style.mainTextRoot}>
+        <Text className={style.mainText} size="100" color="main-white">
+          GERONIMO
+        </Text>
+      </div>
       <div className={style.root}>{renderColumns}</div>
     </Fragment>
   );

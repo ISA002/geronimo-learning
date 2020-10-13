@@ -21,7 +21,7 @@ class Button extends PureComponent {
     to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     type: PropTypes.string,
     onClick: PropTypes.func,
-    hover: PropTypes.oneOf(['white', 'black']),
+    hover: PropTypes.oneOf(['white', 'black', 'none']),
     display: PropTypes.oneOf(['block', 'inline-block']),
     disableHover: PropTypes.bool,
     homeMenuHover: PropTypes.bool,
@@ -30,12 +30,31 @@ class Button extends PureComponent {
     underline: PropTypes.bool,
     greenUnderline: PropTypes.bool,
     blank: PropTypes.bool,
-  }
+  };
 
   static defaultProps = {
     type: 'button',
     withoutCursor: false,
-  }
+    color: '',
+    theme: '',
+    children: {},
+    className: '',
+    href: '',
+    disabled: false,
+    withOutHover: false,
+    psevdo: '',
+    to: '/',
+    onClick: () => {},
+    hover: 'none',
+    display: 'block',
+    disableHover: false,
+    homeMenuHover: false,
+    headerItemHover: false,
+    darkHovers: false,
+    underline: false,
+    greenUnderline: false,
+    blank: false,
+  };
 
   render() {
     const {
@@ -79,19 +98,14 @@ class Button extends PureComponent {
     return (
       <CustomTag
         data-active="link"
-        className={classnames(
-          styles.root,
-          className,
-          classes,
-          {
-            [styles.wrapperUnderline]: underline,
-            [styles.wrapperGreenUnderline]: greenUnderline,
-            [styles.wrapperHomeMenuHover]: homeMenuHover,
-            [styles.wrapperHeaderItemHover]: headerItemHover && !darkHovers,
-            [styles.wrapperHeaderItemDarkHover]: darkHovers,
-            'js-hover-noStuck': !withoutCursor,
-          }
-        )}
+        className={classnames(styles.root, className, classes, {
+          [styles.wrapperUnderline]: underline,
+          [styles.wrapperGreenUnderline]: greenUnderline,
+          [styles.wrapperHomeMenuHover]: homeMenuHover,
+          [styles.wrapperHeaderItemHover]: headerItemHover && !darkHovers,
+          [styles.wrapperHeaderItemDarkHover]: darkHovers,
+          'js-hover-noStuck': !withoutCursor,
+        })}
         to={to}
         href={href}
         target={href && blank ? '_blank' : undefined}
@@ -104,7 +118,9 @@ class Button extends PureComponent {
         {underline && <div className={styles.underline} />}
         {greenUnderline && <div className={styles.greenUnderline} />}
         {homeMenuHover && <div className={styles.homeMenuHover} />}
-        {headerItemHover && !darkHovers && <div className={styles.headerItemHover} />}
+        {headerItemHover && !darkHovers && (
+          <div className={styles.headerItemHover} />
+        )}
         {darkHovers && <div className={styles.headerItemDarkHover} />}
       </CustomTag>
     );
