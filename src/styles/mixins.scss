@@ -1,0 +1,92 @@
+@import '~styles/variables';
+@import '~styles/media';
+
+@mixin hover {
+  @include media-desktop {
+    &:hover {
+      @content;
+    }
+  }
+
+  @include media-mobile {
+    &:active {
+      @content;
+    }
+  }
+}
+
+@mixin hover-support {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin hover-touch {
+  &:active {
+    @content;
+  }
+
+  :global(.noDevice) &:hover {
+    @content;
+  }
+}
+
+@mixin windows {
+  :global(.Windows) & {
+    @content;
+  }
+}
+
+@mixin android {
+  :global(.Android) & {
+    @content;
+  }
+}
+
+@mixin edge {
+  :global(.isEdge) & {
+    @content;
+  }
+}
+
+@mixin fontSet($fz, $lh: '') {
+  font-size: remsize($fz);
+
+  @if $lh != '' {
+    line-height: remsize($lh);
+  }
+
+  @if $lh == '' {
+    line-height: 1.2;
+  }
+}
+
+@mixin orientation-portrait {
+  @media screen and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin rotated-text($num-letters: 100, $angle-span: 180deg, $angle-offset: 0deg) {
+  $angle-per-char: $angle-span / $num-letters;
+
+  @for $i from 1 through $num-letters {
+    .char#{$i} {
+      transform: rotate($angle-offset + $angle-per-char * $i);
+    }
+  }
+}
+
+@function get-real-vh($vh) {
+  @return calc(var(--vh, 1vh) * #{$vh});
+}
+
+@function get-leter-spacing($px) {
+  @return ($px / 1000) + em;
+}
+
+@function remsize($pixels) {
+  @return calc((#{$pixels} / ((var(--desktop-width) / 100) * var(--cof-size))) * 1rem);
+}
