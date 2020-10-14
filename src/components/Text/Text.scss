@@ -38,34 +38,111 @@
 }
 
 @mixin fontSize {
-  &-100 { font-size: 100px; }
-  &-72 { font-size: 72px; }
-  &-60 { font-size: 60px; }
-  &-55 { font-size: 55px; }
-  &-50 { font-size: 50px; }
-  &-48 { font-size: 48px; }
-  &-42 { font-size: 42px; }
-  &-36 { font-size: 36px; }
-  &-35 { font-size: 35px; }
-  &-30 { font-size: 30px; }
-  &-25 { font-size: 25px; }
-  &-20 { font-size: 20px; }
-  &-18 { font-size: 18px; }
-  &-17 { font-size: 17px; }
-  &-16 { font-size: 16px; }
-  &-14 { font-size: 14px; }
-  &-13 { font-size: 13px; }
-  &-11 { font-size: 11px; }
-  &-9 { font-size: 9px; }
+  &-120 {
+    font-size: 120px;
+  }
+
+  &-100 {
+    font-size: 100px;
+  }
+
+  &-72 {
+    font-size: 72px;
+  }
+
+  &-60 {
+    font-size: 60px;
+  }
+
+  &-55 {
+    font-size: 55px;
+  }
+
+  &-50 {
+    font-size: 50px;
+  }
+
+  &-48 {
+    font-size: 48px;
+  }
+
+  &-42 {
+    font-size: 42px;
+  }
+
+  &-36 {
+    font-size: 36px;
+  }
+
+  &-35 {
+    font-size: 35px;
+  }
+
+  &-30 {
+    font-size: 30px;
+  }
+
+  &-25 {
+    font-size: 25px;
+  }
+
+  &-20 {
+    font-size: 20px;
+  }
+
+  &-18 {
+    font-size: 18px;
+  }
+
+  &-17 {
+    font-size: 17px;
+  }
+
+  &-16 {
+    font-size: 16px;
+  }
+
+  &-14 {
+    font-size: 14px;
+  }
+
+  &-13 {
+    font-size: 13px;
+  }
+
+  &-11 {
+    font-size: 11px;
+  }
+
+  &-9 {
+    font-size: 9px;
+  }
 }
 
 @mixin fontWeight {
-  &-book { font-weight: 900; }
-  &-bold { font-weight: 800; }
-  &-semi-bold { font-weight: 600; }
-  &-medium { font-weight: 500; }
-  &-normal { font-weight: normal; }
-  &-thin { font-weight: 300; }
+  &-book {
+    font-weight: 900;
+  }
+
+  &-bold {
+    font-weight: 800;
+  }
+
+  &-semi-bold {
+    font-weight: 600;
+  }
+
+  &-medium {
+    font-weight: 500;
+  }
+
+  &-normal {
+    font-weight: normal;
+  }
+
+  &-thin {
+    font-weight: 300;
+  }
 }
 
 @mixin letterSpacingSize {
@@ -147,9 +224,17 @@
 }
 
 @mixin textAlign {
-  &-left { text-align: left; }
-  &-center { text-align: center; }
-  &-right { text-align: right; }
+  &-left {
+    text-align: left;
+  }
+
+  &-center {
+    text-align: center;
+  }
+
+  &-right {
+    text-align: right;
+  }
 }
 
 .size {
@@ -257,9 +342,17 @@
 }
 
 .whiteSpace {
-  &-normal { white-space: normal; }
-  &-nowrap { white-space: nowrap; }
-  &-prewrap { white-space: pre-wrap; }
+  &-normal {
+    white-space: normal;
+  }
+
+  &-nowrap {
+    white-space: nowrap;
+  }
+
+  &-prewrap {
+    white-space: pre-wrap;
+  }
 }
 
 .pointerEvents {

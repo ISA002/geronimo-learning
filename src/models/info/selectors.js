@@ -1,16 +1,16 @@
-// import { createSelector } from 'reselect';
+import { createSelector } from 'reselect';
 
 // import { denormalize } from 'utils/normalizeById';
 
-// export const usersSelector = createSelector(
-//   state => state,
-//   state => state.users
-// );
+export const infoSelector = createSelector(
+  state => state,
+  state => state.info
+);
 
-// export const isFetchingSelector = createSelector(
-//   usersSelector,
-//   ({ fetching }) => fetching
-// );
+export const collectionSelector = createSelector(
+  infoSelector,
+  ({ collection }) => collection
+);
 
 // export const isCollectionFetchedSelector = createSelector(
 //   usersSelector,
