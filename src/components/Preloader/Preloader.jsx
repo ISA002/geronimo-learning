@@ -11,7 +11,7 @@ const Preloader = () => {
   const loading = useSelector(loadingFinishedSelector);
 
   React.useEffect(() => {
-    const images = Array.from(document.querySelectorAll('img'));
+    const images = document.getElementsByTagName('img');
 
     let counter = 0;
 
@@ -22,13 +22,14 @@ const Preloader = () => {
       }
     };
 
-    images.forEach(item => {
+    /* eslint-disable-next-line */
+    for (const item of images) {
       if (item.complete) {
         onLoad();
       } else {
         item.onload = onLoad;
       }
-    });
+    }
   }, [dispatch]);
 
   console.log(loading);
