@@ -6,11 +6,16 @@ import Animated from 'components/Animated';
 import Button from 'components/Button';
 import { homeColumnData } from 'constants/index';
 
-const Column = ({ data: { title, image }, index }) => {
+const Column = ({ index, isLoading, title, image, gif }) => {
   const renderMenu = React.useMemo(() => {
     return homeColumnData.map(item => (
       <Button key={item.id} to={item.to}>
-        <Text className={style.menuButton} size="20" color="main-white">
+        <Text
+          className={style.menuButton}
+          size="20"
+          color="main-white"
+          fontWeight="bold"
+        >
           {item.title}
         </Text>
       </Button>
@@ -25,26 +30,28 @@ const Column = ({ data: { title, image }, index }) => {
         </div>
       )}
       <Animated
-        className={style.columnImageWrapper}
-        animateOnMount
-        // isVisible={false}
+        className={style.columnShirmaWrapper}
+        // animateOnMount
+        isVisible={!isLoading}
         duration={{
-          in: 1200,
-          out: 500,
+          in: 0,
+          out: 1000,
         }}
         delay={{
-          in: index * 100 + 900,
-          out: 300,
+          in: 0,
+          out: index * 100 + 900,
         }}
-        animationIn="slideOutUp"
-        animationOut="slideInUp"
+        animationIn="slideInUp"
+        animationOut="slideOutUp"
       >
         <div className={style.shirma} />
       </Animated>
       <img className={style.columnImage} src={image} alt="pict" />
+      <img className={style.columnGif} src={gif} alt="gif" />
       <Animated
         className={style.columnTextWrapper}
-        animateOnMount
+        // animateOnMount
+        isVisible={isLoading}
         duration={{
           in: 600,
           out: 200,
@@ -64,13 +71,19 @@ const Column = ({ data: { title, image }, index }) => {
 };
 
 Column.propTypes = {
-  data: PropTypes.any,
   index: PropTypes.number,
+  isLoading: PropTypes.bool,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  gif: PropTypes.string,
 };
 
 Column.defaultProps = {
-  data: {},
   index: 0,
+  isLoading: true,
+  title: '',
+  image: '',
+  gif: '',
 };
 
 export default React.memo(Column);

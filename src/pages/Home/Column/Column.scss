@@ -10,7 +10,14 @@
   object-fit: cover;
 }
 
-.columnImageWrapper {
+.columnGif {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.columnShirmaWrapper {
   position: absolute;
   z-index: 99;
   width: 100%;
@@ -32,6 +39,14 @@
 .root:hover {
   .columnText {
     transform: translate3d(0, -25%, 0);
+  }
+
+  .columnImage {
+    display: none;
+  }
+
+  .columnGif {
+    display: block;
   }
 }
 

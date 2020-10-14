@@ -6,6 +6,7 @@ import AppRouter from 'components/AppRouter';
 import 'styles/normalize.scss';
 import styles from './App.scss';
 import useBrowser from 'hooks/useBrowser';
+import Preloader from 'components/Preloader';
 
 const App = ({ routes }) => {
   const browser = useBrowser();
@@ -18,6 +19,7 @@ const App = ({ routes }) => {
     <div className={styles.app}>
       {/* Use Helmet only in SPA mode. Render app head on server side  */}
       {/* <Helmet {...config.app} /> */}
+      <Preloader />
       <AppRouter routes={routes} />
     </div>
   );
