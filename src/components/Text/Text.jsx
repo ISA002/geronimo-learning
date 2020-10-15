@@ -99,6 +99,7 @@ class Text extends PureComponent {
 // {!html ? children : renderHTML(children)}
 
 const textPropsSize = [
+  '140',
   '120',
   '100',
   '72',
@@ -157,7 +158,7 @@ Text.propTypes = {
   letterSpacingSize: PropTypes.oneOf(letterSpacingPropSize),
   tabletSpacingSize: PropTypes.oneOf(letterSpacingPropSize),
   mobileSpacingSize: PropTypes.oneOf(letterSpacingPropSize),
-  fontType: PropTypes.oneOf(['']),
+  fontType: PropTypes.oneOf(['BebasNeueBold', 'geronimo', 'Robotobold', '']),
   fontWeight: PropTypes.oneOf(textWeight),
   tabletFontWeight: PropTypes.oneOf(textWeight),
   mobileFontWeight: PropTypes.oneOf(textWeight),

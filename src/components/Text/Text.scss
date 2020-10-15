@@ -6,12 +6,16 @@
 }
 
 .fontType {
-  &-GTSectra {
-    font-family: 'GTSectra', Arial, Helvetica, sans-serif;
+  &-BebasNeueBold {
+    font-family: 'BebasNeueBold', Arial, Helvetica, sans-serif;
   }
 
-  &-DINNextLTPro {
-    font-family: 'DINNextLTPro', Arial, sans-serif;
+  &-geronimo {
+    font-family: 'geronimo', Arial, Helvetica, sans-serif;
+  }
+
+  &-Robotobold {
+    font-family: 'Robotobold', Arial, Helvetica, sans-serif;
   }
 }
 
@@ -38,6 +42,10 @@
 }
 
 @mixin fontSize {
+  &-140 {
+    font-size: 140px;
+  }
+
   &-120 {
     font-size: 120px;
   }

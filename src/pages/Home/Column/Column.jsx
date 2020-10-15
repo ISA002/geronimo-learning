@@ -1,56 +1,39 @@
+/* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
 import Text from 'components/Text';
 import style from './Column.scss';
 import PropTypes from 'prop-types';
 import Animated from 'components/Animated';
-import Button from 'components/Button';
-import { homeColumnData } from 'constants/index';
 
-const Column = ({ index, isLoading, title, image, gif }) => {
-  const renderMenu = React.useMemo(() => {
-    return homeColumnData.map(item => (
-      <Button key={item.id} to={item.to}>
-        <Text
-          className={style.menuButton}
-          size="20"
-          color="main-white"
-          fontWeight="bold"
-        >
-          {item.title}
-        </Text>
-      </Button>
-    ));
-  }, []);
+const Column = ({ index, isLoading, title, image, video }) => {
+  const ref = React.useRef(null);
+  const rootRef = React.useState(null);
+
+  React.useEffect(() => {
+    rootRef.current.addEventListener('mouseover', () => {
+      ref.current.play();
+    });
+
+    rootRef.current.addEventListener('mouseout', () => {
+      ref.current.currentTime = 0;
+      ref.current.pause();
+    });
+  }, [rootRef, ref]);
 
   return (
-    <div className={style.root}>
-      {index === 2 && (
-        <div className={style.menuWrapper}>
-          <div className={style.menu}>{renderMenu}</div>
-        </div>
-      )}
-      <Animated
-        className={style.columnShirmaWrapper}
-        // animateOnMount
-        isVisible={!isLoading}
-        duration={{
-          in: 0,
-          out: 1000,
-        }}
-        delay={{
-          in: 0,
-          out: index * 100 + 900,
-        }}
-        animationIn="slideInUp"
-        animationOut="slideOutUp"
-      >
-        <div className={style.shirma} />
-      </Animated>
+    <div className={style.root} ref={rootRef}>
       <img className={style.columnImage} src={image} alt="pict" />
-      <img className={style.columnGif} src={gif} alt="gif" />
+      <video
+        ref={ref}
+        className={style.columnGif}
+        poster={image}
+        muted="muted"
+        loop
+      >
+        <source src={video} type="video/mp4" />
+      </video>
       <Animated
         className={style.columnTextWrapper}
-        // animateOnMount
         isVisible={isLoading}
         duration={{
           in: 600,
@@ -75,7 +58,7 @@ Column.propTypes = {
   isLoading: PropTypes.bool,
   title: PropTypes.string,
   image: PropTypes.string,
-  gif: PropTypes.string,
+  video: PropTypes.string,
 };
 
 Column.defaultProps = {
@@ -83,7 +66,7 @@ Column.defaultProps = {
   isLoading: true,
   title: '',
   image: '',
-  gif: '',
+  video: '',
 };
 
 export default React.memo(Column);

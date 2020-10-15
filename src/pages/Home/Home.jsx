@@ -5,15 +5,19 @@ import Text from 'components/Text';
 import { useSelector } from 'react-redux';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
 import { collectionSelector } from 'models/info/selectors';
+import Header from 'components/Header';
+import Shirma from './Shirma';
 
 const Home = () => {
   const loading = useSelector(loadingFinishedSelector);
   const collection = useSelector(collectionSelector);
 
+  console.log(collection);
+
   const renderColumns = React.useMemo(() => {
     return collection.map((item, index) => (
       <Column
-        gif={collection[index].preview.gif_url}
+        video={collection[index].preview.video_url}
         image={collection[index].preview.image_urls.original}
         title={collection[index].title}
         isLoading={loading}
@@ -25,17 +29,20 @@ const Home = () => {
 
   return (
     <Fragment>
+      <Header />
       <div className={style.mainTextRoot}>
         <Text
+          fontType="Robotobold"
           className={style.mainText}
-          size="120"
+          size="140"
           color="main-white"
           fontWeight="bold"
         >
-          GERONIMO
+          geronimo
         </Text>
       </div>
       <div className={style.root}>{renderColumns}</div>
+      <Shirma isLoading={loading} />
     </Fragment>
   );
 };
