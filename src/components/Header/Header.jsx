@@ -2,6 +2,13 @@ import React from 'react';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import style from './Header.scss';
+
+/* 
+
+  TODO 
+  homeColumnData - не подходящее название, это данные хедера, а у тебя тут какая то колонка в названии
+  Назвать как нибудь по понятнее)))
+*/
 import { homeColumnData } from 'constants/index';
 
 const Header = () => {

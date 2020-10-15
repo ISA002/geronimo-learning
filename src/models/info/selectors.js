@@ -12,6 +12,12 @@ export const collectionSelector = createSelector(
   ({ collection }) => collection
 );
 
+/* 
+
+  TODO 
+  удалять все что не используется
+*/
+
 // export const isCollectionFetchedSelector = createSelector(
 //   usersSelector,
 //   ({ collectionFetched }) => collectionFetched

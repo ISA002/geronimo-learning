@@ -12,7 +12,7 @@ const Home = () => {
   const loading = useSelector(loadingFinishedSelector);
   const collection = useSelector(collectionSelector);
 
-  console.log(collection);
+  console.log(collection); // TODO  не оставлять лишние логи
 
   const renderColumns = React.useMemo(() => {
     return collection.map((item, index) => (
@@ -41,6 +41,10 @@ const Home = () => {
           geronimo
         </Text>
       </div>
+      {/*
+      className={style.root}
+       TODO это точно не root, это как минимум columns получается
+      */}
       <div className={style.root}>{renderColumns}</div>
       <Shirma isLoading={loading} />
     </Fragment>

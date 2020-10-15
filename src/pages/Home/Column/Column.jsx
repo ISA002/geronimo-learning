@@ -22,6 +22,13 @@ const Column = ({ index, isLoading, title, image, video }) => {
 
   return (
     <div className={style.root} ref={rootRef}>
+      {/*
+        TODO в категории приходят изображения preview и prview_x2
+        первые для обычных экранов, второе для ретины, тебе так же нужно проверять тип экрана
+        Лучше написать компонент <Picture source={thumbnails }/> который сам бы отрисовывал нужное изображение
+
+        TODO картинка должна исчезать анимированно
+      */}
       <img className={style.columnImage} src={image} alt="pict" />
       <video
         ref={ref}

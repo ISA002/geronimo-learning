@@ -11,6 +11,8 @@ const preloaderSlice = createSlice({
   },
   reducers: {
     setLoading: state => {
+      // TODO Почему !state.loading? можноже просто написать 
+      // state.loadingFinished = true;
       state.loadingFinished = !state.loading;
     },
   },
