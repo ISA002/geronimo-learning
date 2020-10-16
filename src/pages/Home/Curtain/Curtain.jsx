@@ -8,7 +8,7 @@ const Curtain = ({ isLoading, amount }) => {
 
   React.useEffect(() => {
     setColumnWidth(window.innerWidth / amount);
-  }, []);
+  }, [amount]);
 
   const renderColumns = React.useMemo(() => {
     const renderArray = [];
@@ -39,7 +39,7 @@ const Curtain = ({ isLoading, amount }) => {
       );
     }
     return renderArray;
-  }, [isLoading, amount]);
+  }, [isLoading, amount, columnWidth]);
 
   return <div className={style.shirmaWrapper}>{renderColumns}</div>;
 };
