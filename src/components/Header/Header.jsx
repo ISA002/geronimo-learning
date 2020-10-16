@@ -3,17 +3,11 @@ import Button from 'components/Button';
 import Text from 'components/Text';
 import style from './Header.scss';
 
-/* 
-
-  TODO 
-  homeColumnData - не подходящее название, это данные хедера, а у тебя тут какая то колонка в названии
-  Назвать как нибудь по понятнее)))
-*/
-import { homeColumnData } from 'constants/index';
+import { headerMenuData } from 'constants/index';
 
 const Header = () => {
   const renderMenu = React.useMemo(() => {
-    return homeColumnData.map(item => (
+    return headerMenuData.map(item => (
       <Button key={item.id} to={item.to}>
         <Text
           className={style.menuButton}

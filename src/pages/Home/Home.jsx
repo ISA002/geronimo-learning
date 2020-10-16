@@ -6,19 +6,17 @@ import { useSelector } from 'react-redux';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
 import { collectionSelector } from 'models/info/selectors';
 import Header from 'components/Header';
-import Shirma from './Shirma';
+import Curtain from './Curtain';
 
 const Home = () => {
   const loading = useSelector(loadingFinishedSelector);
   const collection = useSelector(collectionSelector);
 
-  console.log(collection); // TODO  не оставлять лишние логи
-
   const renderColumns = React.useMemo(() => {
     return collection.map((item, index) => (
       <Column
         video={collection[index].preview.video_url}
-        image={collection[index].preview.image_urls.original}
+        images={collection[index].preview.image_urls}
         title={collection[index].title}
         isLoading={loading}
         index={index}
@@ -41,12 +39,8 @@ const Home = () => {
           geronimo
         </Text>
       </div>
-      {/*
-      className={style.root}
-       TODO это точно не root, это как минимум columns получается
-      */}
-      <div className={style.root}>{renderColumns}</div>
-      <Shirma isLoading={loading} />
+      <div className={style.columns}>{renderColumns}</div>
+      <Curtain amount={collection.length} isLoading={loading} />
     </Fragment>
   );
 };

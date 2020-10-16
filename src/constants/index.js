@@ -8,7 +8,7 @@ export const homePageData = [
   { id: 2, title: 'PUB', image: image3 },
 ];
 
-export const homeColumnData = [
+export const headerMenuData = [
   { id: 0, title: 'Pub', to: '/pub' },
   { id: 1, title: 'Film', to: '/film' },
 ];

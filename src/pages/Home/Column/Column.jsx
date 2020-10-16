@@ -4,10 +4,11 @@ import Text from 'components/Text';
 import style from './Column.scss';
 import PropTypes from 'prop-types';
 import Animated from 'components/Animated';
+import Picture from 'components/Picture';
 
-const Column = ({ index, isLoading, title, image, video }) => {
-  const ref = React.useRef(null);
-  const rootRef = React.useState(null);
+const Column = ({ index, isLoading, title, images, video }) => {
+  const ref = React.useRef();
+  const rootRef = React.useRef();
 
   React.useEffect(() => {
     rootRef.current.addEventListener('mouseover', () => {
@@ -22,18 +23,15 @@ const Column = ({ index, isLoading, title, image, video }) => {
 
   return (
     <div className={style.root} ref={rootRef}>
-      {/*
-        TODO в категории приходят изображения preview и prview_x2
-        первые для обычных экранов, второе для ретины, тебе так же нужно проверять тип экрана
-        Лучше написать компонент <Picture source={thumbnails }/> который сам бы отрисовывал нужное изображение
-
-        TODO картинка должна исчезать анимированно
-      */}
-      <img className={style.columnImage} src={image} alt="pict" />
+      <Picture
+        className={style.columnImage}
+        previewImg={images.preview}
+        retinaPreviewImg={images.preview_x2}
+      />
       <video
         ref={ref}
         className={style.columnGif}
-        poster={image}
+        poster={images.original}
         muted="muted"
         loop
       >
@@ -64,7 +62,7 @@ Column.propTypes = {
   index: PropTypes.number,
   isLoading: PropTypes.bool,
   title: PropTypes.string,
-  image: PropTypes.string,
+  images: PropTypes.any,
   video: PropTypes.string,
 };
 
@@ -72,7 +70,7 @@ Column.defaultProps = {
   index: 0,
   isLoading: true,
   title: '',
-  image: '',
+  images: {},
   video: '',
 };
 

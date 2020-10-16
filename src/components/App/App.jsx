@@ -11,8 +11,6 @@ import Preloader from 'components/Preloader';
 import { useSelector } from 'react-redux';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
 
-// TODO Откуда это в проетке? https://monosnap.com/file/Yqo6QcnWwAnXr4bXkq59jQTCcmLmF0
-
 const App = ({ routes }) => {
   const browser = useBrowser();
 
