@@ -4,27 +4,41 @@ import style from './Curtain.scss';
 import PropTypes from 'prop-types';
 
 const Curtain = ({ isLoading, amount }) => {
+  const [columnWidth, setColumnWidth] = React.useState('34%');
+
+  React.useEffect(() => {
+    setColumnWidth(window.innerWidth / amount);
+  }, []);
+
   const renderColumns = React.useMemo(() => {
-    return [...new Array(amount).keys()].map(index => (
-      <div key={index} className={style.column}>
-        <Animated
-          className={style.columnShirmaWrapper}
-          isVisible={!isLoading}
-          duration={{
-            in: 0,
-            out: 1000,
-          }}
-          delay={{
-            in: 0,
-            out: index * 100 + 900,
-          }}
-          animationIn="slideInUp"
-          animationOut="slideOutUp"
+    const renderArray = [];
+    for (let index = 0; index < amount; index += 1) {
+      renderArray.push(
+        <div
+          key={index}
+          style={{ width: columnWidth }}
+          className={style.column}
         >
-          <div className={style.shirma} />
-        </Animated>
-      </div>
-    ));
+          <Animated
+            className={style.columnShirmaWrapper}
+            isVisible={!isLoading}
+            duration={{
+              in: 0,
+              out: 1000,
+            }}
+            delay={{
+              in: 0,
+              out: index * 100 + 900,
+            }}
+            animationIn="slideInUp"
+            animationOut="slideOutUp"
+          >
+            <div className={style.shirma} />
+          </Animated>
+        </div>
+      );
+    }
+    return renderArray;
   }, [isLoading, amount]);
 
   return <div className={style.shirmaWrapper}>{renderColumns}</div>;

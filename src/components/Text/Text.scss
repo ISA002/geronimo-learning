@@ -42,6 +42,10 @@
 }
 
 @mixin fontSize {
+  &-160 {
+    font-size: 160px;
+  }
+
   &-140 {
     font-size: 140px;
   }

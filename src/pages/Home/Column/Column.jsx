@@ -50,7 +50,13 @@ const Column = ({ index, isLoading, title, images, video }) => {
         }}
         animationIn="fadeInUpSmall"
       >
-        <Text className={style.columnText} size="42" color="main-white">
+        <Text
+          fontWeight="bold"
+          fontType="BebasNeueBold"
+          className={style.columnText}
+          size="42"
+          color="main-white"
+        >
           {title}
         </Text>
       </Animated>

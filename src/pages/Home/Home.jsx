@@ -32,7 +32,7 @@ const Home = () => {
         <Text
           fontType="Robotobold"
           className={style.mainText}
-          size="140"
+          size="160"
           color="main-white"
           fontWeight="bold"
         >

@@ -1,13 +1,16 @@
 import React from 'react';
-import useBrowser from 'hooks/useBrowser';
 import PropTypes from 'prop-types';
 
 const Picture = ({ className, retinaPreviewImg, previewImg }) => {
-  const browser = useBrowser();
+  const [isRetina, setIsRetina] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsRetina(window.devicePixelRatio > 2);
+  }, []);
 
   return (
     <>
-      {browser.os.name === 'macOS' ? (
+      {isRetina ? (
         <img
           className={className}
           src={retinaPreviewImg}

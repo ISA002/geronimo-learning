@@ -99,6 +99,7 @@ class Text extends PureComponent {
 // {!html ? children : renderHTML(children)}
 
 const textPropsSize = [
+  '160',
   '140',
   '120',
   '100',
