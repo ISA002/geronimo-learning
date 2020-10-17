@@ -11,9 +11,9 @@ const Curtain = ({ isLoading, amount }) => {
   }, [amount]);
 
   const renderColumns = React.useMemo(() => {
-    const renderArray = [];
+    const curtains = [];
     for (let index = 0; index < amount; index += 1) {
-      renderArray.push(
+      curtains.push(
         <div
           key={index}
           style={{ width: columnWidth }}
@@ -38,7 +38,7 @@ const Curtain = ({ isLoading, amount }) => {
         </div>
       );
     }
-    return renderArray;
+    return curtains;
   }, [isLoading, amount, columnWidth]);
 
   return <div className={style.shirmaWrapper}>{renderColumns}</div>;
