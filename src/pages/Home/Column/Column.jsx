@@ -7,19 +7,29 @@ import Animated from 'components/Animated';
 import Picture from 'components/Picture';
 
 const Column = ({ index, isLoading, title, images, video }) => {
+  const [playingVideo, setPlayingVideo] = React.useState(false);
   const ref = React.useRef();
   const rootRef = React.useRef();
 
   React.useEffect(() => {
+    ref.current.addEventListener('transitionend', () => {
+      if (!playingVideo) {
+        ref.current.currentTime = 0;
+      }
+    });
+    ref.current.setAttribute('style', 'transition: opacity 0.3s; opacity: 0');
+
     rootRef.current.addEventListener('mouseover', () => {
+      ref.current.setAttribute('style', 'opacity: 1');
       ref.current.play();
+      setPlayingVideo(true);
     });
 
     rootRef.current.addEventListener('mouseout', () => {
-      ref.current.currentTime = 0;
+      setPlayingVideo(false);
       ref.current.pause();
     });
-  }, [rootRef, ref]);
+  }, [rootRef, ref, playingVideo]);
 
   return (
     <div className={style.root} ref={rootRef}>

@@ -20,11 +20,9 @@
   width: 150%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.5s;
   right: -25%;
   top: 0;
   position: absolute;
-  animation-timing-function: cubic-bezier(0.03, 0.15, 0.16, 0.99);
 }
 
 .columnShirmaWrapper {
@@ -49,10 +47,6 @@
 .root:hover {
   .columnText {
     transform: translate3d(0, -25%, 0);
-  }
-
-  .columnVideo {
-    opacity: 1;
   }
 }
 
