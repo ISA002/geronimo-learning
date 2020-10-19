@@ -5,6 +5,7 @@ import style from './Column.scss';
 import PropTypes from 'prop-types';
 import Animated from 'components/Animated';
 import Picture from 'components/Picture';
+import classnames from 'classnames';
 
 const Column = ({ index, isLoading, title, images, video }) => {
   const [playingVideo, setPlayingVideo] = React.useState(false);
@@ -12,28 +13,22 @@ const Column = ({ index, isLoading, title, images, video }) => {
   const rootRef = React.useRef();
 
   React.useEffect(() => {
-    ref.current.addEventListener('transitionend', () => {
-      if (!playingVideo) {
-        ref.current.currentTime = 0;
-      }
-    });
-
+    let data = null;
     rootRef.current.addEventListener('mouseover', () => {
       ref.current.currentTime = 0;
-      ref.current.setAttribute('style', 'opacity: 1');
-      ref.current.play();
       setPlayingVideo(true);
+      data = ref.current.play();
     });
 
     rootRef.current.addEventListener('mouseout', () => {
       setPlayingVideo(false);
-      ref.current.pause();
-      ref.current.setAttribute(
-        'style',
-        'transition: opacity 0.35s; opacity: 0'
-      );
+      if (data !== undefined) {
+        data.then(() => {
+          ref.current.pause();
+        });
+      }
     });
-  }, [rootRef, ref, playingVideo]);
+  }, [rootRef, ref]);
 
   return (
     <div className={style.root} ref={rootRef}>
@@ -44,7 +39,9 @@ const Column = ({ index, isLoading, title, images, video }) => {
       />
       <video
         ref={ref}
-        className={style.columnVideo}
+        className={classnames(style.columnVideo, {
+          [style.visibleColumnVideo]: playingVideo,
+        })}
         poster={images.original}
         muted="muted"
         loop

@@ -3,14 +3,12 @@ import PropTypes from 'prop-types';
 
 const Picture = ({ className, retinaPreviewImg, previewImg }) => {
   return (
-    <>
-      <img
-        className={className}
-        src={previewImg}
-        srcSet={retinaPreviewImg}
-        alt="preview"
-      />
-    </>
+    <img
+      className={className}
+      src={previewImg}
+      srcSet={retinaPreviewImg}
+      alt="preview"
+    />
   );
 };
 
