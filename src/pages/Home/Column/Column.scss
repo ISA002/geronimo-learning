@@ -2,24 +2,26 @@
   width: 34%;
   height: 100vh;
   position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
 }
 
 .columnImage {
-  width: 100%;
+  width: 150%;
   height: 100%;
   object-fit: cover;
   opacity: 1;
-  transition: opacity 0.5s;
   position: relative;
-  animation-timing-function: cubic-bezier(0.03, 0.15, 0.16, 0.99);
 }
 
-.columnGif {
+.columnVideo {
   opacity: 0;
-  width: 100%;
+  width: 150%;
   height: 100%;
   object-fit: cover;
-  transition: opacity 0.3s;
+  transition: opacity 0.5s;
+  right: -25%;
   top: 0;
   position: absolute;
   animation-timing-function: cubic-bezier(0.03, 0.15, 0.16, 0.99);
@@ -49,11 +51,7 @@
     transform: translate3d(0, -25%, 0);
   }
 
-  .columnImage {
-    opacity: 0;
-  }
-
-  .columnGif {
+  .columnVideo {
     opacity: 1;
   }
 }

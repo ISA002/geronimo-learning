@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Column from './Column';
 import style from './Home.scss';
 import Text from 'components/Text';
@@ -26,7 +26,7 @@ const Home = () => {
   }, [collection, loading]);
 
   return (
-    <Fragment>
+    <div className={style.root}>
       <Header />
       <div className={style.mainTextRoot}>
         <Text
@@ -41,7 +41,7 @@ const Home = () => {
       </div>
       <div className={style.columns}>{renderColumns}</div>
       <Curtain amount={collection.length} isLoading={loading} />
-    </Fragment>
+    </div>
   );
 };
 

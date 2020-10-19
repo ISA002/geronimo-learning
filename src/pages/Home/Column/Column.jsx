@@ -30,7 +30,7 @@ const Column = ({ index, isLoading, title, images, video }) => {
       />
       <video
         ref={ref}
-        className={style.columnGif}
+        className={style.columnVideo}
         poster={images.original}
         muted="muted"
         loop
