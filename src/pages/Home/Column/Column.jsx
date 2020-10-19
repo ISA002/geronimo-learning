@@ -17,9 +17,9 @@ const Column = ({ index, isLoading, title, images, video }) => {
         ref.current.currentTime = 0;
       }
     });
-    ref.current.setAttribute('style', 'transition: opacity 0.3s; opacity: 0');
 
     rootRef.current.addEventListener('mouseover', () => {
+      ref.current.currentTime = 0;
       ref.current.setAttribute('style', 'opacity: 1');
       ref.current.play();
       setPlayingVideo(true);
@@ -28,6 +28,10 @@ const Column = ({ index, isLoading, title, images, video }) => {
     rootRef.current.addEventListener('mouseout', () => {
       setPlayingVideo(false);
       ref.current.pause();
+      ref.current.setAttribute(
+        'style',
+        'transition: opacity 0.35s; opacity: 0'
+      );
     });
   }, [rootRef, ref, playingVideo]);
 
