@@ -54,12 +54,17 @@ const Slider = props => {
     [swipeableRef]
   );
 
+  console.log(sliderState);
+
   const handle = React.useCallback(() => {
     const neededValue = Math.round(
       slideWidth * sliderState.active - 0.25 * slideWidth
     );
 
-    if (swipeableRef.current.scrollLeft !== neededValue) {
+    if (
+      swipeableRef.current.scrollLeft !== neededValue &&
+      sliderState.active !== children.length - 1
+    ) {
       const otherActive = Math.round(
         swipeableRef.current.scrollLeft / slideWidth
       );
@@ -70,7 +75,7 @@ const Slider = props => {
         next: otherActive + 1,
       });
     }
-  }, [swipeableRef, sliderState, slideWidth, setSliderState]);
+  }, [swipeableRef, sliderState, slideWidth, setSliderState, children]);
 
   const setter = _.debounce(
     React.useCallback(() => {
@@ -107,6 +112,19 @@ const Slider = props => {
     });
   }, [sliderState, setSliderState]);
 
+  const _renderSlides = React.useMemo(() => {
+    return React.Children.map(children, child => {
+      return React.createElement(
+        'div',
+        {
+          className: classnames(style.slide, config.slide),
+          key: Math.random(),
+        },
+        child
+      );
+    });
+  }, [children, config]);
+
   return (
     <div className={classnames(style.root, className)}>
       <Swipeable
@@ -115,16 +133,7 @@ const Slider = props => {
         {...configSwipeable}
         innerRef={ref => (swipeableRef.current = ref)}
       >
-        {React.Children.map(children, child => {
-          return React.createElement(
-            'div',
-            {
-              className: classnames(style.slide, config.slide),
-              key: Math.random(),
-            },
-            child
-          );
-        })}
+        {_renderSlides}
       </Swipeable>
       <Animated className={style.arrows} isVisible={config.loading}>
         <div className={style.butonsWrapper}>
