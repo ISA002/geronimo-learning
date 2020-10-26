@@ -1,4 +1,39 @@
 .root {
   position: relative;
   overflow: hidden;
+  user-select: none;
+}
+
+.slideList {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.arrows {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.butonsWrapper {
+  width: 80vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.hideButton {
+  visibility: hidden;
+}
+
+.slideCount {
+  position: absolute;
+  bottom: 20px;
+  right: 200px;
+}
+
+.slide {
+  opacity: 1;
 }

@@ -13,14 +13,14 @@ const Column = ({ index, isLoading, title, images, video }) => {
   const rootRef = React.useRef();
 
   React.useEffect(() => {
-    let data = null;
-    rootRef.current.addEventListener('mouseover', () => {
+    let data;
+    rootRef.current.addEventListener('mouseenter', () => {
       ref.current.currentTime = 0;
       setPlayingVideo(true);
       data = ref.current.play();
     });
 
-    rootRef.current.addEventListener('mouseout', () => {
+    rootRef.current.addEventListener('mouseleave', () => {
       setPlayingVideo(false);
       if (data !== undefined) {
         data.then(() => {

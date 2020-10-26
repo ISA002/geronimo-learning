@@ -9,3 +9,8 @@ export const collectionSelector = createSelector(
   infoSelector,
   ({ collection }) => collection
 );
+
+export const filmPageDataSelector = createSelector(
+  infoSelector,
+  ({ filmCollection }) => filmCollection
+);

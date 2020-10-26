@@ -2,10 +2,12 @@ import React from 'react';
 import Button from 'components/Button';
 import Text from 'components/Text';
 import style from './Header.scss';
+import PropTypes from 'prop-types';
+import Animated from 'components/Animated';
 
 import { headerMenuData } from 'constants/index';
 
-const Header = () => {
+const Header = ({ loading }) => {
   const renderMenu = React.useMemo(() => {
     return headerMenuData.map(item => (
       <Button key={item.id} to={item.to}>
@@ -22,12 +24,20 @@ const Header = () => {
   }, []);
 
   return (
-    <div className={style.root}>
+    <Animated className={style.root} isVisible={loading}>
       <div className={style.menuWrapper}>
         <div className={style.menu}>{renderMenu}</div>
       </div>
-    </div>
+    </Animated>
   );
 };
 
-export default Header;
+Header.propTypes = {
+  loading: PropTypes.bool,
+};
+
+Header.defaultProps = {
+  loading: false,
+};
+
+export default React.memo(Header);
