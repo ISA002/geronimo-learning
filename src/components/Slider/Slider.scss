@@ -6,13 +6,11 @@
 
 .slideList {
   display: flex;
-  height: 100%;
-  width: 100%;
 }
 
 .arrows {
   position: absolute;
-  bottom: 0;
+  bottom: 150px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -30,7 +28,7 @@
 
 .slideCount {
   position: absolute;
-  bottom: 20px;
+  bottom: 170px;
   right: 200px;
 }
 

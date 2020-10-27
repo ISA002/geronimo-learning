@@ -2,15 +2,14 @@
   background: #191919;
   width: 100vw;
   height: 100vh;
-  padding-top: 15vh;
 }
 
 .slider {
-  height: 65vh;
+  height: 100vh;
 }
 
 .sliderList {
-  padding: 0 0 100vh;
+  padding: 15vh 0 100vh;
   overflow-x: scroll;
   overflow-y: hidden;
 }

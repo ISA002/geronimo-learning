@@ -49,22 +49,21 @@ const Slider = props => {
 
   const handleSwiped = React.useCallback(
     ({ deltaX }) => {
-      swipeableRef.current.scrollLeft += deltaX * 0.05;
+      let delta = deltaX;
+      if (Math.abs(deltaX) > 20) {
+        delta = Math.sign(deltaX) * 20;
+      }
+      swipeableRef.current.scrollLeft += delta;
     },
     [swipeableRef]
   );
-
-  console.log(sliderState);
 
   const handle = React.useCallback(() => {
     const neededValue = Math.round(
       slideWidth * sliderState.active - 0.25 * slideWidth
     );
 
-    if (
-      swipeableRef.current.scrollLeft !== neededValue &&
-      sliderState.active !== children.length - 1
-    ) {
+    if (swipeableRef.current.scrollLeft !== neededValue) {
       const otherActive = Math.round(
         swipeableRef.current.scrollLeft / slideWidth
       );
@@ -75,7 +74,7 @@ const Slider = props => {
         next: otherActive + 1,
       });
     }
-  }, [swipeableRef, sliderState, slideWidth, setSliderState, children]);
+  }, [swipeableRef, sliderState, slideWidth, setSliderState]);
 
   const setter = _.debounce(
     React.useCallback(() => {
