@@ -35,20 +35,13 @@ const Slide = props => {
       <Animated
         className={style.slideCurtainWrapper}
         isVisible={!loading}
-        animationIn="slideInUp"
         animationOut="slideOutUp"
-        delay={{
-          in: 100,
-          out: 300,
-        }}
-        duration={{
-          in: 100,
-          out: 300,
-        }}
+        duration={{ in: 0, out: 1000 }}
+        delay={{ in: 0, out: 1000 }}
       >
         <div className={style.slideCurtain} />
       </Animated>
-      <div key={item.id} className={style.imageWrapper}>
+      <div className={style.imageWrapper}>
         <img
           className={style.slideImg}
           src={item.preview_image_versions_urls.preview}

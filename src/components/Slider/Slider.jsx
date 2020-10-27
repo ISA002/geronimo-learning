@@ -117,7 +117,7 @@ const Slider = props => {
         'div',
         {
           className: classnames(style.slide, config.slide),
-          key: Math.random(),
+          key: child.key,
         },
         child
       );
@@ -134,14 +134,23 @@ const Slider = props => {
       >
         {_renderSlides}
       </Swipeable>
-      <Animated className={style.arrows} isVisible={config.loading}>
+      <Animated
+        className={style.arrows}
+        isVisible={config.loading}
+        delay={{ in: 300, out: 300 }}
+        duration={{ in: 600, out: 300 }}
+      >
         <div className={style.butonsWrapper}>
           <button
             className={classnames({
               [style.hideButton]: sliderState.active === 0,
             })}
             onClick={prevSlide}
-            style={{ background: 'white', fontSize: '25px' }}
+            style={{
+              background: 'white',
+              fontSize: '25px',
+              pointerEvents: 'all',
+            }}
           >
             prev
           </button>
@@ -150,13 +159,22 @@ const Slider = props => {
               [style.hideButton]: sliderState.active === children.length - 1,
             })}
             onClick={nextSlide}
-            style={{ background: 'white', fontSize: '25px' }}
+            style={{
+              background: 'white',
+              fontSize: '25px',
+              pointerEvents: 'all',
+            }}
           >
             next
           </button>
         </div>
       </Animated>
-      <Animated className={style.slideCount} isVisible={config.loading}>
+      <Animated
+        className={style.slideCount}
+        isVisible={config.loading}
+        delay={{ in: 300, out: 300 }}
+        duration={{ in: 600, out: 300 }}
+      >
         <Text
           fontWeight="bold"
           fontType="BebasNeueBold"

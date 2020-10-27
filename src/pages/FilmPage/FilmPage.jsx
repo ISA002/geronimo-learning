@@ -17,15 +17,18 @@ const FilmPage = () => {
     next: 1,
   });
 
-  const sliderConfig = {
-    sliderList: style.sliderList,
-    slide: style.slide,
-    stateConfig: {
-      state: sliderState,
-      setState: setSliderState,
-    },
-    loading,
-  };
+  const sliderConfig = React.useMemo(
+    () => ({
+      sliderList: style.sliderList,
+      slide: style.slide,
+      stateConfig: {
+        state: sliderState,
+        setState: setSliderState,
+      },
+      loading,
+    }),
+    [loading, sliderState]
+  );
 
   const renderSlides = React.useMemo(() => {
     return collection.show_category.cases.map((item, index) => {
