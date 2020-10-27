@@ -6,7 +6,7 @@ const Picture = ({ className, retinaPreviewImg, previewImg }) => {
     <img
       className={className}
       src={previewImg}
-      srcSet={retinaPreviewImg}
+      srcSet={`${retinaPreviewImg} x2`}
       alt="preview"
     />
   );
