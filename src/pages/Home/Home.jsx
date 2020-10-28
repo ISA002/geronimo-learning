@@ -27,7 +27,7 @@ const Home = () => {
 
   return (
     <div className={style.root}>
-      <Header />
+      <Header loading={loading} />
       <div className={style.mainTextRoot}>
         <Text
           fontType="Robotobold"

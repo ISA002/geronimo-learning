@@ -1,0 +1,21 @@
+<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+ <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+
+ <title>Icon / Arrow_white</title>
+ <desc>Created with Sketch.</desc>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="602" width="802" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g transform="rotate(-180 11.971948623657227,12.218891143798828) " fill-rule="evenodd" fill="none" id="Symbols">
+   <g stroke="#FFFFFF" id="Icon-/-arrow_dark">
+    <g transform="rotate(-90 12.000000000000002,12) translate(-26,-26) translate(14,14) " id="Icon-/-Arrow_white">
+     <polyline points="27.904189109802246,29.038681030273438 43.220242500305176,28.86481475830078 43.21602535247803,44.35051727294922 " transform="rotate(-225 23.78110885620117,24.303833007812493) translate(-11.781107902526855,-12.3038330078125) " fill-rule="nonzero" id="Path-2"/>
+     <path stroke-linecap="square" id="Line" d="m24,33.75l0,-21"/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

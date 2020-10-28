@@ -6,9 +6,11 @@ import PropTypes from 'prop-types';
 import Animated from 'components/Animated';
 import Picture from 'components/Picture';
 import classnames from 'classnames';
+import { useHistory } from 'react-router-dom';
 
 const Column = ({ index, isLoading, title, images, video }) => {
   const [playingVideo, setPlayingVideo] = React.useState(false);
+  const history = useHistory();
   const ref = React.useRef();
   const rootRef = React.useRef();
 
@@ -20,6 +22,10 @@ const Column = ({ index, isLoading, title, images, video }) => {
       data = ref.current.play();
     });
 
+    rootRef.current.addEventListener('click', () => {
+      history.push('/film');
+    });
+
     rootRef.current.addEventListener('mouseleave', () => {
       setPlayingVideo(false);
       if (data !== undefined) {
@@ -28,7 +34,7 @@ const Column = ({ index, isLoading, title, images, video }) => {
         });
       }
     });
-  }, [rootRef, ref]);
+  }, [rootRef, ref, history]);
 
   return (
     <div className={style.root} ref={rootRef}>

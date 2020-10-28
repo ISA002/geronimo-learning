@@ -8,19 +8,24 @@
   display: flex;
 }
 
+.scroller {
+  display: flex;
+  padding: 0 16vw;
+}
+
 .arrows {
   position: absolute;
   bottom: 150px;
   width: 100%;
   display: flex;
   justify-content: center;
+  pointer-events: none !important;
 }
 
 .butonsWrapper {
   width: 80vw;
   display: flex;
   justify-content: space-between;
-  pointer-events: none;
 }
 
 .hideButton {
@@ -28,11 +33,12 @@
 }
 
 .slideCount {
+  pointer-events: none !important;
   position: absolute;
-  bottom: 170px;
-  right: 200px;
+  bottom: 145px;
+  right: 17vw;
 }
 
 .slide {
-  opacity: 1;
+  overflow: hidden;
 }

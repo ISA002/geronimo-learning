@@ -4,12 +4,15 @@ import React from 'react';
 import style from './Slider.scss';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
-import useSliderState from './useSliderState';
 import { Swipeable } from 'react-swipeable';
 import gsap from 'gsap';
 import Text from 'components/Text';
-import _ from 'lodash';
+import { debounce } from 'lodash';
 import Animated from 'components/Animated';
+import Button from './Button';
+import arrowLeft from 'images/arrowLeft.svg';
+import arrowRight from 'images/arrowRight.svg';
+import Slide from './Slide';
 
 const configSwipeable = {
   delta: 10,
@@ -22,46 +25,36 @@ const configSwipeable = {
 const debounceDelay = 100;
 
 const Slider = props => {
-  const { className, children, config = {} } = props;
+  const { className, config = {} } = props;
   const [slideWidth, setSlideWidth] = React.useState(0);
   const swipeableRef = React.useRef(null);
 
-  const [sliderState, setSliderState] = useSliderState({
-    config,
-    children,
+  const [sliderState, setSliderState] = React.useState({
+    active: 0,
   });
 
   React.useEffect(() => {
-    setSlideWidth(
-      Math.round(swipeableRef.current.scrollWidth / children.length)
-    );
-  }, [swipeableRef, children]);
+    setSlideWidth(Math.round(window.innerWidth * 0.68));
+  }, []);
 
   React.useEffect(() => {
     gsap.to(swipeableRef.current, {
       duration: 0.8,
-      scrollLeft: Math.round(
-        slideWidth * sliderState.active - 0.25 * slideWidth
-      ),
+      scrollLeft: Math.round(slideWidth * sliderState.active),
       ease: 'power1',
     });
   }, [swipeableRef, slideWidth, sliderState]);
 
   const handleSwiped = React.useCallback(
     ({ deltaX }) => {
-      let delta = deltaX;
-      if (Math.abs(deltaX) > 20) {
-        delta = Math.sign(deltaX) * 20;
-      }
-      swipeableRef.current.scrollLeft += delta;
+      swipeableRef.current.scrollLeft =
+        Math.round(slideWidth * sliderState.active) + deltaX;
     },
-    [swipeableRef]
+    [sliderState, slideWidth]
   );
 
   const handle = React.useCallback(() => {
-    const neededValue = Math.round(
-      slideWidth * sliderState.active - 0.25 * slideWidth
-    );
+    const neededValue = Math.round(slideWidth * sliderState.active);
 
     if (swipeableRef.current.scrollLeft !== neededValue) {
       const otherActive = Math.round(
@@ -70,13 +63,11 @@ const Slider = props => {
       setSliderState({
         ...sliderState,
         active: otherActive,
-        prev: otherActive - 1,
-        next: otherActive + 1,
       });
     }
   }, [swipeableRef, sliderState, slideWidth, setSliderState]);
 
-  const setter = _.debounce(
+  const setter = debounce(
     React.useCallback(() => {
       handle();
     }, [handle]),
@@ -93,36 +84,37 @@ const Slider = props => {
   }, [swipeableRef, setter]);
 
   const nextSlide = React.useCallback(() => {
-    const maxIndex = children.length - 1;
     setSliderState({
       ...sliderState,
       active: sliderState.active + 1,
-      prev: sliderState.active,
-      next: sliderState.active + 1 === maxIndex ? 0 : sliderState.active + 2,
     });
-  }, [sliderState, children, setSliderState]);
+  }, [sliderState, setSliderState]);
 
   const prevSlide = React.useCallback(() => {
     setSliderState({
       ...sliderState,
       active: sliderState.active - 1,
-      prev: sliderState.active,
-      next: sliderState.active - 1 === 0 ? 0 : sliderState.active - 2,
     });
   }, [sliderState, setSliderState]);
 
-  const _renderSlides = React.useMemo(() => {
-    return React.Children.map(children, child => {
-      return React.createElement(
-        'div',
-        {
-          className: classnames(style.slide, config.slide),
-          key: child.key,
-        },
-        child
+  const renderSlides = React.useMemo(() => {
+    return config.cases.map((item, index) => {
+      return (
+        <Slide
+          className={classnames(style.slide, config.slide)}
+          key={item.id}
+          loading={config.loading}
+          sliderState={sliderState}
+          item={item}
+          index={index}
+        />
       );
     });
-  }, [children, config]);
+  }, [config, sliderState]);
+
+  const renderSlideCounter = React.useMemo(() => {
+    return sliderState.active + 1 + '/' + config.cases.length;
+  }, [sliderState, config]);
 
   return (
     <div className={classnames(style.root, className)}>
@@ -132,7 +124,7 @@ const Slider = props => {
         {...configSwipeable}
         innerRef={ref => (swipeableRef.current = ref)}
       >
-        {_renderSlides}
+        <div className={style.scroller}>{renderSlides}</div>
       </Swipeable>
       <Animated
         className={style.arrows}
@@ -141,32 +133,23 @@ const Slider = props => {
         duration={{ in: 600, out: 300 }}
       >
         <div className={style.butonsWrapper}>
-          <button
+          <Button
+            direction="prev"
+            imgSrc={arrowLeft}
+            onClick={prevSlide}
             className={classnames({
               [style.hideButton]: sliderState.active === 0,
             })}
-            onClick={prevSlide}
-            style={{
-              background: 'white',
-              fontSize: '25px',
-              pointerEvents: 'all',
-            }}
-          >
-            prev
-          </button>
-          <button
-            className={classnames({
-              [style.hideButton]: sliderState.active === children.length - 1,
-            })}
+          />
+          <Button
+            direction="next"
+            imgSrc={arrowRight}
             onClick={nextSlide}
-            style={{
-              background: 'white',
-              fontSize: '25px',
-              pointerEvents: 'all',
-            }}
-          >
-            next
-          </button>
+            className={classnames({
+              [style.hideButton]:
+                sliderState.active === config.cases.length - 1,
+            })}
+          />
         </div>
       </Animated>
       <Animated
@@ -178,10 +161,10 @@ const Slider = props => {
         <Text
           fontWeight="bold"
           fontType="BebasNeueBold"
-          size="35"
+          size="25"
           color="main-white"
         >
-          {sliderState.active + 1 + '/' + children.length}
+          {renderSlideCounter}
         </Text>
       </Animated>
     </div>
@@ -190,7 +173,6 @@ const Slider = props => {
 
 Slider.propTypes = {
   className: PropTypes.string,
-  children: PropTypes.node.isRequired,
   config: PropTypes.any,
 };
 
