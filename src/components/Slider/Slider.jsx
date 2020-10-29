@@ -28,6 +28,7 @@ const Slider = props => {
   const { className, config = {} } = props;
   const [slideWidth, setSlideWidth] = React.useState(0);
   const swipeableRef = React.useRef(null);
+  const [changingSlide, setChangingSlide] = React.useState(false);
 
   const [sliderState, setSliderState] = React.useState({
     active: 0,
@@ -45,7 +46,7 @@ const Slider = props => {
     });
   }, [swipeableRef, slideWidth, sliderState]);
 
-  const handleSwiped = React.useCallback(
+  const handleSwiping = React.useCallback(
     ({ deltaX }) => {
       swipeableRef.current.scrollLeft =
         Math.round(slideWidth * sliderState.active) + deltaX;
@@ -53,10 +54,10 @@ const Slider = props => {
     [sliderState, slideWidth]
   );
 
-  const handle = React.useCallback(() => {
-    const neededValue = Math.round(slideWidth * sliderState.active);
+  const handleNewActiveSlide = React.useCallback(() => {
+    const prevActive = Math.round(slideWidth * sliderState.active);
 
-    if (swipeableRef.current.scrollLeft !== neededValue) {
+    if (swipeableRef.current.scrollLeft !== prevActive) {
       const otherActive = Math.round(
         swipeableRef.current.scrollLeft / slideWidth
       );
@@ -67,35 +68,43 @@ const Slider = props => {
     }
   }, [swipeableRef, sliderState, slideWidth, setSliderState]);
 
-  const setter = debounce(
+  const scrollValueHandler = debounce(
     React.useCallback(() => {
-      handle();
-    }, [handle]),
+      handleNewActiveSlide();
+    }, [handleNewActiveSlide]),
     debounceDelay
   );
 
   React.useEffect(() => {
     const ref = swipeableRef.current;
-    ref.addEventListener('scroll', setter, { passive: true });
+    ref.addEventListener('scroll', scrollValueHandler, { passive: true });
 
     return () => {
-      ref.removeEventListener('scroll', setter);
+      ref.removeEventListener('scroll', scrollValueHandler);
     };
-  }, [swipeableRef, setter]);
+  }, [swipeableRef, scrollValueHandler]);
 
   const nextSlide = React.useCallback(() => {
-    setSliderState({
-      ...sliderState,
-      active: sliderState.active + 1,
-    });
-  }, [sliderState, setSliderState]);
+    if (!changingSlide) {
+      setSliderState({
+        ...sliderState,
+        active: sliderState.active + 1,
+      });
+      setChangingSlide(true);
+      setTimeout(() => setChangingSlide(false), 900);
+    }
+  }, [sliderState, setSliderState, changingSlide]);
 
   const prevSlide = React.useCallback(() => {
-    setSliderState({
-      ...sliderState,
-      active: sliderState.active - 1,
-    });
-  }, [sliderState, setSliderState]);
+    if (!changingSlide) {
+      setSliderState({
+        ...sliderState,
+        active: sliderState.active - 1,
+      });
+      setChangingSlide(true);
+      setTimeout(() => setChangingSlide(false), 900);
+    }
+  }, [sliderState, setSliderState, changingSlide]);
 
   const renderSlides = React.useMemo(() => {
     return config.cases.map((item, index) => {
@@ -119,7 +128,7 @@ const Slider = props => {
   return (
     <div className={classnames(style.root, className)}>
       <Swipeable
-        onSwiping={handleSwiped}
+        onSwiping={handleSwiping}
         className={classnames(style.slideList, config.sliderList)}
         {...configSwipeable}
         innerRef={ref => (swipeableRef.current = ref)}

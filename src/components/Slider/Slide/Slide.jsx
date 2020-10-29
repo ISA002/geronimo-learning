@@ -70,12 +70,12 @@ const Slide = props => {
           className={style.slideTitle}
           animationIn="fadeInUpSmall"
           duration={{
-            in: 600,
+            in: 900,
             out: 250,
           }}
           delay={{
-            in: 800,
-            out: 100,
+            in: 700,
+            out: 300,
           }}
         >
           <Text
@@ -92,11 +92,11 @@ const Slide = props => {
           className={style.slideSubTitle}
           animationIn="fadeInUpSmall"
           duration={{
-            in: 900,
+            in: 1000,
             out: 250,
           }}
           delay={{
-            in: 900,
+            in: 1100,
             out: 300,
           }}
         >
