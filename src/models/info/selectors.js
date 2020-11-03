@@ -14,3 +14,8 @@ export const filmPageDataSelector = createSelector(
   infoSelector,
   ({ filmCollection }) => filmCollection
 );
+
+export const pubPageDataSelector = createSelector(
+  infoSelector,
+  ({ pubCollection }) => pubCollection
+);

@@ -7,6 +7,7 @@ import 'styles/normalize.scss';
 import 'styles/fonts.scss';
 import styles from './App.scss';
 import useBrowser from 'hooks/useBrowser';
+import MediaHelper from 'components/MediaHelper';
 import Preloader from 'components/Preloader';
 import { useSelector } from 'react-redux';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
@@ -24,6 +25,7 @@ const App = ({ routes }) => {
     <div className={styles.app}>
       {/* Use Helmet only in SPA mode. Render app head on server side  */}
       {/* <Helmet {...config.app} /> */}
+      <MediaHelper />
       {!loading && <Preloader />}
       <AppRouter routes={routes} />
     </div>

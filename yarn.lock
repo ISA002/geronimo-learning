@@ -8397,6 +8397,11 @@ react-helmet@^5.2.1:
     react-fast-compare "^2.0.2"
     react-side-effect "^1.1.0"
 
+react-intersection-observer@^8.30.0:
+  version "8.30.0"
+  resolved "https://registry.yarnpkg.com/react-intersection-observer/-/react-intersection-observer-8.30.0.tgz#b6ba7c6baf6e960092850a2b84429af992e9030d"
+  integrity sha512-wllTVfvoA7aiKRgf/d4SYLhuNGad6AMyKezEN/V9P9T9J7BFQXOn9n+IZpPzdrRNN8EmB3mawI+Qr1z58E85Fg==
+
 react-is@^16.6.0:
   version "16.11.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.11.0.tgz#b85dfecd48ad1ce469ff558a882ca8e8313928fa"

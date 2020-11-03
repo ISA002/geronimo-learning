@@ -66,7 +66,7 @@ const Slider = props => {
         active: otherActive,
       });
     }
-  }, [swipeableRef, sliderState, slideWidth, setSliderState]);
+  }, [swipeableRef, sliderState, slideWidth]);
 
   const scrollValueHandler = debounce(
     React.useCallback(() => {

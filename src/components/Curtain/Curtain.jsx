@@ -2,8 +2,15 @@ import React from 'react';
 import Animated from 'components/Animated';
 import style from './Curtain.scss';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 
-const Curtain = ({ isLoading, amount }) => {
+const Curtain = ({
+  isLoading,
+  amount,
+  shirmaClassName,
+  duration,
+  delayCurtain,
+}) => {
   const [columnWidth, setColumnWidth] = React.useState('34%');
 
   React.useEffect(() => {
@@ -22,24 +29,26 @@ const Curtain = ({ isLoading, amount }) => {
           <Animated
             className={style.columnShirmaWrapper}
             isVisible={!isLoading}
-            duration={{
-              in: 0,
-              out: 1000,
-            }}
+            duration={
+              duration || {
+                in: 0,
+                out: 1000,
+              }
+            }
             delay={{
               in: 0,
-              out: index * 100 + 900,
+              out: index * 100 + delayCurtain,
             }}
             animationIn="slideInUp"
             animationOut="slideOutUp"
           >
-            <div className={style.shirma} />
+            <div className={classnames(style.shirma, shirmaClassName)} />
           </Animated>
         </div>
       );
     }
     return curtains;
-  }, [isLoading, amount, columnWidth]);
+  }, [isLoading, amount, columnWidth, duration, delayCurtain, shirmaClassName]);
 
   return <div className={style.shirmaWrapper}>{renderColumns}</div>;
 };
@@ -47,11 +56,17 @@ const Curtain = ({ isLoading, amount }) => {
 Curtain.propTypes = {
   isLoading: PropTypes.bool,
   amount: PropTypes.number,
+  shirmaClassName: PropTypes.string,
+  duration: PropTypes.any,
+  delayCurtain: PropTypes.number,
 };
 
 Curtain.defaultProps = {
   isLoading: true,
   amount: 0,
+  shirmaClassName: '',
+  duration: undefined,
+  delayCurtain: 900,
 };
 
 export default React.memo(Curtain);

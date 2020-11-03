@@ -8,7 +8,7 @@ import Picture from 'components/Picture';
 import classnames from 'classnames';
 import { useHistory } from 'react-router-dom';
 
-const Column = ({ index, isLoading, title, images, video }) => {
+const Column = ({ index, isLoading, title, images, video, slug }) => {
   const [playingVideo, setPlayingVideo] = React.useState(false);
   const history = useHistory();
   const ref = React.useRef();
@@ -23,7 +23,7 @@ const Column = ({ index, isLoading, title, images, video }) => {
     });
 
     rootRef.current.addEventListener('click', () => {
-      history.push('/film');
+      history.push(`/${slug}`);
     });
 
     rootRef.current.addEventListener('mouseleave', () => {
@@ -34,7 +34,7 @@ const Column = ({ index, isLoading, title, images, video }) => {
         });
       }
     });
-  }, [rootRef, ref, history]);
+  }, [rootRef, ref, history, slug]);
 
   return (
     <div className={style.root} ref={rootRef}>
@@ -87,6 +87,7 @@ Column.propTypes = {
   title: PropTypes.string,
   images: PropTypes.any,
   video: PropTypes.string,
+  slug: PropTypes.string,
 };
 
 Column.defaultProps = {
@@ -95,6 +96,7 @@ Column.defaultProps = {
   title: '',
   images: {},
   video: '',
+  slug: '',
 };
 
 export default React.memo(Column);

@@ -12,3 +12,10 @@ export const headerMenuData = [
   { id: 0, title: 'Pub', to: '/pub' },
   { id: 1, title: 'Film', to: '/film' },
 ];
+
+export const DESKTOP = 'DESKTOP';
+export const TABLET = 'TABLET';
+export const MOBILE = 'MOBILE';
+
+export const MOBILE_MEDIA_QUERY = '(max-width: 1024px)';
+export const TABLET_MEDIA_QUERY = '(max-width: 1440px) and (min-width: 1024px)';

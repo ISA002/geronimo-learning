@@ -3,6 +3,7 @@ import { all } from 'redux-saga/effects';
 
 import infoReducer from './info/slice';
 import preloaderReducer from './preloader/slice';
+import commonReducer from './common/slice';
 
 import infoSagas from './info/sagas';
 
@@ -10,6 +11,7 @@ export const createRootReducer = history => ({
   router: connectRouter(history),
   info: infoReducer,
   preloader: preloaderReducer,
+  common: commonReducer,
 });
 
 export const rootSaga = function* rootSaga() {

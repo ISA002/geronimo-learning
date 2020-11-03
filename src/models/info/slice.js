@@ -786,6 +786,1680 @@ const infoSlice = createSlice({
         partners: [],
       },
     },
+    pubCollection: {
+      show_category: {
+        description:
+          '<p>Jaw-dropping television commercials, mind-blowing online video content and kick-ass advertising wizardry in general. Geronimo’s publicity branch has over the years established itself as a creative haven for all sorts of companies, brands, organizations and projects.</p>',
+        id: 7,
+        title: 'PUB',
+        subtitle: '',
+        address:
+          '<p>Geronimo</p><p>Indiëstraat 8</p><p>B-2000 Antwerp</p><p></p><p></p>',
+        map_image_url:
+          'https://geronimo.be/system/uploads/category/map_image/000/000/007/category_image.jpg',
+        phone: '',
+        email: 'info@geronimo.be',
+        keyword: 'Pub',
+        map_link: 'https://www.google.com/maps/@56.8537936,35.873007,15z',
+        logo_url:
+          'https://geronimo.be/system/uploads/category/logo/000/000/007/category_image.jpg',
+        cases: [
+          {
+            description:
+              '<p>Agency: DDB Brussels</p><p>Director: Jan Boon</p><p>DOP: Anton Mertens</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014482',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/091/case_image.jpg',
+            title: 'STUDIO BRUSSEL',
+            subtitle: 'MUSIC FOR LIFE',
+            id: 91,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/091/PUB_musicforlife.mp4',
+            director_slug: 'raf-reyntjens',
+            director_full_name: 'Raf Reyntjens',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/091/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/091/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/091/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/091/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/091/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/091/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/091/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/091/STUDIO%20BRUSSEL.gif',
+            awards: [
+              {
+                logo_url:
+                  'https://geronimo.be/system/uploads/award/logo/000/000/014/award_image.jpg',
+                title: 'CCB PRESS',
+              },
+            ],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/303021629',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/074/case_image.jpg',
+            title: 'HET LAATSTE NIEUWS',
+            subtitle: 'AGATHA CHRISTIE',
+            id: 74,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/074/PUB_hetlaatstenieuws.mp4',
+            director_slug: null,
+            director_full_name: null,
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/074/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/074/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/074/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/074/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/074/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/074/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/074/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/074/HET%20LAATSTE%20NIEUWS.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/253781624/351577f0c5',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/133/case_image.jpg',
+            title: '2DEHANDS.BE',
+            subtitle: '',
+            id: 133,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/133/2DEHANDS_AUTO.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/133/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/133/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/133/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/133/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/133/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/133/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/133/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/133/2DEHANDS.BE.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/318185199',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/130/case_image.jpg',
+            title: 'MORT SUBITE',
+            subtitle: '',
+            id: 130,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/130/MORT_SUBITE.mp4',
+            director_slug: 'benoit-declerck-3',
+            director_full_name: 'Benoit Declerck',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/130/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/130/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/130/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/130/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/130/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/130/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/130/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/130/MORT%20SUBITE.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: DDB Brussels</p><p>Director: Jan Boon</p><p>DOP: Anton Mertens</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014569',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/088/case_image.jpg',
+            title: 'STUDIO BRUSSEL',
+            subtitle: 'MUSIC FOR LIFE',
+            id: 88,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/088/PUB_MFL2.mp4',
+            director_slug: 'jan-boon-1',
+            director_full_name: 'Jan Boon',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/088/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/088/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/088/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/088/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/088/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/088/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/088/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/088/STUDIO%20BRUSSEL.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Director: Willy Crank</p><p>DOP: Frederic Van Zandycke</p>',
+            video_vimeo_url: 'https://vimeo.com/303014147',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/100/case_image.jpg',
+            title: 'PROVINCIE WEST-VLAANDEREN',
+            subtitle: 'GONE WEST',
+            id: 100,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/100/PUB_westvlaanderen.mp4',
+            director_slug: null,
+            director_full_name: null,
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/100/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/100/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/100/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/100/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/100/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/100/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/100/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/100/PROVINCIE%20WEST-VLAANDEREN.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: Liquid Society</p><p>Director: Jeroen Willekens</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303021311',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/084/case_image.jpg',
+            title: 'BOSS PAINTS',
+            subtitle: 'EXPERTS IN EVERY STEP',
+            id: 84,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/084/PUB_bosspaints.mp4',
+            director_slug: 'jeroen-willekens-8',
+            director_full_name: 'Jeroen Willekens',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/084/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/084/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/084/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/084/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/084/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/084/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/084/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/084/BOSS%20PAINTS.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: Lucy</p><p>Director: Benny Vandendriessche</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014032',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/104/case_image.jpg',
+            title: 'KLARA',
+            subtitle: 'THE VOICE EDITION',
+            id: 104,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/104/PUB_Klara.mp4',
+            director_slug: 'benny-vandendriescche-6',
+            director_full_name: 'Benny Vandendriescche',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/104/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/104/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/104/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/104/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/104/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/104/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/104/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/104/KLARA.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: Famousgrey</p><p>Director: Dirk Domen</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014414',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/093/case_image.jpg',
+            title: 'KOM OP TEGEN KANKER',
+            subtitle: 'EVERYONE AGAINST CANCER',
+            id: 93,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/093/PUB_komoptegenkanker.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/093/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/093/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/093/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/093/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/093/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/093/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/093/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/093/KOM%20OP%20TEGEN%20KANKER.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Director: Dirk Domen</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014326',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/096/case_image.jpg',
+            title: 'EVA',
+            subtitle: 'VEGGIE THURSDAY',
+            id: 96,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/096/PUB_eva.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/096/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/096/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/096/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/096/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/096/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/096/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/096/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/096/EVA.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: Saatchi &amp; Saatchi</p><p>Director: Michael Bombeeck</p><p>DOP: Frederic Van Zandycke</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014605',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/087/case_image.jpg',
+            title: 'BELFIUS',
+            subtitle: 'BOIC',
+            id: 87,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/087/PUB_BOIC.mp4',
+            director_slug: 'michael-bombeeckk-2',
+            director_full_name: 'Michael Bombeeck',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/087/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/087/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/087/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/087/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/087/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/087/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/087/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/087/BELFIUS.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/349003886',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/137/case_image.jpg',
+            title: 'Plan België ',
+            subtitle: '',
+            id: 137,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/137/PLAN_BE_VANAF_12J__VIER_VIJF_.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/137/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/137/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/137/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/137/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/137/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/137/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/137/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/137/Plan%20Belgi%C3%AB%20.gif',
+            awards: [
+              {
+                logo_url:
+                  'https://geronimo.be/system/uploads/award/logo/000/000/015/award_image.jpg',
+                title: 'Eurobest 2014',
+              },
+            ],
+          },
+          {
+            description:
+              '<p>Agency: DDB Brussels</p><p>Director: Michael Bombeeck</p><p>DOP: David Doom</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303013915',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/106/case_image.jpg',
+            title: 'UNIBET',
+            subtitle: 'ONLY REAL PLAYERS BET',
+            id: 106,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/106/PUB_unibet_onlyrealplayersbet.mp4',
+            director_slug: 'michael-bombeeckk-2',
+            director_full_name: 'Michael Bombeeck',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/106/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/106/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/106/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/106/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/106/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/106/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/106/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/106/UNIBET.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/289046076',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/117/case_image.jpg',
+            title: 'DELIO',
+            subtitle: 'TONIJNSALADE',
+            id: 117,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/117/DELIO_TONIJN.mp4',
+            director_slug: 'benoit-declerck-3',
+            director_full_name: 'Benoit Declerck',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/117/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/117/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/117/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/117/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/117/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/117/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/117/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url: null,
+            awards: [],
+          },
+          {
+            description:
+              '<p>Director: Odin Saillé</p><p>DOP: David Doom</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303013889',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/108/case_image.jpg',
+            title: 'HIERBAS DE LAS DUNAS',
+            subtitle: 'LIFE AT 120 BPM',
+            id: 108,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/108/PUB_hierbasdelasdunas.mp4',
+            director_slug: null,
+            director_full_name: null,
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/108/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/108/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/108/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/108/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/108/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/108/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/108/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/108/HIERBAS%20DE%20LAS%20DUNAS.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/270605554',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/128/case_image.jpg',
+            title: 'LUXURY OUTLET',
+            subtitle: '',
+            id: 128,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/128/LUXURY_OUTLET.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/128/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/128/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/128/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/128/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/128/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/128/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/128/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/128/LUXURY%20OUTLET.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/349004710',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/136/case_image.jpg',
+            title: 'Radio 1',
+            subtitle: 'De grote levensvragen',
+            id: 136,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/136/RADIO1_ASTRONAUT_SEPT_2017.mp4',
+            director_slug: 'benoit-declerck-3',
+            director_full_name: 'Benoit Declerck',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/136/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/136/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/136/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/136/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/136/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/136/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/136/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/136/Radio%201.gif',
+            awards: [
+              {
+                logo_url:
+                  'https://geronimo.be/system/uploads/award/logo/000/000/009/award_image.jpg',
+                title: 'CCB FILM SHORTLIST',
+              },
+            ],
+          },
+          {
+            description:
+              '<p>Agency: Content Cowboys</p><p>Director: Dirk Domen</p><p>DOP: Emanuel Vanderjeugd</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303021535',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/078/case_image.jpg',
+            title: 'BOBBEJAANLAND',
+            subtitle: 'THE FORBIDDEN CAVES',
+            id: 78,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/078/PUB_bobbejaanland.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/078/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/078/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/078/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/078/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/078/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/078/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/078/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/078/BOBBEJAANLAND.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: LDV United</p><p>Director: Dirk Domen</p><p>DOP: Emanuel Vanderjeugd</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303021556',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/077/case_image.jpg',
+            title: 'GAZET VAN ANTWERPEN',
+            subtitle: 'RUBENS',
+            id: 77,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/077/PUB_GVA.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/077/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/077/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/077/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/077/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/077/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/077/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/077/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/077/GAZET%20VAN%20ANTWERPEN.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/297684644/be0497f4c6',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/127/case_image.jpg',
+            title: 'ALL BLUES DAY',
+            subtitle: 'CLUB BRUGGE',
+            id: 127,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/127/CLUB_BRUGGE.mp4',
+            director_slug: null,
+            director_full_name: null,
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/127/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/127/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/127/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/127/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/127/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/127/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/127/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/127/ALL%20BLUES%20DAY.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: FamousGrey</p><p>Director: Emanuel Vanderjeugd</p><p>DOP: Emanuel Vanderjeugd</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014667',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/085/case_image.jpg',
+            title: 'NMBS',
+            subtitle: '30 COUNTRIES, 30 DAYS',
+            id: 85,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/085/PUB_nmbs.mp4',
+            director_slug: null,
+            director_full_name: null,
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/085/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/085/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/085/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/085/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/085/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/085/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/085/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/085/NMBS.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/241146176/73cbad6736',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/120/case_image.jpg',
+            title: 'DE WARMSTE WEEK ',
+            subtitle: 'LIFE IS MUSIC - STUDIO BRUSSEL',
+            id: 120,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/120/MUSIC4LIFE_BALLERINA.mp4',
+            director_slug: 'raf-reyntjens',
+            director_full_name: 'Raf Reyntjens',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/120/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/120/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/120/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/120/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/120/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/120/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/120/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/120/DE%20WARMSTE%20WEEK%20.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: Mortierbrigade</p><p>Director: Jeroen Willekens</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014096',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/102/case_image.jpg',
+            title: 'ING',
+            subtitle: 'RED DEVILS',
+            id: 102,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/102/PUB_ING.mp4',
+            director_slug: 'jeroen-willekens-8',
+            director_full_name: 'Jeroen Willekens',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/102/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/102/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/102/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/102/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/102/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/102/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/102/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/102/ING.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/294541870/6218bbd1dc',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/125/case_image.jpg',
+            title: 'ALPRO',
+            subtitle: 'WORD DE PRO IN ALPRO',
+            id: 125,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/125/ALPRO.mp4',
+            director_slug: 'jeroen-willekens-8',
+            director_full_name: 'Jeroen Willekens',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/125/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/125/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/125/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/125/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/125/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/125/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/125/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/125/ALPRO.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: Famous</p><p>Director: Dirk Domen</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303021476',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/080/case_image.jpg',
+            title: 'VLAM',
+            subtitle: 'WEEK OF THE BELGIAN FRIES',
+            id: 80,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/080/PUB_VLAM_fries.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/080/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/080/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/080/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/080/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/080/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/080/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/080/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/080/VLAM.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/290899517',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/121/case_image.jpg',
+            title: "O'TACOS",
+            subtitle: '',
+            id: 121,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/121/O_TACOS.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/121/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/121/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/121/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/121/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/121/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/121/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/121/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              "/system/uploads/case/preview_gif/000/000/121/O'TACOS.gif",
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/318181518',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/131/case_image.jpg',
+            title: 'BMW',
+            subtitle: '',
+            id: 131,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/131/BMW_STREETART.mp4',
+            director_slug: null,
+            director_full_name: null,
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/131/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/131/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/131/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/131/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/131/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/131/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/131/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/131/BMW.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: AIR</p><p>Director: Michael Bombeeck</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014456',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/092/case_image.jpg',
+            title: 'BMW',
+            subtitle: 'THE M4',
+            id: 92,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/092/PUB_bmw_m4.mp4',
+            director_slug: 'michael-bombeeckk-2',
+            director_full_name: 'Michael Bombeeck',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/092/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/092/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/092/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/092/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/092/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/092/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/092/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/092/BMW.gif',
+            awards: [],
+          },
+          {
+            description:
+              "<p>Agency: d'Artagnan</p><p>Director: Dirk Domen</p><p>DOP: Piet Deyaert</p><p></p>",
+            video_vimeo_url: 'https://vimeo.com/303014066',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/103/case_image.jpg',
+            title: 'ERA',
+            subtitle: 'THE ERA-EFFECT',
+            id: 103,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/103/PUB_era.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/103/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/103/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/103/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/103/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/103/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/103/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/103/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/103/ERA.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/218628361',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/132/case_image.jpg',
+            title: 'DEVOS&LEMMENS',
+            subtitle: 'DE HOFFELIJKE ZOMER',
+            id: 132,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/132/DEVOS_EN_LEMMENS_BBQ_DAK_.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/132/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/132/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/132/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/132/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/132/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/132/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/132/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/132/DEVOS%26LEMMENS.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/286323798',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/126/case_image.jpg',
+            title: 'LE BON FROMAGE EST VITE CHOISI',
+            subtitle: 'BRUGGE KAAS ',
+            id: 126,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/126/BRUGGE_KAAS.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/126/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/126/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/126/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/126/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/126/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/126/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/126/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/126/LE%20BON%20FROMAGE%20EST%20VITE%20CHOISI.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/279613753/008c1afd90',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/118/case_image.jpg',
+            title: 'FRISK',
+            subtitle: 'MENTHOL COACH',
+            id: 118,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/118/FRISK_HELI.mp4',
+            director_slug: null,
+            director_full_name: null,
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/118/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/118/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/118/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/118/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/118/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/118/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/118/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/118/FRISK.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/313140480/92fbbe199d',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/119/case_image.jpg',
+            title: 'LIBELLE KERST',
+            subtitle: '',
+            id: 119,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/119/LIBELLE_KERST.mp4',
+            director_slug: 'michael-bombeeckk-2',
+            director_full_name: 'Michael Bombeeck',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/119/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/119/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/119/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/119/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/119/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/119/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/119/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/119/LIBELLE%20KERST.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: LDV United</p><p>Director: Dirk Domen</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014306',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/097/case_image.jpg',
+            title: 'DEVOS LEMMENS',
+            subtitle: 'TASTY HOLIDAYS',
+            id: 97,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/097/PUB_DevosLemmens.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/097/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/097/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/097/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/097/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/097/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/097/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/097/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/097/DEVOS%20LEMMENS.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: DDB Brussels</p><p>Director: Michael Bombeeck</p><p>DOP: David Doom</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014374',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/094/case_image.jpg',
+            title: 'UNIBET',
+            subtitle: 'FROM PLAYERS, FOR PLAYERS',
+            id: 94,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/094/PUB_unibet_forplayers.mp4',
+            director_slug: 'michael-bombeeckk-2',
+            director_full_name: 'Michael Bombeeck',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/094/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/094/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/094/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/094/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/094/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/094/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/094/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/094/UNIBET.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/252224121/5bff19d068',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/134/case_image.jpg',
+            title: 'BELFIUS',
+            subtitle: '',
+            id: 134,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/134/BELFIUS.mp4',
+            director_slug: 'benoit-declerck-3',
+            director_full_name: 'Benoit Declerck',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/134/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/134/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/134/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/134/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/134/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/134/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/134/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/134/BELFIUS.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: DDB Brussels</p><p>Director: Jan Boon</p><p>DOP: Stijn Coene &amp; Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014640',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/086/case_image.jpg',
+            title: 'VOLKSWAGEN',
+            subtitle: 'VOLKSPARKING',
+            id: 86,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/086/PUB_volkswagen.mp4',
+            director_slug: 'jan-boon-1',
+            director_full_name: 'Jan Boon',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/086/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/086/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/086/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/086/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/086/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/086/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/086/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/086/VOLKSWAGEN.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/184821415',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/122/case_image.jpg',
+            title: 'REBORN WAITING IN LINE',
+            subtitle: '',
+            id: 122,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/122/REBORN_WAITING_IN_LINE.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/122/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/122/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/122/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/122/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/122/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/122/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/122/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/122/REBORN%20WAITING%20IN%20LINE.gif',
+            awards: [
+              {
+                logo_url:
+                  'https://geronimo.be/system/uploads/award/logo/000/000/013/award_image.jpg',
+                title: 'CCB Awareness Brons',
+              },
+            ],
+          },
+          {
+            description:
+              '<p>Agency: Happiness</p><p>Director: Dirk Domen</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303021396',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/082/case_image.jpg',
+            title: 'JIM MOBILE',
+            subtitle: "LET'S GO HARD",
+            id: 82,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/082/PUB_jimmobile.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/082/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/082/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/082/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/082/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/082/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/082/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/082/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/082/JIM%20MOBILE.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: Publicis</p><p>Director: Dirk Domen</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014506',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/090/case_image.jpg',
+            title: 'CARREFOUR',
+            subtitle: 'TASTY HOLIDAYS',
+            id: 90,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/090/PUB_carrefour.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/090/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/090/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/090/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/090/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/090/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/090/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/090/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/090/CARREFOUR.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/349003709',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/138/case_image.jpg',
+            title: 'Ouders van verongelukte kinderen',
+            subtitle: 'Safety Jingle',
+            id: 138,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/138/OVK_SAFTY_JINGLE.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/138/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/138/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/138/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/138/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/138/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/138/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/138/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/138/Ouders%20van%20verongelukte%20kinderen.gif',
+            awards: [
+              {
+                logo_url:
+                  'https://geronimo.be/system/uploads/award/logo/000/000/012/award_image.jpg',
+                title: 'CCB Promo&Activation Gold',
+              },
+              {
+                logo_url:
+                  'https://geronimo.be/system/uploads/award/logo/000/000/010/award_image.jpg',
+                title: 'CB PR SILVER',
+              },
+              {
+                logo_url:
+                  'https://geronimo.be/system/uploads/award/logo/000/000/011/award_image.jpg',
+                title: 'CCB RADIO SILVER',
+              },
+            ],
+          },
+          {
+            description:
+              '<p>Agency: Make Lemonade</p><p>Director: Dirk Domen</p><p>DOP: Piet Deyaert</p>',
+            video_vimeo_url: 'https://vimeo.com/303014529',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/089/case_image.jpg',
+            title: '11.11.11.',
+            subtitle: 'FIGHT AGAINST INJUSTICE',
+            id: 89,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/089/PUB_11.11.11.mp4',
+            director_slug: 'dirk-domen-7',
+            director_full_name: 'Dirk Domen',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/089/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/089/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/089/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/089/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/089/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/089/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/089/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/089/11.11.11..gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/349004989',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/139/case_image.jpg',
+            title: 'Renault',
+            subtitle: 'Real views',
+            id: 139,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/139/RENAULT_REAL_VIEWS.mp4',
+            director_slug: 'jan-boon-1',
+            director_full_name: 'Jan Boon',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/139/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/139/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/139/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/139/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/139/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/139/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/139/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/139/Renault.gif',
+            awards: [
+              {
+                logo_url:
+                  'https://geronimo.be/system/uploads/award/logo/000/000/008/award_image.jpg',
+                title: 'Eurobest Outdoor 2016',
+              },
+            ],
+          },
+          {
+            description:
+              '<p>Agency: Mortierbrigade</p><p>Director: Jan Boon</p><p>DOP: Patrick Otten</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303013988',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/105/case_image.jpg',
+            title: 'KIA',
+            subtitle: 'TICKETS TO RUSSIA',
+            id: 105,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/105/PUB_kia.mp4',
+            director_slug: null,
+            director_full_name: null,
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/105/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/105/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/105/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/105/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/105/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/105/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/105/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url: null,
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: DDB Brussels</p><p>Director: Wim Geudens</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014191',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/099/case_image.jpg',
+            title: 'BPOST',
+            subtitle: 'THE EXPERIMENT',
+            id: 99,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/099/PUB_bpost.mp4',
+            director_slug: 'wim-geudens-9',
+            director_full_name: 'Wim Geudens',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/099/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/099/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/099/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/099/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/099/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/099/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/099/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/099/BPOST.gif',
+            awards: [],
+          },
+          {
+            description:
+              '<p>Agency: BBDO</p><p>Director: Michael Bombeeck</p><p>DOP: Piet Deyaert</p><p></p>',
+            video_vimeo_url: 'https://vimeo.com/303014268',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/098/case_image.jpg',
+            title: 'LIBELLE',
+            subtitle: 'TASTY',
+            id: 98,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/098/PUB_Libelle.mp4',
+            director_slug: 'michael-bombeeckk-2',
+            director_full_name: 'Michael Bombeeck',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/098/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/098/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/098/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/098/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/098/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/098/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/098/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/098/LIBELLE.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/309092740',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/112/case_image.jpg',
+            title: 'Reel video 3 Pub',
+            subtitle: '',
+            id: 112,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/112/COMPRESSED_GERONIMO_REELCONTENT_FRONTPAGE_PUB_V1_1.mov',
+            director_slug: null,
+            director_full_name: null,
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/112/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/112/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/112/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/112/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/112/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/112/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/112/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url:
+              'https://geronimo.be/system/uploads/case/preview_gif/000/000/112/Reel%20video%203%20Pub.gif',
+            awards: [],
+          },
+          {
+            description: '<p></p>',
+            video_vimeo_url: 'https://vimeo.com/197892525',
+            preview_image_url:
+              'https://geronimo.be/system/uploads/case/preview_image/000/000/129/case_image.jpg',
+            title: 'MEDIRECT ',
+            subtitle: '',
+            id: 129,
+            preview_video_url:
+              'https://geronimo.be/system/uploads/case/preview_video/000/000/129/MEDIRECT.mp4',
+            director_slug: 'wim-geudens-9',
+            director_full_name: 'Wim Geudens',
+            category_type: 'pub',
+            main_page_image_url:
+              'https://geronimo.be/system/uploads/case/main_page_image/000/000/129/case_image.jpg',
+            preview_image_versions_urls: {
+              preview:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/129/pub_case_image.jpg',
+              preview_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/129/pub_x2_case_image.jpg',
+              mobile_1:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/129/mobile_1_case_image.jpg',
+              mobile_1_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/129/mobile_1_x2_case_image.jpg',
+              mobile_2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/129/mobile_2_case_image.jpg',
+              mobile_2_x2:
+                'https://geronimo.be/system/uploads/case/preview_image/000/000/129/mobile_2_x2_case_image.jpg',
+            },
+            preview_gif_url: null,
+            awards: [],
+          },
+        ],
+      },
+    },
     fetching: true,
     collectionFetched: false,
   },

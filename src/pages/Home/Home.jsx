@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
 import { collectionSelector } from 'models/info/selectors';
 import Header from 'components/Header';
-import Curtain from './Curtain';
+import Curtain from 'components/Curtain';
 
 const Home = () => {
   const loading = useSelector(loadingFinishedSelector);
@@ -21,6 +21,7 @@ const Home = () => {
         isLoading={loading}
         index={index}
         key={item.id}
+        slug={collection[index].slug}
       />
     ));
   }, [collection, loading]);
