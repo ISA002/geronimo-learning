@@ -19,3 +19,8 @@ export const pubPageDataSelector = createSelector(
   infoSelector,
   ({ pubCollection }) => pubCollection
 );
+
+export const pubCasesSelector = createSelector(
+  pubPageDataSelector,
+  ({ show_category: showCategory }) => showCategory.cases
+);

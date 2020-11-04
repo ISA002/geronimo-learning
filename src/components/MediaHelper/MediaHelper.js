@@ -11,27 +11,36 @@ import delay from 'lodash/delay';
 import createAction from 'utils/createAction';
 
 import {
-  MOBILE_MEDIA_QUERY,
+  MEDIUM_DESKTOP_MEDIA_QUERY,
+  DESKTOP_MEDIA_QUERY,
   TABLET_MEDIA_QUERY,
+  LARGE_DESKTOP,
+  MEDIUM_DESKTOP,
   DESKTOP,
   TABLET,
-  MOBILE,
 } from 'constants';
 
-const getViewport = (mediaMobile, mediaTablet) => {
-  if (mediaMobile.matches) {
-    return MOBILE;
-  } else if (mediaTablet.matches) {
+const getViewport = (mediaTablet, mediaDesktop, mediaMediumDesktop) => {
+  if (mediaTablet.matches) {
     return TABLET;
+  } else if (mediaDesktop.matches) {
+    return DESKTOP;
+  } else if (mediaMediumDesktop.matches) {
+    return MEDIUM_DESKTOP;
   }
-  return DESKTOP;
+  return LARGE_DESKTOP;
 };
 
 const onCheckViewport = () => {
-  const mediaQueryMobile = window.matchMedia(MOBILE_MEDIA_QUERY);
   const mediaQueryTablet = window.matchMedia(TABLET_MEDIA_QUERY);
+  const mediaQueryDesktop = window.matchMedia(DESKTOP_MEDIA_QUERY);
+  const mediaQueryMediumDesktop = window.matchMedia(MEDIUM_DESKTOP_MEDIA_QUERY);
 
-  return getViewport(mediaQueryMobile, mediaQueryTablet);
+  return getViewport(
+    mediaQueryTablet,
+    mediaQueryDesktop,
+    mediaQueryMediumDesktop
+  );
 };
 
 @browserHoc

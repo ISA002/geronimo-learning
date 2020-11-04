@@ -18,4 +18,4 @@ Picture.propTypes = {
   previewImg: PropTypes.string.isRequired,
 };
 
-export default Picture;
+export default React.memo(Picture);

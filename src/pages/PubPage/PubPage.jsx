@@ -2,36 +2,35 @@ import React from 'react';
 import style from './PubPage.scss';
 import Grid from './Grid';
 import { useSelector } from 'react-redux';
-import { pubPageDataSelector } from 'models/info/selectors';
+import { pubCasesSelector } from 'models/info/selectors';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
 import viewport from 'hocs/viewport';
 import PropTypes from 'prop-types';
 import Header from 'components/Header';
 
-const PubPage = ({ isMobile, isDesktop, isTablet }) => {
-  const collection = useSelector(pubPageDataSelector);
+const PubPage = ({ isDesktop, isTablet, isMediumDesktop, isLargeDesktop }) => {
+  const cases = useSelector(pubCasesSelector);
   const loading = useSelector(loadingFinishedSelector);
 
   const amountColumns = React.useMemo(() => {
-    if (isMobile) return 2;
-    if (isTablet) return 3;
-    if (isDesktop) return 4;
+    if (isTablet) return 2;
+    if (isDesktop) return 3;
+    if (isMediumDesktop) return 4;
+    if (isLargeDesktop) return 5;
     return null;
-  }, [isMobile, isDesktop, isTablet]);
+  }, [isDesktop, isTablet, isMediumDesktop, isLargeDesktop]);
 
   return (
     <div className={style.root}>
       <Header loading={loading} />
-      <Grid
-        columns={amountColumns}
-        collection={collection.show_category.cases}
-      />
+      <Grid columns={amountColumns} collection={cases} />
     </div>
   );
 };
 
 PubPage.propTypes = {
-  isMobile: PropTypes.bool.isRequired,
+  isMediumDesktop: PropTypes.bool.isRequired,
+  isLargeDesktop: PropTypes.bool.isRequired,
   isDesktop: PropTypes.bool.isRequired,
   isTablet: PropTypes.bool.isRequired,
 };

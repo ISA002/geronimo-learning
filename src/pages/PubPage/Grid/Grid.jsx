@@ -26,9 +26,16 @@ const Grid = ({ columns, collection }) => {
     );
   }, [collection, columns]);
 
-  const getRandom = React.useCallback((items, except) => {
-    const list = items.filter(c => c !== except);
-    return list[Math.floor(Math.random() * list.length)];
+  const getRandom = React.useCallback((amount, except) => {
+    let randomColumn = Math.floor(Math.random() * amount);
+
+    if (randomColumn === except) {
+      const array = [-1, 1];
+      const oherRandomColumn = Math.floor(Math.random() * 2);
+      randomColumn += array[oherRandomColumn];
+    }
+
+    return Math.abs(randomColumn % amount);
   }, []);
 
   const renderRows = React.useMemo(() => {
@@ -37,7 +44,7 @@ const Grid = ({ columns, collection }) => {
 
     return grid.map((rowList, index) => {
       const gridTemplate = template;
-      let randomPlace = getRandom([...new Array(columns).keys()], prevRandom);
+      let randomPlace = getRandom(columns, prevRandom);
 
       if (index === 0) {
         randomPlace = 0;

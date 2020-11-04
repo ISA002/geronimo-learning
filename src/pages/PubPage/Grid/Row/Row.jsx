@@ -11,13 +11,14 @@ const Row = ({ data, gridTemplate, highCell, isLoading }) => {
         key: item.id,
         className: style.cell,
         imgSrc: data[index].preview_image_url,
+        retinaImgSrc: data[index].preview_image_versions_urls.preview_x2,
         videoSrc: data[index].preview_video_url,
         title: item.title,
         subTitle: item.subtitle,
       };
 
       if (index === highCell && data.length > gridTemplate.length * 2 - 2)
-        cellProps.styled = { gridArea: `cell${highCell}` };
+        cellProps.cellStyle = { gridArea: `cell${highCell}` };
 
       return <Cell {...cellProps}>{item.id}</Cell>;
     });
@@ -44,7 +45,7 @@ const Row = ({ data, gridTemplate, highCell, isLoading }) => {
     <>
       <div>{renderRow}</div>
       <Curtain
-        shirmaClassName={style.curtain}
+        curtainClassName={style.curtain}
         amount={gridTemplate.length}
         isLoading={isLoading}
         delayCurtain={100}

@@ -3,9 +3,10 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 
 import {
-  isMobileSelector,
   isTabletSelector,
   isDesktopSelector,
+  isMediumDesktopSelector,
+  isLargeDesktopSelector,
   viewportSelector,
 } from 'models/common/selectors';
 
@@ -23,9 +24,10 @@ const viewport = WrappedComponent => {
 const composedHoc = compose(
   connect(
     state => ({
-      isMobile: isMobileSelector(state),
       isTablet: isTabletSelector(state),
       isDesktop: isDesktopSelector(state),
+      isMediumDesktop: isMediumDesktopSelector(state),
+      isLargeDesktop: isLargeDesktopSelector(state),
       viewport: viewportSelector(state),
     }),
     null,

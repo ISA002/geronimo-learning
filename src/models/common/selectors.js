@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { DESKTOP, MOBILE, TABLET } from 'constants';
+import { DESKTOP, MEDIUM_DESKTOP, LARGE_DESKTOP, TABLET } from 'constants';
 
 const rootSelector = state => state;
 
@@ -19,12 +19,17 @@ export const isTabletSelector = createSelector(
   viewport => viewport === TABLET
 );
 
-export const isMobileSelector = createSelector(
-  viewportSelector,
-  viewport => viewport === MOBILE
-);
-
 export const isDesktopSelector = createSelector(
   viewportSelector,
   viewport => viewport === DESKTOP
+);
+
+export const isMediumDesktopSelector = createSelector(
+  viewportSelector,
+  viewport => viewport === MEDIUM_DESKTOP
+);
+
+export const isLargeDesktopSelector = createSelector(
+  viewportSelector,
+  viewport => viewport === LARGE_DESKTOP
 );

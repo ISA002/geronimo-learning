@@ -5,8 +5,17 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import Animated from 'components/Animated';
 import Text from 'components/Text';
+import Picture from 'components/Picture';
 
-const Cell = ({ className, imgSrc, videoSrc, styled, title, subTitle }) => {
+const Cell = ({
+  className,
+  imgSrc,
+  videoSrc,
+  cellStyle,
+  title,
+  subTitle,
+  retinaImgSrc,
+}) => {
   const hoverRef = React.useRef();
   const videoRef = React.useRef();
   const [playingVideo, setPlayingVideo] = React.useState(false);
@@ -33,9 +42,13 @@ const Cell = ({ className, imgSrc, videoSrc, styled, title, subTitle }) => {
     <div
       ref={hoverRef}
       className={classnames(style.root, className)}
-      style={styled}
+      style={cellStyle}
     >
-      <img className={style.cellImage} src={imgSrc} alt="pic" />
+      <Picture
+        className={style.cellImage}
+        previewImg={imgSrc}
+        retinaPreviewImg={retinaImgSrc}
+      />
       <video
         ref={videoRef}
         className={classnames(style.cellVideo, {
@@ -94,16 +107,17 @@ Cell.propTypes = {
   className: PropTypes.string,
   imgSrc: PropTypes.string.isRequired,
   videoSrc: PropTypes.string.isRequired,
-  styled: PropTypes.any,
+  cellStyle: PropTypes.object,
   title: PropTypes.string,
   subTitle: PropTypes.string,
+  retinaImgSrc: PropTypes.string.isRequired,
 };
 
 Cell.defaultProps = {
   className: '',
-  styled: {},
+  cellStyle: {},
   title: '',
   subTitle: '',
 };
 
-export default Cell;
+export default React.memo(Cell);

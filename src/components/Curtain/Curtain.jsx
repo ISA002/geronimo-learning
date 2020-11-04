@@ -7,7 +7,7 @@ import classnames from 'classnames';
 const Curtain = ({
   isLoading,
   amount,
-  shirmaClassName,
+  curtainClassName,
   duration,
   delayCurtain,
 }) => {
@@ -42,13 +42,20 @@ const Curtain = ({
             animationIn="slideInUp"
             animationOut="slideOutUp"
           >
-            <div className={classnames(style.shirma, shirmaClassName)} />
+            <div className={classnames(style.shirma, curtainClassName)} />
           </Animated>
         </div>
       );
     }
     return curtains;
-  }, [isLoading, amount, columnWidth, duration, delayCurtain, shirmaClassName]);
+  }, [
+    isLoading,
+    amount,
+    columnWidth,
+    duration,
+    delayCurtain,
+    curtainClassName,
+  ]);
 
   return <div className={style.shirmaWrapper}>{renderColumns}</div>;
 };
@@ -56,7 +63,7 @@ const Curtain = ({
 Curtain.propTypes = {
   isLoading: PropTypes.bool,
   amount: PropTypes.number,
-  shirmaClassName: PropTypes.string,
+  curtainClassName: PropTypes.string,
   duration: PropTypes.any,
   delayCurtain: PropTypes.number,
 };
@@ -64,7 +71,7 @@ Curtain.propTypes = {
 Curtain.defaultProps = {
   isLoading: true,
   amount: 0,
-  shirmaClassName: '',
+  curtainClassName: '',
   duration: undefined,
   delayCurtain: 900,
 };
