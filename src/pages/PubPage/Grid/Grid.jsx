@@ -39,11 +39,11 @@ const Grid = ({ columns, collection }) => {
   }, []);
 
   const renderRows = React.useMemo(() => {
-    const template = Array(columns).fill('.');
+    const gridTemplate = Array.from({ length: columns }, (_, i) => `cell${i}`);
+    console.log(gridTemplate);
     let prevRandom = 0;
 
     return grid.map((rowList, index) => {
-      const gridTemplate = template;
       let randomPlace = getRandom(columns, prevRandom);
 
       if (index === 0) {
@@ -51,8 +51,6 @@ const Grid = ({ columns, collection }) => {
       } else {
         prevRandom = randomPlace;
       }
-
-      gridTemplate[randomPlace] = `cell${randomPlace}`;
 
       return (
         <WaypointAnimate
