@@ -26,21 +26,23 @@ const Grid = ({ columns, collection }) => {
     );
   }, [collection, columns]);
 
-  const getRandom = React.useCallback((amount, except) => {
-    let randomColumn = Math.floor(Math.random() * amount);
+  const getRandom = React.useCallback(
+    (amount, except) => {
+      let randomColumn = Math.floor(Math.random() * amount);
 
-    if (randomColumn === except) {
-      const array = [-1, 1];
-      const oherRandomColumn = Math.floor(Math.random() * 2);
-      randomColumn += array[oherRandomColumn];
-    }
+      if (randomColumn === except) {
+        const oherRandomColumn = Math.floor(Math.random() * columns - 1) + 1;
+        randomColumn += oherRandomColumn;
+      }
 
-    return Math.abs(randomColumn % amount);
-  }, []);
+      return randomColumn % amount;
+    },
+    [columns]
+  );
 
   const renderRows = React.useMemo(() => {
     const gridTemplate = Array.from({ length: columns }, (_, i) => `cell${i}`);
-    console.log(gridTemplate);
+
     let prevRandom = 0;
 
     return grid.map((rowList, index) => {
@@ -76,7 +78,7 @@ const Grid = ({ columns, collection }) => {
 
 Grid.propTypes = {
   columns: PropTypes.number,
-  collection: PropTypes.any,
+  collection: PropTypes.array,
 };
 
 Grid.defaultProps = {

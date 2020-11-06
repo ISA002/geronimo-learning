@@ -18,7 +18,7 @@ const Row = ({ data, gridTemplate, highCell, isLoading }) => {
       };
 
       if (index === highCell && data.length > gridTemplate.length * 2 - 2)
-        cellProps.cellStyle = { gridArea: `cell${highCell}` };
+        cellProps.cellStyle = { gridArea: `cell${highCell}`, height: '540px' };
 
       return <Cell {...cellProps}>{item.id}</Cell>;
     });
@@ -45,6 +45,7 @@ const Row = ({ data, gridTemplate, highCell, isLoading }) => {
     <>
       <div>{renderRow}</div>
       <Curtain
+        className={style.curtainRoot}
         curtainClassName={style.curtain}
         amount={gridTemplate.length}
         isLoading={isLoading}

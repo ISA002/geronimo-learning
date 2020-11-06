@@ -10,6 +10,7 @@ const Curtain = ({
   curtainClassName,
   duration,
   delayCurtain,
+  className,
 }) => {
   const [columnWidth, setColumnWidth] = React.useState('34%');
 
@@ -57,7 +58,11 @@ const Curtain = ({
     curtainClassName,
   ]);
 
-  return <div className={style.shirmaWrapper}>{renderColumns}</div>;
+  return (
+    <div className={classnames(style.shirmaWrapper, className)}>
+      {renderColumns}
+    </div>
+  );
 };
 
 Curtain.propTypes = {
@@ -66,6 +71,7 @@ Curtain.propTypes = {
   curtainClassName: PropTypes.string,
   duration: PropTypes.any,
   delayCurtain: PropTypes.number,
+  className: PropTypes.string,
 };
 
 Curtain.defaultProps = {
@@ -74,6 +80,7 @@ Curtain.defaultProps = {
   curtainClassName: '',
   duration: undefined,
   delayCurtain: 900,
+  className: '',
 };
 
 export default React.memo(Curtain);

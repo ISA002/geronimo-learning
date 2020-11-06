@@ -1,13 +1,12 @@
 .root {
   display: grid;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 270px 270px;
   gap: 0 0;
 }
 
 .cell {
-  min-height: 270px;
-  max-height: 540px;
-  max-width: 100%;
+  height: 270px;
+  width: 100%;
 }
 
 .visible {
@@ -17,4 +16,8 @@
 
 .curtain {
   background: #191919;
+}
+
+.curtainRoot {
+  height: 540px;
 }
