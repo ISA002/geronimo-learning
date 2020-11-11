@@ -1,5 +1,5 @@
 .root {
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 9;
   height: 86px;
@@ -19,7 +19,7 @@
 }
 
 .menu {
-  width: 100px;
+  width: 150px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -31,4 +31,14 @@
 
 .menuButton:hover {
   color: gray;
+}
+
+.hideElement {
+  .headerButton:last-child {
+    display: none;
+  }
+
+  .menu {
+    width: 100px;
+  }
 }

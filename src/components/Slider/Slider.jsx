@@ -138,7 +138,7 @@ const Slider = props => {
       <Animated
         className={style.arrows}
         isVisible={config.loading}
-        delay={{ in: 300, out: 300 }}
+        delay={{ in: 300, out: 1000 }}
         duration={{ in: 600, out: 300 }}
       >
         <div className={style.butonsWrapper}>
@@ -164,7 +164,7 @@ const Slider = props => {
       <Animated
         className={style.slideCount}
         isVisible={config.loading}
-        delay={{ in: 300, out: 300 }}
+        delay={{ in: 300, out: 1000 }}
         duration={{ in: 600, out: 300 }}
       >
         <Text

@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
 import WaypointAnimate from 'components/WaypointAnimate';
 
-const Grid = ({ columns, collection }) => {
+const Grid = ({ columns, collection, isLoaded }) => {
   const [grid, setGrid] = React.useState([]);
   const loading = useSelector(loadingFinishedSelector);
 
@@ -65,13 +65,17 @@ const Grid = ({ columns, collection }) => {
               data={rowList}
               gridTemplate={gridTemplate}
               highCell={randomPlace}
-              isLoading={index === 0 ? loading : waypointVisible && loading}
+              isLoading={
+                index === 0
+                  ? loading && isLoaded
+                  : waypointVisible && loading && isLoaded
+              }
             />
           )}
         </WaypointAnimate>
       );
     });
-  }, [grid, columns, getRandom, loading]);
+  }, [grid, columns, getRandom, loading, isLoaded]);
 
   return <div className={style.root}>{renderRows}</div>;
 };
@@ -79,6 +83,7 @@ const Grid = ({ columns, collection }) => {
 Grid.propTypes = {
   columns: PropTypes.number,
   collection: PropTypes.array,
+  isLoaded: PropTypes.bool.isRequired,
 };
 
 Grid.defaultProps = {

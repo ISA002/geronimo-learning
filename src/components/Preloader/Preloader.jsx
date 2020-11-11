@@ -12,12 +12,12 @@ const Preloader = () => {
   const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    const body = document.querySelector('body');
+    const pageWrapper = document.getElementById('pageWrapper');
 
     if (!loading) {
-      body.style.overflow = 'hidden';
+      pageWrapper.style.overflow = 'hidden';
     } else {
-      body.style.overflow = 'auto';
+      pageWrapper.style.overflow = 'scroll';
     }
   }, [loading]);
 

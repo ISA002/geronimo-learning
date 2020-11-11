@@ -7,10 +7,19 @@ import { loadingFinishedSelector } from 'models/preloader/selectors';
 import { collectionSelector } from 'models/info/selectors';
 import Header from 'components/Header';
 import Curtain from 'components/Curtain';
+import PropTypes from 'prop-types';
 
-const Home = () => {
+const Home = ({ isLoaded }) => {
   const loading = useSelector(loadingFinishedSelector);
   const collection = useSelector(collectionSelector);
+
+  const [isLoadedState, setIsLoadedState] = React.useState(false);
+
+  React.useEffect(() => {
+    if (isLoaded) {
+      setIsLoadedState(true);
+    }
+  }, [isLoaded]);
 
   const renderColumns = React.useMemo(() => {
     return collection.map((item, index) => (
@@ -28,7 +37,7 @@ const Home = () => {
 
   return (
     <div className={style.root}>
-      <Header loading={loading} />
+      <Header loading={loading && isLoadedState} home />
       <div className={style.mainTextRoot}>
         <Text
           fontType="Robotobold"
@@ -41,9 +50,16 @@ const Home = () => {
         </Text>
       </div>
       <div className={style.columns}>{renderColumns}</div>
-      <Curtain amount={collection.length} isLoading={loading} />
+      <Curtain
+        amount={collection.length}
+        isLoading={loading && isLoadedState}
+      />
     </div>
   );
 };
 
-export default Home;
+Home.propTypes = {
+  isLoaded: PropTypes.bool.isRequired,
+};
+
+export default React.memo(Home);

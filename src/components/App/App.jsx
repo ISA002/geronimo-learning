@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 /* import { Helmet } from 'react-helmet'; */
-
-import AppRouter from 'components/AppRouter';
+import { RouterTransitionGroup } from 'components/ReactTransitionGroup';
 import 'styles/normalize.scss';
 import 'styles/fonts.scss';
+import 'styles/common.scss';
 import styles from './App.scss';
 import useBrowser from 'hooks/useBrowser';
 import MediaHelper from 'components/MediaHelper';
 import Preloader from 'components/Preloader';
 import { useSelector } from 'react-redux';
+import { PAGE_TRANSITION } from 'constants';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
 
 const App = ({ routes }) => {
@@ -27,7 +28,7 @@ const App = ({ routes }) => {
       {/* <Helmet {...config.app} /> */}
       <MediaHelper />
       {!loading && <Preloader />}
-      <AppRouter routes={routes} />
+      <RouterTransitionGroup timeout={PAGE_TRANSITION} routes={routes} />
     </div>
   );
 };

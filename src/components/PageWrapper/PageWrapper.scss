@@ -1,0 +1,14 @@
+@import '~styles/variables';
+@import '~styles/mixins';
+
+.root {
+  width: 100%;
+  height: get-real-vh(100);
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

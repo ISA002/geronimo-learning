@@ -11,6 +11,7 @@ const Curtain = ({
   duration,
   delayCurtain,
   className,
+  animation,
 }) => {
   const [columnWidth, setColumnWidth] = React.useState('34%');
 
@@ -37,11 +38,11 @@ const Curtain = ({
               }
             }
             delay={{
-              in: 0,
-              out: index * 100 + delayCurtain,
+              in: delayCurtain.in,
+              out: index * 100 + delayCurtain.out,
             }}
-            animationIn="slideInUp"
-            animationOut="slideOutUp"
+            animationIn="slideInDown"
+            animationOut={animation}
           >
             <div className={classnames(style.shirma, curtainClassName)} />
           </Animated>
@@ -56,6 +57,7 @@ const Curtain = ({
     duration,
     delayCurtain,
     curtainClassName,
+    animation,
   ]);
 
   return (
@@ -70,8 +72,9 @@ Curtain.propTypes = {
   amount: PropTypes.number,
   curtainClassName: PropTypes.string,
   duration: PropTypes.any,
-  delayCurtain: PropTypes.number,
+  delayCurtain: PropTypes.object,
   className: PropTypes.string,
+  animation: PropTypes.string,
 };
 
 Curtain.defaultProps = {
@@ -79,8 +82,9 @@ Curtain.defaultProps = {
   amount: 0,
   curtainClassName: '',
   duration: undefined,
-  delayCurtain: 900,
+  delayCurtain: { in: 0, out: 900 },
   className: '',
+  animation: 'slideOutUp',
 };
 
 export default React.memo(Curtain);

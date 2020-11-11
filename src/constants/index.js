@@ -11,6 +11,7 @@ export const homePageData = [
 export const headerMenuData = [
   { id: 0, title: 'Pub', to: '/pub' },
   { id: 1, title: 'Film', to: '/film' },
+  { id: 2, title: 'Home', to: '/' },
 ];
 
 export const LARGE_DESKTOP = 'LARGE_DESKTOP';
@@ -24,3 +25,5 @@ export const DESKTOP_MEDIA_QUERY =
   '(max-width: 1440px) and (min-width: 1024px)';
 export const MEDIUM_DESKTOP_MEDIA_QUERY =
   '(max-width: 1920px) and (min-width: 1440px)';
+
+export const PAGE_TRANSITION = 1500;

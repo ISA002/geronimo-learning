@@ -49,7 +49,7 @@ const Row = ({ data, gridTemplate, highCell, isLoading }) => {
         curtainClassName={style.curtain}
         amount={gridTemplate.length}
         isLoading={isLoading}
-        delayCurtain={100}
+        delayCurtain={{ in: 100, out: 400 }}
       />
     </>
   );

@@ -1,0 +1,20 @@
+@keyframes slideInUpCurtain {
+  0% {
+    transform: translate3d(0, 100%, 0);
+    visibility: hidden;
+  }
+
+  99% {
+    visibility: visible;
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    visibility: hidden;
+  }
+}
+
+.slideInUpCurtain {
+  backface-visibility: hidden;
+  animation-name: slideInUpCurtain;
+}
