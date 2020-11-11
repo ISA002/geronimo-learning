@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import PageWrapper, { PageLoadContext } from 'components/PageWrapper';
 
 const Wrapper = ({ isVisiblePage, title, children }) => {
-  console.log(isVisiblePage);
   return (
     <PageWrapper title={title} isVisiblePage={isVisiblePage}>
       <PageLoadContext.Consumer>
