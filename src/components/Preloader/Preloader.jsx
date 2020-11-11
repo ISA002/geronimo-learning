@@ -22,13 +22,9 @@ const Preloader = () => {
   }, [loading]);
 
   React.useEffect(() => {
-    if (document.readyState !== 'loading') {
+    window.onload = () => {
       setImages(document.getElementsByTagName('img'));
-    } else {
-      document.addEventListener('DOMContentLoaded', () => {
-        setImages(document.getElementsByTagName('img'));
-      });
-    }
+    };
   }, []);
 
   React.useEffect(() => {
