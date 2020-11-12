@@ -50,9 +50,13 @@ class ReactTransitionGroup extends React.PureComponent {
 }
 
 ReactTransitionGroup.propTypes = {
-  location: PropTypes.object.isRequired,
+  location: PropTypes.any,
   routes: PropTypes.array.isRequired,
   timeout: timeoutsShape.isRequired,
+};
+
+ReactTransitionGroup.defaultProps = {
+  location: undefined,
 };
 
 export default ReactTransitionGroup;
