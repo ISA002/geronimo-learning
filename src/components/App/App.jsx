@@ -1,6 +1,6 @@
+/* import { Helmet } from 'react-helmet'; */
 import React from 'react';
 import PropTypes from 'prop-types';
-/* import { Helmet } from 'react-helmet'; */
 import { RouterTransitionGroup } from 'components/ReactTransitionGroup';
 import 'styles/normalize.scss';
 import 'styles/fonts.scss';
@@ -15,17 +15,25 @@ import { loadingFinishedSelector } from 'models/preloader/selectors';
 
 const App = ({ routes }) => {
   const browser = useBrowser();
-
+  const [show, setShow] = React.useState(false);
   const loading = useSelector(loadingFinishedSelector);
+  const pageWrapper = React.useRef();
 
   if (RUNTIME_ENV === 'client') {
     console.info('browser', browser);
   }
 
+  React.useEffect(() => {
+    document.addEventListener('DOMContentLoaded', () => {
+      setShow(true);
+    });
+  }, []);
+
   return (
-    <div className={styles.app}>
+    <div className={styles.app} ref={pageWrapper}>
       {/* Use Helmet only in SPA mode. Render app head on server side  */}
       {/* <Helmet {...config.app} /> */}
+      {!show && <div className={styles.contentCurtain} />}
       <MediaHelper />
       {!loading && <Preloader />}
       <RouterTransitionGroup timeout={PAGE_TRANSITION} routes={routes} />

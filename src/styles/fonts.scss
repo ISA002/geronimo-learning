@@ -6,29 +6,22 @@
 }
 
 @font-face {
-  font-family: 'geronimo';
-  src: url('assets/fonts/geronimo.ttf') format('ttf');
+  font-family: 'Geronimo';
+  src: url('assets/fonts/geronimo.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Glyphter';
+  src: url('assets/fonts/Glyphter.woff') format('woff');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Robotobold';
-  src: url('assets/fonts/Robotobold.ttf') format('ttf');
+  src: url('assets/fonts/Robotobold.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
 }
-
-// @font-face {
-//   font-family: 'DINNextLTPro';
-//   src: url('./fonts/DINNextLTPro/DINNextLTPro-Light/font.woff2') format('woff2');
-//   font-weight: 300;
-//   font-style: normal;
-// }
-
-// @font-face {
-//   font-family: 'DINNextLTPro';
-//   src: url('./fonts/DINNextLTPro/DINNextLTPro-Bold/font.woff2') format('woff2');
-//   font-weight: 700;
-//   font-style: normal;
-// }

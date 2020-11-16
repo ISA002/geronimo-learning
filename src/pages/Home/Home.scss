@@ -23,3 +23,13 @@
   left: 0;
   pointer-events: none;
 }
+
+.contentCurtain {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #191919;
+  // z-index: 1;
+}
