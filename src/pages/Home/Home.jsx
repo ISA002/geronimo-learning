@@ -1,4 +1,3 @@
-/* eslint-disable no-multi-assign */
 /* eslint-disable consistent-return */
 import React from 'react';
 import Column from './Column';
@@ -20,38 +19,22 @@ const Home = ({ isLoaded }) => {
 
   const curtain = React.useRef(null);
 
-  React.useLayoutEffect(() => {
-    if (!canvasRef.current || curtain.current) return;
-    const ctx = canvasRef.current.getContext('2d');
-
-    curtain.current = new Curtain(3, ctx, 'geronimo');
-  }, [canvasRef]);
-
   React.useEffect(() => {
-    if (!curtain.current || !canvasRef.current) return;
-    let widthCanvas = window.innerWidth;
-    let heightCanvas = window.innerHeight;
+    if (!canvasRef.current || curtain.current) return;
+    const canvas = canvasRef.current;
 
-    const resizeCanvas = () => {
-      canvasRef.current.width = widthCanvas = window.innerWidth;
-      canvasRef.current.height = heightCanvas = window.innerHeight;
-      curtain.current.render({ widthCanvas, heightCanvas });
-    };
-
-    resizeCanvas();
-
-    window.addEventListener('resize', () => resizeCanvas(), false);
+    curtain.current = new Curtain(collection.length, canvas, 'geronimo');
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas, false);
+      curtain.current.destroy();
     };
-  }, [curtain, canvasRef, isLoadedState]);
+  }, [canvasRef, curtain, collection]);
 
   React.useEffect(() => {
     if (loading && isLoadedState) {
       curtain.current.show();
     }
-  }, [loading, isLoadedState]);
+  }, [loading, isLoadedState, curtain]);
 
   React.useEffect(() => {
     if (isLoaded) {

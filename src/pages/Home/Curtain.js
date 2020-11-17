@@ -1,77 +1,96 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable no-param-reassign */
-
+/* eslint-disable no-multi-assign */
 import gsap from 'gsap';
 
 export default class Curtain {
-  constructor(amount, context, text) {
+  constructor(amount, canvas, text) {
     this.amount = amount;
-    this.ctx = context;
+    this.ctx = canvas.getContext('2d');
     this.text = text;
+    canvas.width = this.widthCanvas = window.innerWidth;
+    canvas.height = this.heightCanvas = window.innerHeight;
     this.cols = [];
-    this.widthCanvas = 0;
-    this.heightCanvas = 0;
-    this.textWidth = 700;
+    this.textWidth = Math.ceil(this.widthCanvas / 1.8);
+    this.textSize = Math.ceil(this.widthCanvas / 6.4);
     this.complete = false;
+    this.columnWidth = Math.ceil(this.widthCanvas / this.amount);
+    window.addEventListener('resize', () => this.resize());
+
+    this.timeline1 = gsap.timeline({
+      onComplete: () => this.stopAnimation(),
+      onUpdate: () => this.render(),
+    });
 
     for (let i = 0; i < this.amount; i++) {
       this.cols.push({
-        x: 0,
-        y: 0,
-        width: 0,
+        width: this.columnWidth,
         height: null,
       });
     }
   }
 
+  stopAnimation() {
+    this.complete = true;
+  }
+
+  destroy() {
+    window.removeEventListener('resize', () => this.resize());
+  }
+
   show() {
-    this.cols.forEach((item, index) => {
-      gsap.to(item, {
-        duration: 1.1,
-        delay: index * 0.1,
-        height: 0,
-        ease: 'power1',
-      });
+    this.cols.forEach(item => {
+      this.timeline1.to(
+        item,
+        {
+          duration: 1.1,
+          height: 0,
+          ease: 'power1',
+        },
+        '-=1'
+      );
     });
   }
 
-  render(size) {
-    const rectWidth = size.widthCanvas / this.amount + 1;
+  resize() {
+    this.widthCanvas = window.innerWidth;
+    this.heightCanvas = window.innerHeight;
+    this.textWidth = Math.ceil(this.widthCanvas / 1.8);
+    this.textSize = Math.ceil(this.widthCanvas / 6.4);
+    this.render();
+  }
 
-    this.ctx.clearRect(0, 0, size.widthCanvas, size.heightCanvas);
+  render() {
+    console.log('render');
+    this.ctx.clearRect(0, 0, this.widthCanvas, this.heightCanvas);
 
     this.ctx.save();
     this.ctx.fillStyle = '#191919';
 
     this.cols.forEach((item, index) => {
       if (item.height === null) {
-        item.height = size.heightCanvas;
+        item.height = this.heightCanvas;
       }
-      this.ctx.fillRect(index * rectWidth, 0, rectWidth + 1, item.height);
+      this.ctx.fillRect(
+        index * this.columnWidth,
+        0,
+        this.columnWidth,
+        item.height
+      );
     });
 
     this.ctx.restore();
 
     this.ctx.save();
-    this.ctx.font = '200px Robotobold';
+    this.ctx.font = `${this.textSize}px 'Robotobold'`;
     this.ctx.globalCompositeOperation = 'xor';
     this.ctx.fillStyle = 'white';
     this.ctx.fillText(
       this.text,
-      size.widthCanvas / 2 - this.textWidth / 2,
-      size.heightCanvas / 2,
+      this.widthCanvas / 2 - this.textWidth / 2,
+      this.heightCanvas / 2,
       this.textWidth
     );
     this.ctx.restore();
-
-    if (this.cols[this.amount - 1].height >= 0 && !this.complete) {
-      if (this.cols[this.amount - 1].height === 0) {
-        this.complete = true;
-      }
-
-      window.requestAnimationFrame(() => {
-        this.render(size);
-      });
-    }
   }
 }

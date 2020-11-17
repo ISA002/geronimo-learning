@@ -12,6 +12,7 @@ export const renderHtmlStart = (head, assets) =>
 
         <link rel="manifest" href="/manifest.json">
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="preload" href="/Robotobold.15a913e1.woff2" as="font"/>
         <meta name="theme-color" content="#317EFB"/>
 
         ${head.meta}
