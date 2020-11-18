@@ -6,39 +6,45 @@ import gsap from 'gsap';
 export default class Curtain {
   constructor(amount, canvas, text) {
     this.amount = amount;
-    this.ctx = canvas.getContext('2d');
+    this.canvas = canvas;
+    this.ctx = this.canvas.getContext('2d');
     this.text = text;
-    canvas.width = this.widthCanvas = window.innerWidth;
-    canvas.height = this.heightCanvas = window.innerHeight;
+    this.canvas.width = this.widthCanvas = window.innerWidth;
+    this.canvas.height = this.heightCanvas = window.innerHeight;
     this.cols = [];
     this.textWidth = Math.ceil(this.widthCanvas / 1.8);
     this.textSize = Math.ceil(this.widthCanvas / 6.4);
     this.complete = false;
     this.columnWidth = Math.ceil(this.widthCanvas / this.amount);
-    window.addEventListener('resize', () => this.resize());
+    window.addEventListener('resize', this.resize);
 
     this.timeline1 = gsap.timeline({
-      onComplete: () => this.stopAnimation(),
-      onUpdate: () => this.render(),
+      onComplete: this.stopAnimation,
     });
 
     for (let i = 0; i < this.amount; i++) {
       this.cols.push({
         width: this.columnWidth,
-        height: null,
+        height: this.heightCanvas,
       });
     }
+
+    this.timeline1.restart();
+
+    this.render();
   }
 
-  stopAnimation() {
+  stopAnimation = () => {
+    this.timeline1.pause();
     this.complete = true;
-  }
+  };
 
-  destroy() {
-    window.removeEventListener('resize', () => this.resize());
-  }
+  destroy = () => {
+    window.removeEventListener('resize', this.resize);
+  };
 
-  show() {
+  show = () => {
+    this.timeline1.resume();
     this.cols.forEach(item => {
       this.timeline1.to(
         item,
@@ -50,27 +56,24 @@ export default class Curtain {
         '-=1'
       );
     });
-  }
+  };
 
-  resize() {
-    this.widthCanvas = window.innerWidth;
-    this.heightCanvas = window.innerHeight;
+  resize = () => {
+    this.canvas.width = this.widthCanvas = window.innerWidth;
+    this.canvas.height = this.heightCanvas = window.innerHeight;
     this.textWidth = Math.ceil(this.widthCanvas / 1.8);
     this.textSize = Math.ceil(this.widthCanvas / 6.4);
+    this.columnWidth = Math.ceil(this.widthCanvas / this.amount);
     this.render();
-  }
+  };
 
-  render() {
-    console.log('render');
+  render = () => {
     this.ctx.clearRect(0, 0, this.widthCanvas, this.heightCanvas);
 
     this.ctx.save();
     this.ctx.fillStyle = '#191919';
 
     this.cols.forEach((item, index) => {
-      if (item.height === null) {
-        item.height = this.heightCanvas;
-      }
       this.ctx.fillRect(
         index * this.columnWidth,
         0,
@@ -92,5 +95,9 @@ export default class Curtain {
       this.textWidth
     );
     this.ctx.restore();
-  }
+
+    if (!this.complete) {
+      window.requestAnimationFrame(this.render);
+    }
+  };
 }
