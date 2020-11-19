@@ -15,7 +15,6 @@ import { loadingFinishedSelector } from 'models/preloader/selectors';
 
 const App = ({ routes }) => {
   const browser = useBrowser();
-  const [show, setShow] = React.useState(false);
   const loading = useSelector(loadingFinishedSelector);
   const pageWrapper = React.useRef();
 
@@ -24,8 +23,10 @@ const App = ({ routes }) => {
   }
 
   React.useEffect(() => {
+    const contentCurtain = document.getElementById('content-curtain');
+
     document.addEventListener('DOMContentLoaded', () => {
-      setShow(true);
+      contentCurtain.parentNode.removeChild(contentCurtain);
     });
   }, []);
 
@@ -33,7 +34,6 @@ const App = ({ routes }) => {
     <div className={styles.app} ref={pageWrapper}>
       {/* Use Helmet only in SPA mode. Render app head on server side  */}
       {/* <Helmet {...config.app} /> */}
-      {!show && <div className={styles.contentCurtain} />}
       <MediaHelper />
       {!loading && <Preloader />}
       <RouterTransitionGroup timeout={PAGE_TRANSITION} routes={routes} />
