@@ -1,0 +1,61 @@
+.root {
+  height: 100%;
+  position: relative;
+}
+
+.slideSubTitle {
+  position: absolute;
+  width: 100%;
+  bottom: 20px;
+}
+
+.slideTitle {
+  position: absolute;
+  width: 100%;
+  bottom: 40px;
+}
+
+.slideImg {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 70%;
+  position: relative;
+  overflow: hidden;
+}
+
+.slideVideo {
+  opacity: 0;
+  transition: opacity 0.5s;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 70%;
+  transform: scale(2);
+}
+
+.visibleSlideVideo {
+  opacity: 1;
+}
+
+.slideCurtainWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70%;
+  z-index: 9999;
+}
+
+.slideCurtain {
+  z-index: 99;
+  width: 100%;
+  opacity: 1;
+  height: 100%;
+  background: #191919;
+}

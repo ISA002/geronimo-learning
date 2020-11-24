@@ -1,10 +1,8 @@
 import React from 'react';
 
-export default ({ config, children }) => {
+export default ({ config }) => {
   const [sliderState, setSliderState] = React.useState({
-    prev: children.length - 1,
     active: 0,
-    next: 1,
   });
 
   if (config.stateConfig !== undefined) {
