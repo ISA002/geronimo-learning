@@ -14,11 +14,13 @@ const Pagination = ({ config }) => {
   const { state, dispatch } = React.useContext(Context);
 
   const nextSlide = React.useCallback(() => {
-    dispatch({ active: state.active + 1 });
+    dispatch(s => ({ ...s, active: state.active + 1 }));
+    state.onOffsetEnd(state.active + 1);
   }, [dispatch, state]);
 
   const prevSlide = React.useCallback(() => {
-    dispatch({ active: state.active - 1 });
+    dispatch(s => ({ ...s, active: state.active - 1 }));
+    state.onOffsetEnd(state.active - 1);
   }, [state, dispatch]);
 
   const renderSlideCounter = React.useMemo(() => {

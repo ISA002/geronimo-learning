@@ -31,11 +31,11 @@ export default [
     title: 'pub',
   },
   {
-    path: '/slider',
+    path: '/tv',
     exact: true,
     cache: false,
     component: FramerSliderPage,
     sagasToRun: [],
-    title: 'slider',
+    title: 'tv',
   },
 ];

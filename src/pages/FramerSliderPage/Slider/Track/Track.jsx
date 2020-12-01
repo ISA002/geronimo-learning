@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useElementScroll } from 'framer-motion';
+import { motion, useMotionValue, useAnimation } from 'framer-motion';
 import classnames from 'classnames';
 import style from './Track.scss';
 import PropTypes from 'prop-types';
@@ -9,15 +9,30 @@ import debounce from 'lodash/debounce';
 
 const Track = ({ config, slideWidth }) => {
   const sliderListRef = React.useRef();
-  const { scrollX } = useElementScroll(sliderListRef);
   const { state, dispatch } = React.useContext(Context);
-  const [x, setX] = React.useState(0);
-  const prevX = React.useRef();
+  const x = useMotionValue(0);
+  const controls = useAnimation();
 
-  const onDragEnd = (_, info) => {
-    console.log(info);
-    console.log(scrollX);
-  };
+  const onOffsetEnd = React.useCallback(
+    active => {
+      controls.start({
+        transition: {
+          duration: 1.3,
+          ease: [0.1, 0.25, 0.55, 1],
+        },
+        x: -slideWidth * active,
+      });
+    },
+    [controls, slideWidth]
+  );
+
+  React.useEffect(() => {
+    dispatch(s => ({ ...s, onOffsetEnd }));
+  }, [dispatch, onOffsetEnd]);
+
+  const maxLenght = React.useMemo(() => {
+    return slideWidth * 18;
+  }, [slideWidth]);
 
   const handleNewActiveSlide = React.useCallback(
     debounce(value => {
@@ -26,20 +41,45 @@ const Track = ({ config, slideWidth }) => {
       if (value !== prevActive) {
         const otherActive = Math.round(value / slideWidth);
 
-        dispatch({ active: otherActive });
+        dispatch(s => ({ ...s, active: otherActive }));
+        onOffsetEnd(otherActive);
       }
     }, 100),
-    [dispatch, state, slideWidth]
+    [dispatch, slideWidth, maxLenght]
   );
 
-  scrollX.onChange(value => setX(value));
+  const onDrag = React.useCallback(
+    (_, info) => {
+      x.set(x.get() + info.delta.x);
+      handleNewActiveSlide(Math.abs(x.get()));
+    },
+    [x, handleNewActiveSlide]
+  );
 
   React.useEffect(() => {
-    if (prevX.current !== x) {
-      handleNewActiveSlide(x);
-      prevX.current = x;
-    }
-  }, [x, handleNewActiveSlide, prevX]);
+    const ref = sliderListRef.current;
+
+    const writeWheelValue = value => {
+      x.set(x.get() - value.deltaX);
+      if (x.get() > 0) {
+        x.set(0);
+      }
+      if (x.get() < -slideWidth * 18) {
+        x.set(-slideWidth * 18);
+      }
+      handleNewActiveSlide(-x.get());
+    };
+
+    ref.addEventListener('wheel', writeWheelValue, { passive: true });
+
+    return () => {
+      ref.removeEventListener('wheel', writeWheelValue);
+    };
+  }, [sliderListRef, x, handleNewActiveSlide, slideWidth]);
+
+  const onDragEnd = React.useCallback(() => {
+    onOffsetEnd(state.active);
+  }, [state, onOffsetEnd]);
 
   const renderSlides = React.useMemo(() => {
     return config.cases.map((item, index) => {
@@ -59,10 +99,19 @@ const Track = ({ config, slideWidth }) => {
     <>
       <motion.div
         ref={sliderListRef}
-        onDragEnd={onDragEnd}
         className={classnames(style.slideList, config.sliderList)}
       >
-        <div className={style.scroller}>{renderSlides}</div>
+        <motion.div
+          animate={controls}
+          style={{ x }}
+          onDragEnd={onDragEnd}
+          onDrag={onDrag}
+          className={style.scroller}
+          drag="x"
+          dragConstraints={{ left: -maxLenght, right: 0 }}
+        >
+          {renderSlides}
+        </motion.div>
       </motion.div>
     </>
   );

@@ -6,6 +6,7 @@ export const Context = createContext(null);
 export const ContextProvider = ({ children }) => {
   const [active, setActive] = React.useState({
     active: 0,
+    onOffsetEnd: undefined,
   });
 
   return (
