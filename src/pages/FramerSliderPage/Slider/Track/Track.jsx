@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import Slide from './Slide';
 import { Context } from '../Context';
 import debounce from 'lodash/debounce';
+import normalizeWheel from 'normalize-wheel';
 
 const Track = ({ config, slideWidth }) => {
   const sliderListRef = React.useRef();
@@ -31,8 +32,8 @@ const Track = ({ config, slideWidth }) => {
   }, [dispatch, onOffsetEnd]);
 
   const maxLenght = React.useMemo(() => {
-    return slideWidth * 18;
-  }, [slideWidth]);
+    return slideWidth * (config.cases.length - 1);
+  }, [slideWidth, config]);
 
   const handleNewActiveSlide = React.useCallback(
     debounce(value => {
@@ -59,13 +60,15 @@ const Track = ({ config, slideWidth }) => {
   React.useEffect(() => {
     const ref = sliderListRef.current;
 
-    const writeWheelValue = value => {
-      x.set(x.get() - value.deltaX);
+    const writeWheelValue = e => {
+      const value = normalizeWheel(e);
+
+      x.set(x.get() - value.pixelX);
       if (x.get() > 0) {
         x.set(0);
       }
-      if (x.get() < -slideWidth * 18) {
-        x.set(-slideWidth * 18);
+      if (x.get() < -slideWidth * (config.cases.length - 1)) {
+        x.set(-slideWidth * (config.cases.length - 1));
       }
       handleNewActiveSlide(-x.get());
     };
@@ -75,7 +78,7 @@ const Track = ({ config, slideWidth }) => {
     return () => {
       ref.removeEventListener('wheel', writeWheelValue);
     };
-  }, [sliderListRef, x, handleNewActiveSlide, slideWidth]);
+  }, [sliderListRef, x, handleNewActiveSlide, slideWidth, config]);
 
   const onDragEnd = React.useCallback(() => {
     onOffsetEnd(state.active);
