@@ -15,6 +15,7 @@ const Row = ({ data, gridTemplate, highCell, isLoading }) => {
         videoSrc: data[index].preview_video_url,
         title: item.title,
         subTitle: item.subtitle,
+        index,
       };
 
       if (index === highCell && data.length > gridTemplate.length * 2 - 2)

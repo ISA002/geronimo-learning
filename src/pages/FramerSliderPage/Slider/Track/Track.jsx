@@ -7,10 +7,13 @@ import Slide from './Slide';
 import { Context } from '../Context';
 import debounce from 'lodash/debounce';
 import normalizeWheel from 'normalize-wheel';
+// import { useDispatch } from 'react-redux';
+// import { actions } from 'models/common/slice';
 
 const Track = ({ config, slideWidth }) => {
   const sliderListRef = React.useRef();
-  const { state, dispatch } = React.useContext(Context);
+  // const dispatchToStore = useDispatch();
+  const { state, dispatch: dispatchToContext } = React.useContext(Context);
   const x = useMotionValue(0);
   const controls = useAnimation();
 
@@ -28,8 +31,8 @@ const Track = ({ config, slideWidth }) => {
   );
 
   React.useEffect(() => {
-    dispatch(s => ({ ...s, onOffsetEnd }));
-  }, [dispatch, onOffsetEnd]);
+    dispatchToContext(s => ({ ...s, onOffsetEnd }));
+  }, [dispatchToContext, onOffsetEnd]);
 
   const maxLenght = React.useMemo(() => {
     return slideWidth * (config.cases.length - 1);
@@ -42,11 +45,15 @@ const Track = ({ config, slideWidth }) => {
       if (value !== prevActive) {
         const otherActive = Math.round(value / slideWidth);
 
-        dispatch(s => ({ ...s, active: otherActive }));
+        dispatchToContext(s => ({ ...s, active: otherActive }));
+        // dispatchToStore({
+        //   type: actions.setActiveSliderSlide,
+        //   active: otherActive,
+        // });
         onOffsetEnd(otherActive);
       }
     }, 100),
-    [dispatch, slideWidth, maxLenght]
+    [dispatchToContext, slideWidth, maxLenght]
   );
 
   const onDrag = React.useCallback(

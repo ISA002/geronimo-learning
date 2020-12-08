@@ -33,3 +33,18 @@ export const isLargeDesktopSelector = createSelector(
   viewportSelector,
   viewport => viewport === LARGE_DESKTOP
 );
+
+export const changeAnimationSelector = createSelector(
+  commonSelector,
+  ({ changeAnimation }) => changeAnimation
+);
+
+export const toDetailSelector = createSelector(
+  commonSelector,
+  ({ toDetail }) => toDetail
+);
+
+export const sliderActiveSelector = createSelector(
+  commonSelector,
+  ({ sliderActiveSlide }) => sliderActiveSlide
+);

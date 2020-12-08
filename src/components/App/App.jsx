@@ -9,18 +9,26 @@ import styles from './App.scss';
 import useBrowser from 'hooks/useBrowser';
 import MediaHelper from 'components/MediaHelper';
 import Preloader from 'components/Preloader';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { PAGE_TRANSITION } from 'constants';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
+import { useLocation } from 'react-router-dom';
+import { actions } from 'models/common/slice';
 
 const App = ({ routes }) => {
   const browser = useBrowser();
   const loading = useSelector(loadingFinishedSelector);
   const pageWrapper = React.useRef();
+  const location = useLocation();
+  const dispatch = useDispatch();
 
   if (RUNTIME_ENV === 'client') {
     console.info('browser', browser);
   }
+
+  React.useEffect(() => {
+    dispatch({ type: actions.setUrl, url: location.pathname });
+  }, [dispatch, location]);
 
   React.useEffect(() => {
     const contentCurtain = document.getElementById('content-curtain');

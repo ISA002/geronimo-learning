@@ -15,6 +15,11 @@ export const filmPageDataSelector = createSelector(
   ({ filmCollection }) => filmCollection
 );
 
+export const filmCasesSelector = createSelector(
+  filmPageDataSelector,
+  ({ show_category: showCategory }) => showCategory.cases
+);
+
 export const pubPageDataSelector = createSelector(
   infoSelector,
   ({ pubCollection }) => pubCollection

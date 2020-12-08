@@ -2,7 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { InView } from 'react-intersection-observer';
 
-const Weypoint = ({ className, onEnter, onLeave, children, bottomOffset }) => {
+const Weypoint = ({
+  className,
+  onEnter,
+  onLeave,
+  children,
+  bottomOffset,
+  style,
+}) => {
   const percent = Number(bottomOffset.replace('%', '')) || 0;
 
   const handleChange = (inView, entry) => {
@@ -21,6 +28,7 @@ const Weypoint = ({ className, onEnter, onLeave, children, bottomOffset }) => {
       className={className}
       threshold={percent * 0.01}
       onChange={handleChange}
+      style={style}
     >
       {children}
     </InView>
@@ -33,6 +41,7 @@ Weypoint.propTypes = {
   onLeave: PropTypes.func,
   children: PropTypes.any.isRequired,
   bottomOffset: PropTypes.string,
+  style: PropTypes.object,
 };
 
 Weypoint.defaultProps = {
@@ -40,6 +49,7 @@ Weypoint.defaultProps = {
   onEnter: () => {},
   onLeave: () => {},
   bottomOffset: '',
+  style: {},
 };
 
 export default React.memo(Weypoint);

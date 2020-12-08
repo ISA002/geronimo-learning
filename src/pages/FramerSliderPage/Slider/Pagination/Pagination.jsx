@@ -32,8 +32,8 @@ const Pagination = ({ config }) => {
       <Animated
         className={style.arrows}
         isVisible={config.loading}
-        delay={{ in: 300, out: 1000 }}
-        duration={{ in: 600, out: 300 }}
+        delay={{ in: 300, out: 100 }}
+        duration={{ in: 600, out: 100 }}
       >
         <div className={style.butonsWrapper}>
           <Button
@@ -57,8 +57,8 @@ const Pagination = ({ config }) => {
       <Animated
         className={style.slideCount}
         isVisible={config.loading}
-        delay={{ in: 300, out: 1000 }}
-        duration={{ in: 600, out: 300 }}
+        delay={{ in: 300, out: 100 }}
+        duration={{ in: 600, out: 100 }}
       >
         <Text
           fontWeight="bold"

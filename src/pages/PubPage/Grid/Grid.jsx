@@ -5,10 +5,13 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
 import WaypointAnimate from 'components/WaypointAnimate';
+import classnames from 'classnames';
+import { toDetailSelector } from 'models/common/selectors';
 
 const Grid = ({ columns, collection, isLoaded }) => {
   const [grid, setGrid] = React.useState([]);
   const loading = useSelector(loadingFinishedSelector);
+  const toDetail = useSelector(toDetailSelector);
 
   React.useEffect(() => {
     setGrid(
@@ -54,9 +57,13 @@ const Grid = ({ columns, collection, isLoaded }) => {
         prevRandom = randomPlace;
       }
 
+      console.log(toDetail);
+
       return (
         <WaypointAnimate
-          className={style.visible}
+          className={classnames(style.visible, {
+            [style.pageTransition]: toDetail,
+          })}
           bottomOffset="15%"
           key={rowList[0].id}
         >
@@ -75,7 +82,7 @@ const Grid = ({ columns, collection, isLoaded }) => {
         </WaypointAnimate>
       );
     });
-  }, [grid, columns, getRandom, loading, isLoaded]);
+  }, [grid, columns, getRandom, loading, isLoaded, toDetail]);
 
   return <div className={style.root}>{renderRows}</div>;
 };
