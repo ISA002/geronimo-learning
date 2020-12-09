@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Wrapper from 'components/Wrapper';
-import { AnimateSharedLayout } from 'framer-motion';
 
 // import CurentRoute from 'components/CurentRoute';
 import isVisible from './utils/isVisible';
@@ -18,31 +17,29 @@ const ReactTransitionGroup = ({ routes, timeout, location }) => {
         timeout={timeout}
       >
         {status => (
-          <AnimateSharedLayout>
-            <Switch location={location} key={location.pathname}>
-              {routes.map(({ path, exact, component: Component, title }) => (
-                <Route
-                  key={path}
-                  exact={exact}
-                  path={path}
-                  render={props => (
-                    <Wrapper
-                      location={location.pathname}
-                      title={title}
+          <Switch location={location} key={location.pathname}>
+            {routes.map(({ path, exact, component: Component, title }) => (
+              <Route
+                key={path}
+                exact={exact}
+                path={path}
+                render={props => (
+                  <Wrapper
+                    location={location.pathname}
+                    title={title}
+                    isVisiblePage={isVisible(status)}
+                  >
+                    <Component
+                      transitionStatus={status}
                       isVisiblePage={isVisible(status)}
-                    >
-                      <Component
-                        transitionStatus={status}
-                        isVisiblePage={isVisible(status)}
-                        title={title}
-                        {...props}
-                      />
-                    </Wrapper>
-                  )}
-                />
-              ))}
-            </Switch>
-          </AnimateSharedLayout>
+                      title={title}
+                      {...props}
+                    />
+                  </Wrapper>
+                )}
+              />
+            ))}
+          </Switch>
         )}
       </CSSTransition>
     </TransitionGroup>

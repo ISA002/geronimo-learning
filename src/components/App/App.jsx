@@ -21,22 +21,30 @@ const App = ({ routes }) => {
   const pageWrapper = React.useRef();
   const location = useLocation();
   const dispatch = useDispatch();
+  const firstRender = React.useRef(false);
+  const prevLocation = React.useRef();
 
   if (RUNTIME_ENV === 'client') {
     console.info('browser', browser);
   }
 
   React.useEffect(() => {
-    dispatch({ type: actions.setUrl, url: location.pathname });
-  }, [dispatch, location]);
+    if (prevLocation.current !== location.pathname) {
+      dispatch({ type: actions.setUrl, url: location.pathname });
+      prevLocation.current = location.pathname;
+    }
+  }, [dispatch, location, prevLocation]);
 
   React.useEffect(() => {
-    const contentCurtain = document.getElementById('content-curtain');
+    if (!firstRender.current) {
+      const contentCurtain = document.getElementById('content-curtain');
+      firstRender.current = true;
 
-    document.addEventListener('DOMContentLoaded', () => {
-      contentCurtain.parentNode.removeChild(contentCurtain);
-    });
-  }, []);
+      document.addEventListener('DOMContentLoaded', () => {
+        contentCurtain.parentNode.removeChild(contentCurtain);
+      });
+    }
+  }, [firstRender]);
 
   return (
     <div className={styles.app} ref={pageWrapper}>
@@ -53,4 +61,4 @@ App.propTypes = {
   routes: PropTypes.array.isRequired,
 };
 
-export default App;
+export default React.memo(App);

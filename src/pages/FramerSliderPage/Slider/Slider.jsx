@@ -4,10 +4,9 @@ import style from './Slider.scss';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import Track from './Track';
-import { ContextProvider } from './Context';
 import Pagination from './Pagination';
 
-const Slider = ({ className, config = {} }) => {
+const Slider = ({ className, ...otherProps }) => {
   const [slideWidth, setSlideWidth] = React.useState(0);
 
   React.useEffect(() => {
@@ -26,12 +25,8 @@ const Slider = ({ className, config = {} }) => {
 
   return (
     <div className={classnames(style.root, className)}>
-      <ContextProvider>
-        <>
-          <Track config={config} slideWidth={slideWidth} />
-          <Pagination config={config} />
-        </>
-      </ContextProvider>
+      <Track config={otherProps} slideWidth={slideWidth} />
+      <Pagination config={otherProps} />
     </div>
   );
 };

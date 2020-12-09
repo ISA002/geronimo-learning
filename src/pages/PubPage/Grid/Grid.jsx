@@ -57,8 +57,6 @@ const Grid = ({ columns, collection, isLoaded }) => {
         prevRandom = randomPlace;
       }
 
-      console.log(toDetail);
-
       return (
         <WaypointAnimate
           className={classnames(style.visible, {

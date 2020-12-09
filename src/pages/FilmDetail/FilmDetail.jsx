@@ -38,12 +38,15 @@ const FilmDetail = ({
       .replaceAll('</p>', '|')
       .split('|')
       .map(item => {
-        return (
-          <>
-            <div>{item}</div>
-            <br />
-          </>
-        );
+        if (item !== '') {
+          return (
+            <div key={item + cases[id].title}>
+              <div>{item}</div>
+              <br />
+            </div>
+          );
+        }
+        return null;
       });
   }, [cases, id]);
 

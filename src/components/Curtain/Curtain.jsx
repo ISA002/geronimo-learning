@@ -3,6 +3,8 @@ import Animated from 'components/Animated';
 import style from './Curtain.scss';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { useSelector } from 'react-redux';
+import { changeAnimationSelector } from 'models/common/selectors';
 
 const Curtain = ({
   isLoading,
@@ -14,6 +16,7 @@ const Curtain = ({
   animation,
 }) => {
   const [columnWidth, setColumnWidth] = React.useState('34%');
+  const isUnstandartAnimation = useSelector(changeAnimationSelector);
 
   React.useEffect(() => {
     setColumnWidth(window.innerWidth / amount);
@@ -21,33 +24,35 @@ const Curtain = ({
 
   const renderColumns = React.useMemo(() => {
     const curtains = [];
-    for (let index = 0; index < amount; index += 1) {
-      curtains.push(
-        <div
-          key={index}
-          style={{ width: columnWidth }}
-          className={style.column}
-        >
-          <Animated
-            className={style.columnShirmaWrapper}
-            isVisible={!isLoading}
-            duration={
-              duration || {
-                in: 0,
-                out: 1000,
-              }
-            }
-            delay={{
-              in: delayCurtain.in,
-              out: index * 100 + delayCurtain.out,
-            }}
-            animationIn="slideInDown"
-            animationOut={animation}
+    if (!isUnstandartAnimation) {
+      for (let index = 0; index < amount; index += 1) {
+        curtains.push(
+          <div
+            key={index}
+            style={{ width: columnWidth }}
+            className={style.column}
           >
-            <div className={classnames(style.shirma, curtainClassName)} />
-          </Animated>
-        </div>
-      );
+            <Animated
+              className={style.columnShirmaWrapper}
+              isVisible={!isLoading}
+              duration={
+                duration || {
+                  in: 0,
+                  out: 1000,
+                }
+              }
+              delay={{
+                in: delayCurtain.in,
+                out: index * 100 + delayCurtain.out,
+              }}
+              animationIn="slideInDown"
+              animationOut={animation}
+            >
+              <div className={classnames(style.shirma, curtainClassName)} />
+            </Animated>
+          </div>
+        );
+      }
     }
     return curtains;
   }, [
@@ -58,6 +63,7 @@ const Curtain = ({
     delayCurtain,
     curtainClassName,
     animation,
+    isUnstandartAnimation,
   ]);
 
   return (

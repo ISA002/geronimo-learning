@@ -35,6 +35,7 @@ const commonSlice = createSlice({
       } else {
         state.changeAnimation = false;
       }
+      console.log('slice', state.changeAnimation);
       state.url = payload.url;
     },
     setActiveSliderSlide: (state, payload) => {

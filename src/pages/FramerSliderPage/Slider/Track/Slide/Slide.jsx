@@ -6,19 +6,19 @@ import PropTypes from 'prop-types';
 import style from './Slide.scss';
 import classnames from 'classnames';
 import clamp from 'utils/clamp';
-import { Context } from '../../Context';
 import { useHistory } from 'react-router-dom';
 import { useAnimation, motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import {
   changeAnimationSelector,
   toDetailSelector,
+  sliderActiveSelector,
 } from 'models/common/selectors';
 
 const Slide = ({ loading, item, index, className }) => {
   const controls = useAnimation();
   const history = useHistory();
-  const { state } = React.useContext(Context);
+  const activeSlide = useSelector(sliderActiveSelector);
   const isUnstandartPageTransition = useSelector(changeAnimationSelector);
   const [playingVideo, setPlayingVideo] = React.useState(false);
   const [redirectToDetail, setRedirectToDetail] = React.useState(true);
@@ -71,13 +71,13 @@ const Slide = ({ loading, item, index, className }) => {
 
   const slideVisibility = React.useMemo(() => {
     if (isUnstandartPageTransition) {
-      if (state.active === index) {
+      if (activeSlide === index) {
         return false;
       }
       return toDetail;
     }
     return !loading;
-  }, [isUnstandartPageTransition, loading, state, index, toDetail]);
+  }, [isUnstandartPageTransition, loading, activeSlide, index, toDetail]);
 
   return (
     <motion.div
@@ -119,7 +119,7 @@ const Slide = ({ loading, item, index, className }) => {
           )}
         </div>
         <Animated
-          isVisible={loading && state.active === index}
+          isVisible={loading && activeSlide === index}
           className={style.slideTitle}
           animationIn="fadeInUpSmall"
           duration={{
@@ -141,7 +141,7 @@ const Slide = ({ loading, item, index, className }) => {
           </Text>
         </Animated>
         <Animated
-          isVisible={loading && state.active === index}
+          isVisible={loading && activeSlide === index}
           className={style.slideSubTitle}
           animationIn="fadeInUpSmall"
           duration={{

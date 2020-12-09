@@ -4,18 +4,19 @@ import classnames from 'classnames';
 import style from './Track.scss';
 import PropTypes from 'prop-types';
 import Slide from './Slide';
-import { Context } from '../Context';
 import debounce from 'lodash/debounce';
 import normalizeWheel from 'normalize-wheel';
-// import { useDispatch } from 'react-redux';
-// import { actions } from 'models/common/slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { actions } from 'models/common/slice';
+import { sliderActiveSelector } from 'models/common/selectors';
 
 const Track = ({ config, slideWidth }) => {
   const sliderListRef = React.useRef();
-  // const dispatchToStore = useDispatch();
-  const { state, dispatch: dispatchToContext } = React.useContext(Context);
+  const dispatchToStore = useDispatch();
+  const activeSlide = useSelector(sliderActiveSelector);
   const x = useMotionValue(0);
   const controls = useAnimation();
+  const firstRender = React.useRef(false);
 
   const onOffsetEnd = React.useCallback(
     active => {
@@ -31,8 +32,11 @@ const Track = ({ config, slideWidth }) => {
   );
 
   React.useEffect(() => {
-    dispatchToContext(s => ({ ...s, onOffsetEnd }));
-  }, [dispatchToContext, onOffsetEnd]);
+    if (!firstRender.current && slideWidth !== 0) {
+      onOffsetEnd(activeSlide);
+      firstRender.current = true;
+    }
+  }, [firstRender, activeSlide, onOffsetEnd, slideWidth]);
 
   const maxLenght = React.useMemo(() => {
     return slideWidth * (config.cases.length - 1);
@@ -40,20 +44,19 @@ const Track = ({ config, slideWidth }) => {
 
   const handleNewActiveSlide = React.useCallback(
     debounce(value => {
-      const prevActive = Math.round(slideWidth * state.active);
+      const prevActive = Math.round(slideWidth * activeSlide);
 
       if (value !== prevActive) {
         const otherActive = Math.round(value / slideWidth);
 
-        dispatchToContext(s => ({ ...s, active: otherActive }));
-        // dispatchToStore({
-        //   type: actions.setActiveSliderSlide,
-        //   active: otherActive,
-        // });
+        dispatchToStore({
+          type: actions.setActiveSliderSlide,
+          active: otherActive,
+        });
         onOffsetEnd(otherActive);
       }
     }, 100),
-    [dispatchToContext, slideWidth, maxLenght]
+    [dispatchToStore, slideWidth, maxLenght, activeSlide]
   );
 
   const onDrag = React.useCallback(
@@ -88,8 +91,8 @@ const Track = ({ config, slideWidth }) => {
   }, [sliderListRef, x, handleNewActiveSlide, slideWidth, config]);
 
   const onDragEnd = React.useCallback(() => {
-    onOffsetEnd(state.active);
-  }, [state, onOffsetEnd]);
+    onOffsetEnd(activeSlide);
+  }, [activeSlide, onOffsetEnd]);
 
   const renderSlides = React.useMemo(() => {
     return config.cases.map((item, index) => {

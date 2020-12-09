@@ -4,26 +4,19 @@ import Header from 'components/Header';
 import Slider from './Slider';
 import { useSelector } from 'react-redux';
 import { loadingFinishedSelector } from 'models/preloader/selectors';
-import { filmPageDataSelector } from 'models/info/selectors';
+import { filmCasesSelector } from 'models/info/selectors';
 import PropTypes from 'prop-types';
-import { changeAnimationSelector } from 'models/common/selectors';
+import { toDetailSelector } from 'models/common/selectors';
 
 const FramerSliderPage = ({ isLoaded }) => {
   const [isLoadedState, setIsLoadedState] = React.useState(false);
-  const collection = useSelector(filmPageDataSelector);
-  const loading = useSelector(loadingFinishedSelector);
-  const isUnstandartPageTransition = useSelector(changeAnimationSelector);
+  const cases = useSelector(filmCasesSelector);
+  const preloaderloading = useSelector(loadingFinishedSelector);
+  const toDetail = useSelector(toDetailSelector);
 
-  const sliderConfig = React.useMemo(
-    () => ({
-      sliderList: style.sliderList,
-      slide: style.slide,
-      loading:
-        loading && (isUnstandartPageTransition ? isLoaded : isLoadedState),
-      cases: collection.show_category.cases,
-    }),
-    [loading, collection, isLoadedState, isLoaded, isUnstandartPageTransition]
-  );
+  const sliderLoading = React.useMemo(() => {
+    return preloaderloading && (toDetail ? isLoaded : isLoadedState);
+  }, [preloaderloading, isLoadedState, isLoaded, toDetail]);
 
   React.useEffect(() => {
     if (isLoaded) {
@@ -34,8 +27,14 @@ const FramerSliderPage = ({ isLoaded }) => {
   return (
     <>
       <div className={style.root}>
-        <Header loading={sliderConfig.loading} />
-        <Slider config={sliderConfig} className={style.slider} />
+        <Header loading={sliderLoading} />
+        <Slider
+          sliderList={style.sliderList}
+          slide={style.slide}
+          cases={cases}
+          loading={sliderLoading}
+          className={style.slider}
+        />
       </div>
     </>
   );

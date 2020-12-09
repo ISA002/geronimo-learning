@@ -8,24 +8,33 @@ import Button from './Button';
 import arrowLeft from 'images/arrowLeft.svg';
 import arrowRight from 'images/arrowRight.svg';
 import classnames from 'classnames';
-import { Context } from '../Context';
+import { sliderActiveSelector } from 'models/common/selectors';
+import { useSelector, useDispatch } from 'react-redux';
+import { actions } from 'models/common/slice';
 
 const Pagination = ({ config }) => {
-  const { state, dispatch } = React.useContext(Context);
+  const activeSlide = useSelector(sliderActiveSelector);
+  const dispatchToStore = useDispatch();
 
   const nextSlide = React.useCallback(() => {
-    dispatch(s => ({ ...s, active: state.active + 1 }));
-    state.onOffsetEnd(state.active + 1);
-  }, [dispatch, state]);
+    dispatchToStore({
+      type: actions.setActiveSliderSlide,
+      active: activeSlide + 1,
+    });
+    // state.onOffsetEnd(activeSlide + 1);
+  }, [dispatchToStore, activeSlide]);
 
   const prevSlide = React.useCallback(() => {
-    dispatch(s => ({ ...s, active: state.active - 1 }));
-    state.onOffsetEnd(state.active - 1);
-  }, [state, dispatch]);
+    dispatchToStore({
+      type: actions.setActiveSliderSlide,
+      active: activeSlide - 1,
+    });
+    // state.onOffsetEnd(activeSlide - 1);
+  }, [activeSlide, dispatchToStore]);
 
   const renderSlideCounter = React.useMemo(() => {
-    return state.active + 1 + '/' + config.cases.length;
-  }, [state, config]);
+    return activeSlide + 1 + '/' + config.cases.length;
+  }, [activeSlide, config]);
 
   return (
     <>
@@ -41,7 +50,7 @@ const Pagination = ({ config }) => {
             imgSrc={arrowLeft}
             onClick={prevSlide}
             className={classnames({
-              [style.hideButton]: state.active === 0,
+              [style.hideButton]: activeSlide === 0,
             })}
           />
           <Button
@@ -49,7 +58,7 @@ const Pagination = ({ config }) => {
             imgSrc={arrowRight}
             onClick={nextSlide}
             className={classnames({
-              [style.hideButton]: state.active === config.cases.length - 1,
+              [style.hideButton]: activeSlide === config.cases.length - 1,
             })}
           />
         </div>
