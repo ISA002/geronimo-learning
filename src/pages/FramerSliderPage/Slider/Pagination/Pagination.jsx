@@ -11,26 +11,28 @@ import classnames from 'classnames';
 import { sliderActiveSelector } from 'models/common/selectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { actions } from 'models/common/slice';
+import { Context } from '../Context';
 
 const Pagination = ({ config }) => {
   const activeSlide = useSelector(sliderActiveSelector);
   const dispatchToStore = useDispatch();
+  const { state } = React.useContext(Context);
 
   const nextSlide = React.useCallback(() => {
     dispatchToStore({
       type: actions.setActiveSliderSlide,
       active: activeSlide + 1,
     });
-    // state.onOffsetEnd(activeSlide + 1);
-  }, [dispatchToStore, activeSlide]);
+    state.onOffsetEnd(activeSlide + 1);
+  }, [dispatchToStore, activeSlide, state]);
 
   const prevSlide = React.useCallback(() => {
     dispatchToStore({
       type: actions.setActiveSliderSlide,
       active: activeSlide - 1,
     });
-    // state.onOffsetEnd(activeSlide - 1);
-  }, [activeSlide, dispatchToStore]);
+    state.onOffsetEnd(activeSlide - 1);
+  }, [activeSlide, dispatchToStore, state]);
 
   const renderSlideCounter = React.useMemo(() => {
     return activeSlide + 1 + '/' + config.cases.length;

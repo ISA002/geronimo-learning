@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 import Track from './Track';
 import Pagination from './Pagination';
+import { ContextProvider } from './Context';
 
 const Slider = ({ className, ...otherProps }) => {
   const [slideWidth, setSlideWidth] = React.useState(0);
@@ -25,8 +26,12 @@ const Slider = ({ className, ...otherProps }) => {
 
   return (
     <div className={classnames(style.root, className)}>
-      <Track config={otherProps} slideWidth={slideWidth} />
-      <Pagination config={otherProps} />
+      <ContextProvider>
+        <>
+          <Track config={otherProps} slideWidth={slideWidth} />
+          <Pagination config={otherProps} />
+        </>
+      </ContextProvider>
     </div>
   );
 };

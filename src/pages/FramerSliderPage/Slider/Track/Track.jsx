@@ -9,6 +9,7 @@ import normalizeWheel from 'normalize-wheel';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from 'models/common/slice';
 import { sliderActiveSelector } from 'models/common/selectors';
+import { Context } from '../Context';
 
 const Track = ({ config, slideWidth }) => {
   const sliderListRef = React.useRef();
@@ -17,6 +18,7 @@ const Track = ({ config, slideWidth }) => {
   const x = useMotionValue(0);
   const controls = useAnimation();
   const firstRender = React.useRef(false);
+  const { setState } = React.useContext(Context);
 
   const onOffsetEnd = React.useCallback(
     active => {
@@ -30,6 +32,10 @@ const Track = ({ config, slideWidth }) => {
     },
     [controls, slideWidth]
   );
+
+  React.useEffect(() => {
+    setState(s => ({ ...s, onOffsetEnd }));
+  }, [onOffsetEnd, setState]);
 
   React.useEffect(() => {
     if (!firstRender.current && slideWidth !== 0) {

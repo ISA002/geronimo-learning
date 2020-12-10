@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import Animated from 'components/Animated';
 import Text from 'components/Text';
 import Picture from 'components/Picture';
-import { motion, useAnimation } from 'framer-motion';
 import { useHistory } from 'react-router-dom';
 
 const Cell = ({
@@ -22,7 +21,6 @@ const Cell = ({
   const hoverRef = React.useRef();
   const videoRef = React.useRef();
   const [playingVideo, setPlayingVideo] = React.useState(false);
-  const control = useAnimation();
   const history = useHistory();
 
   React.useEffect(() => {
@@ -44,25 +42,11 @@ const Cell = ({
   }, [hoverRef, videoRef]);
 
   const redirectToDetail = React.useCallback(() => {
-    const position = hoverRef.current.getBoundingClientRect();
     history.push(`/pub/${index}`);
-
-    control.start({
-      transition: {
-        delay: 0.4,
-        duration: 0.7,
-      },
-      zIndex: 9999999,
-      x: -Math.ceil(position.x),
-      y: -Math.ceil(position.y),
-      width: window.innerWidth * 0.7,
-      height: window.innerHeight * 0.6,
-    });
-  }, [control, history, index]);
+  }, [history, index]);
 
   return (
-    <motion.div
-      animate={control}
+    <div
       ref={hoverRef}
       className={classnames(style.root, className)}
       style={cellStyle}
@@ -123,7 +107,7 @@ const Cell = ({
           {subTitle}
         </Text>
       </Animated>
-    </motion.div>
+    </div>
   );
 };
 

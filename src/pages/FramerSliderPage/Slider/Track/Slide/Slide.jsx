@@ -74,7 +74,10 @@ const Slide = ({ loading, item, index, className }) => {
       if (activeSlide === index) {
         return false;
       }
-      return toDetail;
+      if (loading) {
+        return toDetail;
+      }
+      return true;
     }
     return !loading;
   }, [isUnstandartPageTransition, loading, activeSlide, index, toDetail]);
@@ -93,7 +96,7 @@ const Slide = ({ loading, item, index, className }) => {
           duration={{ in: toDetail ? 200 : 0, out: 1000 }}
           delay={{
             in: toDetail ? 200 : 0,
-            out: delaySlideCurtain * 200 + 1100,
+            out: delaySlideCurtain * 200 + 800,
           }}
         >
           <div className={style.slideCurtain} />

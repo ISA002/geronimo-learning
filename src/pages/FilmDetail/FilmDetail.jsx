@@ -1,12 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { filmCasesSelector } from 'models/info/selectors';
 import style from './FilmDetail.scss';
 import { motion, useAnimation } from 'framer-motion';
 import Animated from 'components/Animated';
 import Text from 'components/Text';
+import { actions } from 'models/common/slice';
 
 const FilmDetail = ({
   match: {
@@ -17,6 +18,19 @@ const FilmDetail = ({
   const control = useAnimation();
   const history = useHistory();
   const cases = useSelector(filmCasesSelector);
+  const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    return history.listen(location => {
+      if (location.pathname === '/tv') {
+        dispatch({
+          type: actions.setChangeAnimation,
+          changeAnimation: true,
+          toDetail: false,
+        });
+      }
+    });
+  }, [dispatch, history]);
 
   const backPage = React.useCallback(() => {
     history.goBack();

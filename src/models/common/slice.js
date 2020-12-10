@@ -19,24 +19,9 @@ const commonSlice = createSlice({
     setViewport: (state, payload) => {
       state.viewport = payload.payload;
     },
-    setUrl: (state, payload) => {
-      if (
-        (state.url === '/tv' && /\/tv\/[0-9].*/.test(payload.url)) ||
-        (state.url === '/pub' && /\/pub\/[0-9].*/.test(payload.url))
-      ) {
-        state.changeAnimation = true;
-        state.toDetail = true;
-      } else if (
-        (/\/tv\/[0-9].*/.test(state.url) && payload.url === '/tv') ||
-        (/\/pub\/[0-9].*/.test(state.url) && payload.url === '/pub')
-      ) {
-        state.changeAnimation = true;
-        state.toDetail = false;
-      } else {
-        state.changeAnimation = false;
-      }
-      console.log('slice', state.changeAnimation);
-      state.url = payload.url;
+    setChangeAnimation: (state, payload) => {
+      state.changeAnimation = payload.changeAnimation;
+      state.toDetail = payload.toDetail;
     },
     setActiveSliderSlide: (state, payload) => {
       state.sliderActiveSlide = payload.active;
