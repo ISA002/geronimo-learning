@@ -1,3 +1,4 @@
+/* eslint-disable react/no-danger */
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -47,21 +48,7 @@ const FilmDetail = ({
   }, [control, history]);
 
   const renderDescription = React.useMemo(() => {
-    return cases[id].description
-      .replaceAll('<p>', '')
-      .replaceAll('</p>', '|')
-      .split('|')
-      .map(item => {
-        if (item !== '') {
-          return (
-            <div key={item + cases[id].title}>
-              <div>{item}</div>
-              <br />
-            </div>
-          );
-        }
-        return null;
-      });
+    return cases[id].description;
   }, [cases, id]);
 
   return (
@@ -101,7 +88,10 @@ const FilmDetail = ({
           size="16"
           color="main-white"
         >
-          {renderDescription}
+          <div
+            className={style.descriptionWrapper}
+            dangerouslySetInnerHTML={{ __html: renderDescription }}
+          />
         </Text>
       </Animated>
       <Animated
