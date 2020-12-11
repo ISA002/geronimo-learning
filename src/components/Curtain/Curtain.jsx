@@ -15,8 +15,8 @@ const Curtain = ({
   className,
   animation,
 }) => {
-  const [columnWidth, setColumnWidth] = React.useState('34%');
-  const isUnstandartAnimation = useSelector(changeAnimationSelector);
+  const [columnWidth, setColumnWidth] = React.useState('34%'); // снова магические числа
+  const isUnstandartAnimation = useSelector(changeAnimationSelector); // селектор забирает changeAnimation, засовываешь в isUnstandartAnimation
 
   React.useEffect(() => {
     setColumnWidth(window.innerWidth / amount);
@@ -87,7 +87,7 @@ Curtain.defaultProps = {
   isLoading: true,
   amount: 0,
   curtainClassName: '',
-  duration: undefined,
+  duration: undefined, // лучше ставить 0 в таком случае
   delayCurtain: { in: 0, out: 900 },
   className: '',
   animation: 'slideOutUp',

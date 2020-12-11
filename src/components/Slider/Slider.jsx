@@ -41,7 +41,7 @@ const Slider = props => {
   React.useEffect(() => {
     gsap.to(swipeableRef.current, {
       duration: 0.8,
-      scrollLeft: Math.round(slideWidth * sliderState.active),
+      scrollLeft: Math.round(slideWidth * sliderState.active), // slideWidth - целое, sliderState.active - целое. зачем округлять целые числа???
       ease: 'power1',
     });
   }, [swipeableRef, slideWidth, sliderState]);
@@ -49,16 +49,16 @@ const Slider = props => {
   const handleSwiping = React.useCallback(
     ({ deltaX }) => {
       swipeableRef.current.scrollLeft =
-        Math.round(slideWidth * sliderState.active) + deltaX;
+        Math.round(slideWidth * sliderState.active) + deltaX; // аналогичный вопрос
     },
     [sliderState, slideWidth]
   );
 
   const handleNewActiveSlide = React.useCallback(() => {
-    const prevActive = Math.round(slideWidth * sliderState.active);
+    const prevActive = Math.round(slideWidth * sliderState.active);// аналогичный вопрос
 
     if (swipeableRef.current.scrollLeft !== prevActive) {
-      const otherActive = Math.round(
+      const otherActive = Math.round(// аналогичный вопрос
         swipeableRef.current.scrollLeft / slideWidth
       );
       setSliderState({
@@ -84,6 +84,7 @@ const Slider = props => {
     };
   }, [swipeableRef, scrollValueHandler]);
 
+  // nextSlid и prevSlide отличаются одним сиволом, создай функцию которая будет принимать sliderState.active - 1 или sliderState.active + 1
   const nextSlide = React.useCallback(() => {
     if (!changingSlide) {
       setSliderState({
@@ -91,7 +92,7 @@ const Slider = props => {
         active: sliderState.active + 1,
       });
       setChangingSlide(true);
-      setTimeout(() => setChangingSlide(false), 900);
+      setTimeout(() => setChangingSlide(false), 900); // И тут
     }
   }, [sliderState, setSliderState, changingSlide]);
 
@@ -102,7 +103,7 @@ const Slider = props => {
         active: sliderState.active - 1,
       });
       setChangingSlide(true);
-      setTimeout(() => setChangingSlide(false), 900);
+      setTimeout(() => setChangingSlide(false), 900); // и там по 900, что то мне подсазывает что это одинаковые магические числа, в переменную или константу выносятся
     }
   }, [sliderState, setSliderState, changingSlide]);
 
@@ -122,6 +123,7 @@ const Slider = props => {
   }, [config, sliderState]);
 
   const renderSlideCounter = React.useMemo(() => {
+  /// `${sliderState.active + 1}/${config.cases.length}` - так выглядит понятнее чем то что снизу
     return sliderState.active + 1 + '/' + config.cases.length;
   }, [sliderState, config]);
 
@@ -182,7 +184,7 @@ const Slider = props => {
 
 Slider.propTypes = {
   className: PropTypes.string,
-  config: PropTypes.any,
+  config: PropTypes.any, // any??? Ты не знаешь что такое config?
 };
 
 Slider.defaultProps = {

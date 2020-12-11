@@ -27,7 +27,7 @@ const App = ({ routes }) => {
       const contentCurtain = document.getElementById('content-curtain');
       firstRender.current = true;
 
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('DOMContentLoaded', () => { // load!!!
         contentCurtain.parentNode.removeChild(contentCurtain);
       });
     }

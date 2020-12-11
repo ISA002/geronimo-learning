@@ -10,7 +10,7 @@ const commonSlice = createSlice({
   name: 'common',
   initialState: {
     viewport: DESKTOP,
-    url: '',
+    url: '', // если не используешь - удаляй из стейта
     changeAnimation: false,
     toDetail: false,
     sliderActiveSlide: 0,
