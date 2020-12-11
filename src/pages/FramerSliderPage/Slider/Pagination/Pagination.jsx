@@ -18,24 +18,19 @@ const Pagination = ({ config }) => {
   const dispatchToStore = useDispatch();
   const { state } = React.useContext(Context);
 
-  const nextSlide = React.useCallback(() => {
-    dispatchToStore({
-      type: actions.setActiveSliderSlide,
-      active: activeSlide + 1,
-    });
-    state.onOffsetEnd(activeSlide + 1);
-  }, [dispatchToStore, activeSlide, state]);
-
-  const prevSlide = React.useCallback(() => {
-    dispatchToStore({
-      type: actions.setActiveSliderSlide,
-      active: activeSlide - 1,
-    });
-    state.onOffsetEnd(activeSlide - 1);
-  }, [activeSlide, dispatchToStore, state]);
+  const changeSlide = React.useCallback(
+    direction => () => {
+      dispatchToStore({
+        type: actions.setActiveSliderSlide,
+        active: activeSlide + direction,
+      });
+      state.onOffsetEnd(activeSlide + direction);
+    },
+    [activeSlide, dispatchToStore, state]
+  );
 
   const renderSlideCounter = React.useMemo(() => {
-    return activeSlide + 1 + '/' + config.cases.length;
+    return `${activeSlide + 1}/${config.cases.length}`;
   }, [activeSlide, config]);
 
   return (
@@ -50,7 +45,7 @@ const Pagination = ({ config }) => {
           <Button
             direction="prev"
             imgSrc={arrowLeft}
-            onClick={prevSlide}
+            onClick={changeSlide(-1)}
             className={classnames({
               [style.hideButton]: activeSlide === 0,
             })}
@@ -58,7 +53,7 @@ const Pagination = ({ config }) => {
           <Button
             direction="next"
             imgSrc={arrowRight}
-            onClick={nextSlide}
+            onClick={changeSlide(1)}
             className={classnames({
               [style.hideButton]: activeSlide === config.cases.length - 1,
             })}

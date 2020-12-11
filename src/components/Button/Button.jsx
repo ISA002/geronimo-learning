@@ -1,130 +1,89 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
-
-import modsClasses from 'utils/modsClasses';
-
 import styles from './Button.scss';
 
-class Button extends PureComponent {
-  static propTypes = {
-    color: PropTypes.string,
-    theme: PropTypes.string,
-    children: PropTypes.any,
-    className: PropTypes.string,
-    href: PropTypes.string,
-    disabled: PropTypes.bool,
-    withOutHover: PropTypes.bool,
-    withoutCursor: PropTypes.bool,
-    psevdo: PropTypes.string,
-    to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    type: PropTypes.string,
-    onClick: PropTypes.func,
-    hover: PropTypes.oneOf(['white', 'black', 'none']),
-    display: PropTypes.oneOf(['block', 'inline-block']),
-    disableHover: PropTypes.bool,
-    homeMenuHover: PropTypes.bool,
-    headerItemHover: PropTypes.bool,
-    darkHovers: PropTypes.bool,
-    underline: PropTypes.bool,
-    greenUnderline: PropTypes.bool,
-    blank: PropTypes.bool,
-  };
+const Button = ({
+  color,
+  children,
+  className,
+  href,
+  disabled,
+  to,
+  type,
+  onClick,
+  hover,
+  psevdo,
+  withOutHover,
+  display,
+  theme,
+  disableHover,
+  withoutCursor,
+  blank,
+  ...props
+}) => {
+  const CustomTag = (() => {
+    if (to) return Link;
+    if (href) return 'a';
+    return 'button';
+  })();
 
-  static defaultProps = {
-    type: 'button',
-    withoutCursor: false,
-    color: '',
-    theme: '',
-    children: {},
-    className: '',
-    href: '',
-    disabled: false,
-    withOutHover: false,
-    psevdo: '',
-    to: '/',
-    onClick: () => {},
-    hover: 'none',
-    display: 'block',
-    disableHover: false,
-    homeMenuHover: false,
-    headerItemHover: false,
-    darkHovers: false,
-    underline: false,
-    greenUnderline: false,
-    blank: false,
-  };
+  return (
+    <CustomTag
+      data-active="link"
+      className={classnames(styles.root, className, {
+        'js-hover-noStuck': !withoutCursor,
+      })}
+      to={to}
+      href={href}
+      target={href && blank ? '_blank' : undefined}
+      disabled={disabled}
+      type={href || to ? undefined : type}
+      onClick={onClick}
+      {...props}
+    >
+      {children}
+    </CustomTag>
+  );
+};
 
-  render() {
-    const {
-      color,
-      children,
-      className,
-      href,
-      disabled,
-      to,
-      type,
-      onClick,
-      hover,
-      psevdo,
-      withOutHover,
-      display,
-      theme,
-      disableHover,
-      withoutCursor,
-      underline,
-      greenUnderline,
-      homeMenuHover,
-      headerItemHover,
-      darkHovers,
-      blank,
-      ...props
-    } = this.props;
+Button.propTypes = {
+  color: PropTypes.string,
+  theme: PropTypes.string,
+  children: PropTypes.any,
+  className: PropTypes.string,
+  href: PropTypes.string,
+  disabled: PropTypes.bool,
+  withOutHover: PropTypes.bool,
+  withoutCursor: PropTypes.bool,
+  psevdo: PropTypes.string,
+  to: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  type: PropTypes.string,
+  onClick: PropTypes.func,
+  hover: PropTypes.oneOf(['white', 'black', 'none']),
+  display: PropTypes.oneOf(['block', 'inline-block']),
+  disableHover: PropTypes.bool,
+  blank: PropTypes.bool,
+};
 
-    const classes = modsClasses(styles, {
-      color,
-      hover,
-      psevdo,
-      display,
-    });
+Button.defaultProps = {
+  type: 'button',
+  withoutCursor: false,
+  color: '',
+  theme: '',
+  children: {},
+  className: '',
+  href: '',
+  disabled: false,
+  withOutHover: false,
+  psevdo: '',
+  to: '/',
+  onClick: () => {},
+  hover: 'none',
+  display: 'block',
+  disableHover: false,
+  blank: false,
+};
 
-    const CustomTag = (() => {
-      if (to) return Link;
-      if (href) return 'a';
-      return 'button';
-    })();
-
-    return (
-      <CustomTag
-        data-active="link"
-        className={classnames(styles.root, className, classes, {
-          [styles.wrapperUnderline]: underline,
-          [styles.wrapperGreenUnderline]: greenUnderline,
-          [styles.wrapperHomeMenuHover]: homeMenuHover,
-          [styles.wrapperHeaderItemHover]: headerItemHover && !darkHovers,
-          [styles.wrapperHeaderItemDarkHover]: darkHovers,
-          'js-hover-noStuck': !withoutCursor,
-        })}
-        to={to}
-        href={href}
-        target={href && blank ? '_blank' : undefined}
-        disabled={disabled}
-        type={href || to ? undefined : type}
-        onClick={onClick}
-        {...props}
-      >
-        {children}
-        {underline && <div className={styles.underline} />}
-        {greenUnderline && <div className={styles.greenUnderline} />}
-        {homeMenuHover && <div className={styles.homeMenuHover} />}
-        {headerItemHover && !darkHovers && (
-          <div className={styles.headerItemHover} />
-        )}
-        {darkHovers && <div className={styles.headerItemDarkHover} />}
-      </CustomTag>
-    );
-  }
-}
-
-export default Button;
+export default React.memo(Button);

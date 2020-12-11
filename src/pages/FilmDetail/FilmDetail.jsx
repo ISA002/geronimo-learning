@@ -9,6 +9,7 @@ import { motion, useAnimation } from 'framer-motion';
 import Animated from 'components/Animated';
 import Text from 'components/Text';
 import { actions } from 'models/common/slice';
+import Picture from 'components/Picture';
 
 const FilmDetail = ({
   match: {
@@ -40,7 +41,7 @@ const FilmDetail = ({
         delay: 0.4,
         duration: 0.7,
       },
-      height: window.innerHeight * 0.7 * 0.7, // а почему не сразу на 0.49?
+      height: window.innerHeight * 0.49,
       width: window.innerWidth * 0.6,
       x: Math.ceil(window.innerWidth * 0.2),
       y: Math.ceil(window.innerHeight * 0.12),
@@ -54,10 +55,10 @@ const FilmDetail = ({
   return (
     <div className={style.root}>
       <motion.div animate={control} className={style.preview}>
-        <img // Мы написали Picture что бы его не использовать)))
+        <Picture
           className={style.previewImg}
-          src={cases[id].preview_image_versions_urls.preview}
-          alt="plug"
+          previewImg={cases[id].preview_image_versions_urls.preview}
+          retinaPreviewImg={cases[id].preview_image_versions_urls.preview_x2}
         />
       </motion.div>
       <Animated

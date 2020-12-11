@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import style from './Slide.scss';
 import classnames from 'classnames';
 import clamp from 'utils/clamp';
+import Picture from 'components/Picture';
 
 const Slide = props => {
   const { loading, sliderState, item, index, className } = props;
@@ -48,10 +49,10 @@ const Slide = props => {
           <div className={style.slideCurtain} />
         </Animated>
         <div className={style.imageWrapper}>
-          <img
+          <Picture
             className={style.slideImg}
-            src={item.preview_image_versions_urls.preview}
-            alt="film"
+            previewImg={item.preview_image_versions_urls.preview}
+            retinaPreviewImg={item.preview_image_versions_urls.preview_x2}
           />
           <video
             ref={ref}

@@ -50,7 +50,7 @@ const Track = ({ config, slideWidth }) => {
 
   const handleNewActiveSlide = React.useCallback(
     debounce(value => {
-      const prevActive = Math.round(slideWidth * activeSlide);
+      const prevActive = slideWidth * activeSlide;
 
       if (value !== prevActive) {
         const otherActive = Math.round(value / slideWidth);

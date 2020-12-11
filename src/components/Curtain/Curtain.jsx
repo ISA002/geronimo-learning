@@ -15,16 +15,24 @@ const Curtain = ({
   className,
   animation,
 }) => {
-  const [columnWidth, setColumnWidth] = React.useState('34%'); // снова магические числа
-  const isUnstandartAnimation = useSelector(changeAnimationSelector); // селектор забирает changeAnimation, засовываешь в isUnstandartAnimation
+  const [columnWidth, setColumnWidth] = React.useState();
+  const changeAnimation = useSelector(changeAnimationSelector);
 
   React.useEffect(() => {
-    setColumnWidth(window.innerWidth / amount);
+    const resize = () => setColumnWidth(window.innerWidth / amount);
+    resize();
+
+    document.addEventListener('resize', resize);
+
+    return () => {
+      document.removeEventListener('resize', resize);
+    };
   }, [amount]);
 
   const renderColumns = React.useMemo(() => {
     const curtains = [];
-    if (!isUnstandartAnimation) {
+
+    if (!changeAnimation) {
       for (let index = 0; index < amount; index += 1) {
         curtains.push(
           <div
@@ -63,7 +71,7 @@ const Curtain = ({
     delayCurtain,
     curtainClassName,
     animation,
-    isUnstandartAnimation,
+    changeAnimation,
   ]);
 
   return (
@@ -87,7 +95,7 @@ Curtain.defaultProps = {
   isLoading: true,
   amount: 0,
   curtainClassName: '',
-  duration: undefined, // лучше ставить 0 в таком случае
+  duration: 0,
   delayCurtain: { in: 0, out: 900 },
   className: '',
   animation: 'slideOutUp',
