@@ -55,10 +55,11 @@ const Slider = props => {
   );
 
   const handleNewActiveSlide = React.useCallback(() => {
-    const prevActive = Math.round(slideWidth * sliderState.active);// аналогичный вопрос
+    const prevActive = Math.round(slideWidth * sliderState.active); // аналогичный вопрос
 
     if (swipeableRef.current.scrollLeft !== prevActive) {
-      const otherActive = Math.round(// аналогичный вопрос
+      // аналогичный вопрос
+      const otherActive = Math.round(
         swipeableRef.current.scrollLeft / slideWidth
       );
       setSliderState({
@@ -123,7 +124,7 @@ const Slider = props => {
   }, [config, sliderState]);
 
   const renderSlideCounter = React.useMemo(() => {
-  /// `${sliderState.active + 1}/${config.cases.length}` - так выглядит понятнее чем то что снизу
+    // `${sliderState.active + 1}/${config.cases.length}` - так выглядит понятнее чем то что снизу
     return sliderState.active + 1 + '/' + config.cases.length;
   }, [sliderState, config]);
 
