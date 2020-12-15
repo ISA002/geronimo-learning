@@ -1,15 +1,1 @@
 @use '~styles/variables' as *;
-
-body {
-  background: #191919;
-}
-
-.contentCurtain {
-  background: #191919;
-  width: 100vw;
-  height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 10;
-}

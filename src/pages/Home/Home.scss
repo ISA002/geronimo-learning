@@ -1,36 +1,8 @@
 .root {
-  background: #191919;
-  font-family: 'Robotobold', sans-serif;
-}
-
-.columns {
+  background: rgb(241, 239, 229);
   display: flex;
-  position: relative;
-}
-
-.mainTextRoot {
-  position: absolute;
-  user-select: none;
-  pointer-events: none;
-  z-index: 999;
-  top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, -50%, 0);
-}
-
-.canvas {
-  position: absolute;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-}
-
-.contentCurtain {
+  justify-content: center;
+  align-items: center;
   width: 100vw;
   height: 100vh;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: #191919;
-  // z-index: 1;
 }

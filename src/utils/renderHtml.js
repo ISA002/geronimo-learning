@@ -31,7 +31,6 @@ export const renderHtmlStart = (head, assets) =>
       </head>
       <body>
         <!-- Insert the router, which passed from server-side -->
-        <div id="content-curtain" style="background: #191919; width: 100vw; height: 100vh; position: fixed; top: 0; left: 0; z-index: 1000;"></div>
         <div id="react-view">`;
 
 export const renderHtmlEnd = (assets, initialState) => `
