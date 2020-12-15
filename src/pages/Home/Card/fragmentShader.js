@@ -101,7 +101,7 @@ export default `
 
     st.y *= u_res.y / u_res.x;
 
-    vec2 mouse = u_mouse * -0.5;
+    vec2 mouse = u_mouse * -1.0;
     
     vec2 circlePos = st + mouse;
     float c = circle(circlePos, 0.15, 2.) * 2.5;

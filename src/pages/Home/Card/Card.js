@@ -9,14 +9,10 @@ export default class Card {
     this.container = container;
     this.height = 600;
     this.width = 800;
-    this.radius = 150;
-    this.blurSize = 32;
+    this.mouse = { x: 1, y: 1 };
 
     this.app = new PIXI.Application();
     container.appendChild(this.app.view);
-
-    // this.app.loader.add('background', backgroundImg);
-    this.app.loader.add('car', carImg);
 
     this.geometry = new PIXI.Geometry()
       .addAttribute(
@@ -24,13 +20,18 @@ export default class Card {
         [-100, -100, 100, -100, 100, 100, -100, 100],
         2
       )
-      .addAttribute('uv', [0, 0, 1, 0, 1, 1, 0, 1], 2);
-    // .addIndex([0, 1, 2, 0, 2, 3]);
+      .addAttribute('uv', [0, 0, 1, 0, 1, 1, 0, 1], 2)
+      .addIndex([0, 1, 2, 0, 2, 3]);
 
     this.shader = PIXI.Shader.from(vertexShader, fragmentShader, {
       u_time: 0,
       u_image: PIXI.Texture.from(carImg),
       u_imagehover: PIXI.Texture.from(backgroundImg),
+      u_res: {
+        x: this.width,
+        y: this.height,
+      },
+      u_mouse: this.mouse,
     });
 
     this.quad = new PIXI.Mesh(this.geometry, this.shader);
@@ -42,60 +43,23 @@ export default class Card {
     });
   }
 
-  setup = (_, resources) => {
-    const car = new PIXI.Sprite(resources.car.texture);
-    // const background = new PIXI.Sprite(resources.background.texture);
+  pointerMove = event => {
+    this.mouse.x =
+      ((event.data.global.x - this.width / 2) / window.innerWidth) * 1.5;
+    this.mouse.y =
+      (-event.data.global.y + this.height / 2) / window.innerHeight;
+  };
 
-    car.width = this.app.screen.width;
-    car.height = this.app.screen.height;
+  setup = () => {
+    this.quad.position.set(this.width / 2, this.height / 2);
 
-    // background.width = this.app.screen.width;
-    // background.height = this.app.screen.height;
+    this.quad.width = this.app.screen.width;
+    this.quad.height = this.app.screen.height;
 
-    this.app.stage.addChild(car);
-    // this.app.stage.addChild(background);
-
-    // this.app.stage.addChild(this.quad);
-
-    // this.quad.position.set(400, 300);
-    // const circle = new PIXI.Graphics()
-    //   .beginFill(0xff0000)
-    //   .drawCircle(
-    //     this.radius + this.blurSize,
-    //     this.radius + this.blurSize,
-    //     this.radius
-    //   )
-    //   .endFill();
-
-    // circle.filters = [new PIXI.filters.BlurFilter(this.blurSize)];
-
-    // const bounds = new PIXI.Rectangle(
-    //   0,
-    //   0,
-    //   (this.radius + this.blurSize) * 2,
-    //   (this.radius + this.blurSize) * 2
-    // );
-
-    // const texture = this.app.renderer.generateTexture(
-    //   circle,
-    //   PIXI.SCALE_MODES.NEAREST,
-    //   1,
-    //   bounds
-    // );
-
-    // const focus = new PIXI.Sprite(texture);
-
-    // this.app.stage.addChild(focus);
-
-    // background.mask = focus;
+    this.app.stage.addChild(this.quad);
 
     this.app.stage.interactive = true;
 
-    const pointerMove = event => {
-      this.quad.position.x = event.data.global.x - this.quad.width / 2;
-      this.quad.position.y = event.data.global.y - this.quad.height / 2;
-    };
-
-    this.app.stage.on('mousemove', pointerMove);
+    this.app.stage.on('mousemove', this.pointerMove);
   };
 }

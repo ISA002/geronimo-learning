@@ -8,7 +8,7 @@ const Home = () => {
   React.useEffect(() => {
     const card = new Card(ref.current);
 
-    console.log('amwfak');
+    console.log(card);
   }, [ref]);
 
   return (
