@@ -3,6 +3,7 @@ import carImg from 'images/car.jpg';
 import backgroundImg from 'images/background.jpg';
 import fragmentShader from './fragmentShader';
 import vertexShader from './vertexShader';
+import displacementFilterImg from 'images/displacement_map_repeat.jpg';
 
 export default class Card {
   constructor(container) {
@@ -13,6 +14,14 @@ export default class Card {
 
     this.app = new PIXI.Application();
     container.appendChild(this.app.view);
+
+    this.displacementSprite = PIXI.Sprite.from(displacementFilterImg);
+    this.displacementSprite.texture.baseTexture.wrapMode =
+      PIXI.WRAP_MODES.REPEAT;
+
+    this.displacementFilter = new PIXI.filters.DisplacementFilter(
+      this.displacementSprite
+    );
 
     this.geometry = new PIXI.Geometry()
       .addAttribute(
@@ -40,23 +49,30 @@ export default class Card {
 
     this.app.ticker.add(() => {
       this.quad.shader.uniforms.u_time += 0.01;
+      this.displacementSprite.x += 1;
     });
   }
 
   pointerMove = event => {
     this.mouse.x =
       ((event.data.global.x - this.width / 2) / window.innerWidth) * 1.5;
-    this.mouse.y =
-      (-event.data.global.y + this.height / 2) / window.innerHeight;
+    this.mouse.y = (event.data.global.y - this.height / 2) / window.innerHeight;
   };
 
   setup = () => {
+    this.quad.filters = [this.displacementFilter];
+
+    this.displacementFilter.padding = 10;
+    this.displacementFilter.scale.x = 30;
+    this.displacementFilter.scale.y = 60;
+
     this.quad.position.set(this.width / 2, this.height / 2);
 
     this.quad.width = this.app.screen.width;
     this.quad.height = this.app.screen.height;
 
     this.app.stage.addChild(this.quad);
+    this.app.stage.addChild(this.displacementSprite);
 
     this.app.stage.interactive = true;
 
