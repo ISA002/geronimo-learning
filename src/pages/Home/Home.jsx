@@ -6,7 +6,9 @@ const Home = () => {
   const ref = React.useRef();
 
   React.useEffect(() => {
-      const card = new Card(ref.current);
+    const card = new Card(ref.current);
+
+    console.log(card);
   }, [ref]);
 
   return (

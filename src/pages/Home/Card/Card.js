@@ -6,14 +6,23 @@ import shader from './shader.frag';
 
 export default class Card {
   constructor(container) {
-    // console.log(shader);
     this.container = container;
     this.height = 600;
     this.width = 800;
     this.mouse = { x: 1, y: 1 };
 
-    this.app = new PIXI.Application();
+    this.app = new PIXI.Application({
+      resolution: window.devicePixelRatio || 1,
+    });
     container.appendChild(this.app.view);
+
+    this.loader = new PIXI.Loader();
+
+    this.loader
+      .add('car', carImg)
+      .add('background', backgroundImg)
+      .add('displacementFilter', displacementFilterImg)
+      .load(this.setup);
 
     this.carPicture = PIXI.Sprite.from(carImg);
     this.carPicture.width = this.app.screen.width;
@@ -27,13 +36,8 @@ export default class Card {
 
     this.app.stop();
 
-    this.setup()
-
-    this.mouseFilter = null;
-    this.waterRippleFilter = null;
-
     this.app.ticker.add(() => {
-      // this.mouseFilter.uniforms.u_time += 0.01;
+      this.mouseFilter.uniforms.u_time += 0.005;
       this.displacementSprite.x += 1;
     });
   }
@@ -44,11 +48,11 @@ export default class Card {
     this.mouse.y = (event.data.global.y - this.height / 2) / window.innerHeight;
   };
 
-  setup = () => {
+  setup = (_, res) => {
     this.mouseFilter = new PIXI.Filter(null, shader, {
       u_time: 0,
-      u_image: PIXI.Texture.from(carImg),
-      u_imagehover: PIXI.Texture.from(backgroundImg),
+      u_image: res.car.texture,
+      u_imagehover: res.background.texture,
       u_res: {
         x: this.width,
         y: this.height,
