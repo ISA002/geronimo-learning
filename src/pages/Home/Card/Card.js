@@ -1,9 +1,8 @@
 import * as PIXI from 'pixi.js';
 import carImg from 'images/car.jpg';
 import backgroundImg from 'images/background.jpg';
-import fragmentShader from './fragmentShader';
-import vertexShader from './vertexShader';
 import displacementFilterImg from 'images/displacement_map_repeat.jpg';
+import shader from './shader.glsl';
 
 export default class Card {
   constructor(container) {
@@ -15,40 +14,25 @@ export default class Card {
     this.app = new PIXI.Application();
     container.appendChild(this.app.view);
 
+    this.carPicture = PIXI.Sprite.from(carImg);
+    this.carPicture.width = this.app.screen.width;
+    this.carPicture.height = this.app.screen.height;
+    this.app.stage.addChild(this.carPicture);
+
     this.displacementSprite = PIXI.Sprite.from(displacementFilterImg);
     this.displacementSprite.texture.baseTexture.wrapMode =
       PIXI.WRAP_MODES.REPEAT;
+    this.app.stage.addChild(this.displacementSprite);
 
-    this.displacementFilter = new PIXI.filters.DisplacementFilter(
-      this.displacementSprite
-    );
+    this.app.stop();
 
-    this.geometry = new PIXI.Geometry()
-      .addAttribute(
-        'aVertexPosition',
-        [-100, -100, 100, -100, 100, 100, -100, 100],
-        2
-      )
-      .addAttribute('uv', [0, 0, 1, 0, 1, 1, 0, 1], 2)
-      .addIndex([0, 1, 2, 0, 2, 3]);
+    this.app.loader.add('shader', shader).load(this.setup);
 
-    this.shader = PIXI.Shader.from(vertexShader, fragmentShader, {
-      u_time: 0,
-      u_image: PIXI.Texture.from(carImg),
-      u_imagehover: PIXI.Texture.from(backgroundImg),
-      u_res: {
-        x: this.width,
-        y: this.height,
-      },
-      u_mouse: this.mouse,
-    });
-
-    this.quad = new PIXI.Mesh(this.geometry, this.shader);
-
-    this.app.loader.load(this.setup);
+    this.mouseFilter = null;
+    this.waterRippleFilter = null;
 
     this.app.ticker.add(() => {
-      this.quad.shader.uniforms.u_time += 0.01;
+      this.mouseFilter.uniforms.u_time += 0.01;
       this.displacementSprite.x += 1;
     });
   }
@@ -59,23 +43,31 @@ export default class Card {
     this.mouse.y = (event.data.global.y - this.height / 2) / window.innerHeight;
   };
 
-  setup = () => {
-    this.quad.filters = [this.displacementFilter];
+  setup = (_, res) => {
+    this.mouseFilter = new PIXI.Filter(null, res.shader.data, {
+      u_time: 0,
+      u_image: PIXI.Texture.from(carImg),
+      u_imagehover: PIXI.Texture.from(backgroundImg),
+      u_res: {
+        x: this.width,
+        y: this.height,
+      },
+      u_mouse: this.mouse,
+    });
 
-    this.displacementFilter.padding = 10;
-    this.displacementFilter.scale.x = 30;
-    this.displacementFilter.scale.y = 60;
+    this.waterRippleFilter = new PIXI.filters.DisplacementFilter(
+      this.displacementSprite
+    );
+    this.waterRippleFilter.padding = 10;
+    this.waterRippleFilter.scale.x = 30;
+    this.waterRippleFilter.scale.y = 60;
 
-    this.quad.position.set(this.width / 2, this.height / 2);
-
-    this.quad.width = this.app.screen.width;
-    this.quad.height = this.app.screen.height;
-
-    this.app.stage.addChild(this.quad);
-    this.app.stage.addChild(this.displacementSprite);
+    this.carPicture.filters = [this.mouseFilter, this.waterRippleFilter];
 
     this.app.stage.interactive = true;
 
     this.app.stage.on('mousemove', this.pointerMove);
+
+    this.app.start();
   };
 }

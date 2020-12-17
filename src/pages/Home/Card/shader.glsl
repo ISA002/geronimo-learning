@@ -1,40 +1,37 @@
-export default `
-  precision mediump float;
-  
-  uniform vec2 u_mouse;
-  uniform vec2 u_res;
+precision mediump float;
 
-  uniform sampler2D u_image;
-  uniform sampler2D u_imagehover;
+uniform vec2 u_mouse;
+uniform vec2 u_res;
 
-  uniform float u_time;
+uniform sampler2D u_image;
+uniform sampler2D u_imagehover;
 
-  varying vec2 v_uv;
+uniform float u_time;
 
-  float circle(in vec2 _st, in float _radius, in float blurriness){
-      vec2 dist = _st;
-      return 1.-smoothstep(_radius-(_radius*blurriness), _radius+(_radius*blurriness), dot(dist,dist)*4.0);
-  }
+varying vec2 v_uv;
 
-  vec3 mod289(vec3 x) {
+float circle(in vec2 _st, in float _radius, in float blurriness) {
+    vec2 dist = _st;
+    return 1.-smoothstep(_radius-(_radius*blurriness), _radius+(_radius*blurriness), dot(dist,dist)*4.0);
+}
+
+vec3 mod289(vec3 x) {
     return x - floor(x * (1.0 / 289.0)) * 289.0;
-  }
+}
 
-  vec4 mod289(vec4 x) {
+vec4 mod289(vec4 x) {
     return x - floor(x * (1.0 / 289.0)) * 289.0;
-  }
+}
 
-  vec4 permute(vec4 x) {
-      return mod289(((x*34.0)+1.0)*x);
-  }
+vec4 permute(vec4 x) {
+    return mod289(((x*34.0)+1.0)*x);
+}
 
-  vec4 taylorInvSqrt(vec4 r)
-  {
+vec4 taylorInvSqrt(vec4 r) {
     return 1.79284291400159 - 0.85373472095314 * r;
-  }
+}
 
-  float snoise3(vec3 v)
-    {
+float snoise3(vec3 v) {
     const vec2  C = vec2(1.0/6.0, 1.0/3.0) ;
     const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);
 
@@ -52,11 +49,11 @@ export default `
 
     i = mod289(i);
     vec4 p = permute( permute( permute(
-              i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
+                i.z + vec4(0.0, i1.z, i2.z, 1.0 ))
             + i.y + vec4(0.0, i1.y, i2.y, 1.0 ))
             + i.x + vec4(0.0, i1.x, i2.x, 1.0 ));
 
-    float n_ = 0.142857142857; // 1.0/7.0
+    float n_ = 0.142857142857;
     vec3  ns = n_ * D.wyz - D.xzx;
 
     vec4 j = p - 49.0 * floor(p * ns.z * ns.z);
@@ -91,18 +88,19 @@ export default `
 
     vec4 m = max(0.6 - vec4(dot(x0,x0), dot(x1,x1), dot(x2,x2), dot(x3,x3)), 0.0);
     m = m * m;
-    return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1),
-      dot(p2,x2), dot(p3,x3) ) );
-    }
 
-  void main() {
+    return 42.0 * dot( m*m, vec4( dot(p0,x0), dot(p1,x1),
+        dot(p2,x2), dot(p3,x3) ) );
+}
+
+void main() {
     vec2 res = u_res;
     vec2 st = gl_FragCoord.xy / res.xy - vec2(0.5);
 
     st.y *= u_res.y / u_res.x;
 
     vec2 mouse = u_mouse * -1.0;
-    
+
     vec2 circlePos = st + mouse;
     float c = circle(circlePos, 0.15, 2.) * 2.5;
 
@@ -119,5 +117,5 @@ export default `
     vec4 finalImage = mix(image, hover, finalMask);
 
     gl_FragColor = finalImage;
-  }
-`;
+}
+
