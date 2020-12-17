@@ -32,4 +32,12 @@ module.exports = () => {
     limit: 10240,
     name: '[name].[hash:8].[ext]',
   });
+
+  require('asset-require-hook')({
+    extensions: ['glsl', 'frag', 'vert'],
+    publicPath: '/assets/',
+    limit: 1,
+    name: '[name].[hash:8].[ext]',
+  });
+
 };

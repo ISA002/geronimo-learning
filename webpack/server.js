@@ -31,9 +31,6 @@ module.exports = {
       filename: '[name].css',
     }),
   ],
-  resolveLoader: {
-    moduleExtensions: ['-loader'],
-  },
   resolve: require('./resolve'),
   node: {
     global: false,

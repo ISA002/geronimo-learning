@@ -2,10 +2,11 @@ import * as PIXI from 'pixi.js';
 import carImg from 'images/car.jpg';
 import backgroundImg from 'images/background.jpg';
 import displacementFilterImg from 'images/displacement_map_repeat.jpg';
-import shader from './shader.glsl';
+import shader from './shader.frag';
 
 export default class Card {
   constructor(container) {
+    // console.log(shader);
     this.container = container;
     this.height = 600;
     this.width = 800;
@@ -26,13 +27,13 @@ export default class Card {
 
     this.app.stop();
 
-    this.app.loader.add('shader', shader).load(this.setup);
+    this.setup()
 
     this.mouseFilter = null;
     this.waterRippleFilter = null;
 
     this.app.ticker.add(() => {
-      this.mouseFilter.uniforms.u_time += 0.01;
+      // this.mouseFilter.uniforms.u_time += 0.01;
       this.displacementSprite.x += 1;
     });
   }
@@ -43,8 +44,8 @@ export default class Card {
     this.mouse.y = (event.data.global.y - this.height / 2) / window.innerHeight;
   };
 
-  setup = (_, res) => {
-    this.mouseFilter = new PIXI.Filter(null, res.shader.data, {
+  setup = () => {
+    this.mouseFilter = new PIXI.Filter(null, shader, {
       u_time: 0,
       u_image: PIXI.Texture.from(carImg),
       u_imagehover: PIXI.Texture.from(backgroundImg),
