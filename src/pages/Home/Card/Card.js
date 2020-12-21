@@ -1,14 +1,14 @@
 import * as PIXI from 'pixi.js';
 import carImg from 'images/car.jpg';
 import backgroundImg from 'images/background.jpg';
-import displacementFilterImg from 'images/displacement_map_repeat.jpg';
 import shader from './shader.frag';
+import waterTexture from 'images/displacement_map_repeat.jpg';
 
 export default class Card {
   constructor(container) {
     this.container = container;
-    this.height = 600;
-    this.width = 800;
+    this.height = window.innerHeight * 0.7;
+    this.width = window.innerWidth * 0.6;
     this.mouse = { x: 1, y: 1 };
 
     this.app = new PIXI.Application({
@@ -23,21 +23,36 @@ export default class Card {
     this.loader
       .add('car', carImg)
       .add('background', backgroundImg)
-      .add('displacementFilter', displacementFilterImg)
+      .add('waterTexture', waterTexture)
       .load(this.setup);
 
     this.app.stop();
 
+    window.addEventListener('resize', this.resize);
+
     this.app.ticker.add(() => {
-      this.mouseFilter.uniforms.u_time += 0.005;
-      this.displacementSprite.x += 1;
+      this.mouseFilter.uniforms.u_time += 0.01;
     });
   }
 
   pointerMove = event => {
     this.mouse.x =
       ((event.data.global.x - this.width / 2) / window.innerWidth) * 1.5;
-    this.mouse.y = (event.data.global.y - this.height / 2) / window.innerHeight;
+    this.mouse.y =
+      (-event.data.global.y + this.height / 2) / window.innerHeight;
+  };
+
+  destroyListener = () => {
+    window.removeEventListener('resize', this.resize);
+  };
+
+  resize = () => {
+    this.height = window.innerHeight * 0.7;
+    this.width = window.innerWidth * 0.6;
+    this.app.stage.width = this.width;
+    this.app.stage.height = this.height;
+    this.app.view.width = this.width;
+    this.app.view.height = this.height;
   };
 
   setup = (_, res) => {
@@ -47,11 +62,6 @@ export default class Card {
     this.carPicture.position.x = 0;
     this.carPicture.position.y = 0;
     this.app.stage.addChild(this.carPicture);
-
-    this.displacementSprite = PIXI.Sprite.from(res.displacementFilter.texture);
-    this.displacementSprite.texture.baseTexture.wrapMode =
-      PIXI.WRAP_MODES.REPEAT;
-    this.app.stage.addChild(this.displacementSprite);
 
     this.mouseFilter = new PIXI.Filter(null, shader, {
       u_time: 0,
@@ -64,14 +74,7 @@ export default class Card {
       u_mouse: this.mouse,
     });
 
-    this.waterRippleFilter = new PIXI.filters.DisplacementFilter(
-      this.displacementSprite
-    );
-    this.waterRippleFilter.padding = 10;
-    this.waterRippleFilter.scale.x = 30;
-    this.waterRippleFilter.scale.y = 60;
-
-    this.carPicture.filters = [this.mouseFilter, this.waterRippleFilter];
+    this.carPicture.filters = [this.mouseFilter];
 
     this.app.stage.interactive = true;
 

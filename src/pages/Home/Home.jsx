@@ -8,7 +8,9 @@ const Home = () => {
   React.useEffect(() => {
     const card = new Card(ref.current);
 
-    console.log(card);
+    return () => {
+      card.destroyListener();
+    };
   }, [ref]);
 
   return (
