@@ -187,7 +187,7 @@ void main() {
 
     vec4 displace = vec4(color, 1.);
     float displace_k  = displace.g * 0.07;
-    vec2 uv_displaced = vec2(vTextureCoord.x - 0.045 + displace_k, vTextureCoord.y - 0.056 + displace_k);
+    vec2 uv_displaced = vec2(vTextureCoord.x + 0.09 + displace_k, vTextureCoord.y + displace_k);
     vec4 imageWaterWrapper = texture2D(u_image, uv_displaced);
 
 

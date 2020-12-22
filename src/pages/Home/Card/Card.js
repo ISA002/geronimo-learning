@@ -6,17 +6,26 @@ import waterTexture from 'images/displacement_map_repeat.jpg';
 
 export default class Card {
   constructor(container) {
-    this.container = container;
+    this.canvasContainer = container;
     this.height = window.innerHeight * 0.7;
     this.width = window.innerWidth * 0.6;
     this.mouse = { x: 1, y: 1 };
+
+    console.log('size', window.innerWidth * 0.6, window.innerHeight * 0.7);
 
     this.app = new PIXI.Application({
       resolution: window.devicePixelRatio || 1,
       width: this.width,
       height: this.height,
     });
-    container.appendChild(this.app.view);
+
+    this.canvasContainer.appendChild(this.app.view);
+
+    this.container = new PIXI.Container();
+    this.container.width = this.width;
+    this.container.height = this.height;
+
+    this.app.stage.addChild(this.container);
 
     this.loader = new PIXI.Loader();
 
@@ -49,19 +58,40 @@ export default class Card {
   resize = () => {
     this.height = window.innerHeight * 0.7;
     this.width = window.innerWidth * 0.6;
-    this.app.stage.width = this.width;
-    this.app.stage.height = this.height;
-    this.app.view.width = this.width;
-    this.app.view.height = this.height;
+    this.app.renderer.resize(this.width, this.height);
+
+    const containerRatio = this.container.width / this.container.height;
+    const appRatio = this.app.stage.width / this.app.stage.height;
+
+    console.log(this.width, this.container.width);
+
+    if (appRatio > containerRatio) {
+      console.log('bigger');
+      this.container.height =
+        this.container.height / (this.container.width / this.container.width);
+      this.container.width = this.container.width;
+      this.container.position.x = 0;
+      this.container.position.y =
+        (this.container.height - this.container.height) / 2;
+    } else {
+      console.log('smaller');
+      this.container.width =
+        this.container.width / (this.container.height / this.container.height);
+      this.container.height = this.container.height;
+      this.container.position.y = 0;
+      this.container.position.x =
+        (this.container.width - this.container.width) / 2;
+    }
+
+    this.carPicture.width = this.container.width;
+    this.carPicture.height = this.container.height;
+
+    console.log(this.width, this.container.width);
   };
 
   setup = (_, res) => {
     this.carPicture = PIXI.Sprite.from(res.car.texture);
-    this.carPicture.width = this.width;
-    this.carPicture.height = this.height;
-    this.carPicture.position.x = 0;
-    this.carPicture.position.y = 0;
-    this.app.stage.addChild(this.carPicture);
+    this.container.addChild(this.carPicture);
 
     this.mouseFilter = new PIXI.Filter(null, shader, {
       u_time: 0,
