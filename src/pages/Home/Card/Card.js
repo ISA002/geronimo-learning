@@ -22,17 +22,9 @@ export default class Card {
 
     this.container = new PIXI.Container();
 
-    this.rectangleContainer = new PIXI.Container();
-
     this.app.stage.addChild(this.container);
-    this.app.stage.addChild(this.rectangleContainer);
 
     this.loader = new PIXI.Loader();
-
-    this.rectangle = new PIXI.Graphics()
-      .beginFill(0xffffff)
-      .drawRect(0, 0, window.innerWidth, window.innerHeight)
-      .endFill();
 
     this.loader
       .add('car', carImg)
@@ -64,22 +56,8 @@ export default class Card {
       { w: kWidth, h: kHeight }
     );
 
-    this.rectangleContainer.width = kWidth;
-    this.rectangleContainer.height = kHeight;
-
-    this.rectangleContainer.x =
-      (this.width - this.rectangleContainer.width) / 2;
-    this.rectangleContainer.y =
-      (this.height - this.rectangleContainer.height) / 2;
-
-    this.rectangleSprite.width = kWidth;
-    this.rectangleSprite.height = kHeight;
-
-    this.container.x = (this.width - this.rectangleContainer.width) / 2;
-    this.container.y = (this.height - this.rectangleContainer.height) / 2;
-
-    this.container.width = coverValues.width;
-    this.container.height = coverValues.height;
+    this.container.position.set(coverValues.left, coverValues.top);
+    this.container.scale.set(coverValues.scale, coverValues.scale);
   };
 
   pointerMove = event => {
@@ -91,43 +69,53 @@ export default class Card {
   };
 
   setup = (_, res) => {
+    this.height = window.innerHeight;
+    this.width = window.innerWidth;
+
+    const kWidth = this.width * 0.6;
+    const kHeight = this.height * 0.7;
+
     this.carTexture = new PIXI.Texture.from(res.car.url);
     this.carPicture = new PIXI.Sprite.from(this.carTexture);
 
-    this.recTexture = this.app.renderer.generateTexture(
-      this.rectangle,
-      PIXI.SCALE_MODES.NEAREST,
-      1,
-      this.rectangle
+    this.mask = new PIXI.Sprite.from(PIXI.Texture.WHITE);
+    this.mask.width = kWidth;
+    this.mask.height = kHeight;
+    this.carPicture.mask = this.mask;
+
+    this.carPicture.anchor.set(0.5);
+
+    this.carPicture.position.set(
+      this.carTexture.width / 2,
+      this.carTexture.height / 2
     );
-    this.rectangleSprite = new PIXI.Sprite.from(this.recTexture);
+
+    const coverValues = fit.cover(
+      { w: this.carTexture.width, h: this.carTexture.height },
+      { w: kWidth, h: kHeight }
+    );
+
+    this.container.position.set(coverValues.left, coverValues.top);
+    this.container.scale.set(coverValues.scale, coverValues.scale);
 
     this.container.addChild(this.carPicture);
-
-    this.rectangleContainer.addChild(this.rectangleSprite);
 
     this.mouseFilter = new PIXI.Filter(null, shader, {
       u_time: 0,
       u_image: res.car.texture,
       u_imagehover: res.background.texture,
       u_res: {
-        x: this.container.width,
-        y: this.container.height,
+        x: this.width * 0.6,
+        y: this.height * 0.7,
       },
       u_mouse: this.mouse,
     });
 
     this.carPicture.filters = [this.mouseFilter];
 
-    this.container.mask = this.rectangleContainer;
-
     this.app.stage.interactive = true;
-    this.rectangleContainer.interactive = true;
 
     this.app.stage.on('mousemove', this.pointerMove);
-
-    this.resize();
-    this.resize();
 
     this.app.start();
   };
