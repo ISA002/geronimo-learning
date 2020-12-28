@@ -56,33 +56,30 @@ export default class Card {
     this.height = window.innerHeight;
     this.width = window.innerWidth;
 
+    const kWidth = this.width * 0.6;
+    const kHeight = this.height * 0.7;
+
     const coverValues = fit.cover(
       { w: this.carTexture.width, h: this.carTexture.height },
-      { w: this.width * 0.6, h: this.height * 0.7 }
+      { w: kWidth, h: kHeight }
     );
 
-    this.rectangleContainer.width = this.width * 0.6;
-    this.rectangleContainer.height = this.height * 0.7;
+    this.rectangleContainer.width = kWidth;
+    this.rectangleContainer.height = kHeight;
 
     this.rectangleContainer.x =
       (this.width - this.rectangleContainer.width) / 2;
     this.rectangleContainer.y =
       (this.height - this.rectangleContainer.height) / 2;
 
-    this.rectangleSprite.width = coverValues.width;
-    this.rectangleSprite.height = coverValues.height;
+    this.rectangleSprite.width = kWidth;
+    this.rectangleSprite.height = kHeight;
 
     this.container.x = (this.width - this.rectangleContainer.width) / 2;
     this.container.y = (this.height - this.rectangleContainer.height) / 2;
 
     this.container.width = coverValues.width;
     this.container.height = coverValues.height;
-    // this.carPicture.height = this.container.height;
-
-    console.log('resize');
-    // this.carPicture.pivot.x = this.carPicture.width / 2;
-    // this.carPicture.pivot.y = this.carPicture.height / 2;
-    // this.carPicture.anchor.set(1 - coverValues.scale);
   };
 
   pointerMove = event => {
