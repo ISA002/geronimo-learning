@@ -1,15 +1,15 @@
 import React from 'react';
 import style from './Home.scss';
-import Card from './Card/Card';
+import Scene from './Scene/Scene';
 
 const Home = () => {
   const ref = React.useRef();
 
   React.useEffect(() => {
-    const card = new Card(ref.current);
+    const scene = new Scene(ref.current);
 
     return () => {
-      card.destroyListener();
+      scene.destroyListener();
     };
   }, [ref]);
 

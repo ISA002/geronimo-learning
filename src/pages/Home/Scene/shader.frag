@@ -12,7 +12,7 @@ uniform float u_time;
 
 varying vec2 vTextureCoord;
 
-// ----------------- mouse effect -----------------
+// ---------------- mouse effect ----------------
 float circle(in vec2 _st, in float _radius, in float blurriness) {
     vec2 dist = _st;
     return 1.-smoothstep(_radius - (_radius * blurriness), _radius +
@@ -40,8 +40,8 @@ vec4 taylorInvSqrt(vec4 r) {
 }
 
 float snoise3(vec3 v) {
-    const vec2  C = vec2(1.0 / 6.0, 1.0 / 3.0) ;
-    const vec4  D = vec4(0.0, 0.5, 1.0, 2.0);
+    const vec2 C = vec2(1.0 / 6.0, 1.0 / 3.0);
+    const vec4 D = vec4(0.0, 0.5, 1.0, 2.0);
 
     vec3 i  = floor(v + dot(v, C.yyy) );
     vec3 x0 =   v - i + dot(i, C.xxx) ;
@@ -102,7 +102,7 @@ float snoise3(vec3 v) {
 }
 
 
-// ---------------- water noise -------------------
+// ---------------- water noise ----------------
 float random (in vec2 _st) {
     return fract(sin(dot(_st.xy, vec2(12.9898,78.233))) * 43758.5453123);
 }
@@ -139,9 +139,10 @@ float fbm( in vec2 _st) {
 }
 
 
-// --------------- main --------------------
+// ---------------- main ----------------
 void main() {
-    // ---------------- mouse effect -------------------
+
+    // ---------------- mouse effect ----------------
     float time_smal = u_time / 2.5;
     vec2 res = u_res;
     vec2 st = gl_FragCoord.xy / res.xy - vec2(0.5);
@@ -160,7 +161,7 @@ void main() {
     float finalMask = smoothstep(0.4, 0.5, n + pow(c, 2.));
     vec4 hover = texture2D(u_imagehover, vTextureCoord);
     
-    // ---------------- water noise -------------------
+    // ---------------- water noise ----------------
     vec3 color = vec3(0.0);
 
     vec2 q = vec2(0.);
@@ -190,11 +191,11 @@ void main() {
     vec2 uv_displaced = vec2(vTextureCoord.x + displace_k, vTextureCoord.y + displace_k);
     vec4 imageWaterWrapper = texture2D(u_image, uv_displaced);
 
+    // ---------------- final ----------------
+    vec4 imageMFEkl = texture2D(u_image, vTextureCoord.xy);
+    vec4 finalImage = mix(imageMFEkl, hover, finalMask);
 
-    // ----------- final ----------------
-    vec4 finalImage = mix(imageWaterWrapper, hover, finalMask);
 
-
-    // ----------- pixel color -------------
-    gl_FragColor = finalImage;
+    // ---------------- pixel color ----------------
+    gl_FragColor = imageMFEkl;
 }
