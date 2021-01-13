@@ -5,12 +5,12 @@ precision mediump float;
 uniform vec2 u_mouse;
 uniform vec2 u_res;
 
-uniform sampler2D u_image;
 uniform sampler2D u_imagehover;
 
 uniform float u_time;
 
 varying vec2 vTextureCoord;
+uniform sampler2D uSampler;
 
 // ---------------- mouse effect ----------------
 float circle(in vec2 _st, in float _radius, in float blurriness) {
@@ -101,7 +101,6 @@ float snoise3(vec3 v) {
         dot(p2,x2), dot(p3,x3) ) );
 }
 
-
 // ---------------- water noise ----------------
 float random (in vec2 _st) {
     return fract(sin(dot(_st.xy, vec2(12.9898,78.233))) * 43758.5453123);
@@ -138,20 +137,17 @@ float fbm( in vec2 _st) {
     return v;
 }
 
-
 // ---------------- main ----------------
 void main() {
+    vec2 imageHoverSize = vec2(935., 719.);
 
     // ---------------- mouse effect ----------------
     float time_smal = u_time / 2.5;
-    vec2 res = u_res;
-    vec2 st = gl_FragCoord.xy / res.xy - vec2(0.5);
-    st.y *= u_res.y / u_res.x;
+    vec2 st = gl_FragCoord.xy / imageHoverSize.xy - vec2(0.5);
+    st.y *= imageHoverSize.y / imageHoverSize.x;
 
-    vec2 mouse = u_mouse * -1.0;
-
-    vec2 circlePos = st + mouse;
-    float c = circle(circlePos, 0.15, 2.) * 2.5;
+    vec2 circlePos = st - u_mouse;
+    float c = circle(circlePos, 0.2, 2.) * 2.5;
 
     float offx = vTextureCoord.x + sin(vTextureCoord.y + time_smal * .1);
     float offy = vTextureCoord.y - time_smal * 0.1 - cos(time_smal * .001) * .01;
@@ -159,8 +155,7 @@ void main() {
     float n = snoise3(vec3(offx, offy, time_smal * .1) * 8.) - 1.;
 
     float finalMask = smoothstep(0.4, 0.5, n + pow(c, 2.));
-    vec4 hover = texture2D(u_imagehover, vTextureCoord);
-    
+
     // ---------------- water noise ----------------
     vec3 color = vec3(0.0);
 
@@ -187,15 +182,39 @@ void main() {
                 clamp(length(r.x), 0.0, 1.0));
 
     vec4 displace = vec4(color, 1.);
-    float displace_k  = displace.g * 0.07;
-    vec2 uv_displaced = vec2(vTextureCoord.x + displace_k, vTextureCoord.y + displace_k);
-    vec4 imageWaterWrapper = texture2D(u_image, uv_displaced);
+    float displace_k  = displace.r * 0.07;
 
-    // ---------------- final ----------------
-    vec4 imageMFEkl = texture2D(u_image, vTextureCoord.xy);
-    vec4 finalImage = mix(imageMFEkl, hover, finalMask);
+    vec2 uv_displaced = vec2(
+        vTextureCoord.x + displace_k - 0.046,
+        clamp(vTextureCoord.y + displace_k, 0., vTextureCoord.y)
+    );
+    vec4 imageWaterWrapper = texture2D(uSampler, uv_displaced);
 
+    // ---------------- cover behaviour ----------------
+    float containerW = u_res.x * 0.6;
+    float containerH = u_res.y * 0.7;
+    float rw = containerW / imageHoverSize.x;
+    float rh = containerH / imageHoverSize.y;
+    float rres;
+
+    if (rw > rh) {
+        rres = rw;
+    } else {
+        rres = rh;
+    };
+
+    vec2 uvFix = vec2(gl_FragCoord.x / imageHoverSize.x, gl_FragCoord.y / imageHoverSize.y);
+
+    uvFix.x -= (containerW - imageHoverSize.x * rres) / (2. * imageHoverSize.x);
+    uvFix.y -= (containerH - imageHoverSize.y * rres) / (2. * imageHoverSize.y);
+
+    uvFix.y = 1. - uvFix.y;
+
+    vec4 imageHover = texture2D(u_imagehover, uvFix);
+
+    // ---------------- final image ----------------
+    vec4 finalImage = mix(imageWaterWrapper, imageHover, finalMask);
 
     // ---------------- pixel color ----------------
-    gl_FragColor = imageMFEkl;
+    gl_FragColor = finalImage;
 }

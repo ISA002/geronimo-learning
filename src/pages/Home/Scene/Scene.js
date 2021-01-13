@@ -41,6 +41,11 @@ export default class Scene {
     this.height = window.innerHeight;
     this.width = window.innerWidth;
 
+    this.mouseFilter.uniforms.u_res = {
+      x: this.width,
+      y: this.height,
+    };
+
     const kWidth = this.width * 0.6;
     const kHeight = this.height * 0.7;
 
@@ -72,12 +77,11 @@ export default class Scene {
 
   pointerMove = event => {
     this.mouse.x =
-      ((event.data.global.x - this.carContainer.width / 2) /
-        window.innerWidth) *
-      1.5;
+      (event.data.global.x - this.carContainer.width / 2) /
+      this.carContainer.width;
     this.mouse.y =
       (-event.data.global.y + this.carContainer.height / 2) /
-      window.innerHeight;
+      this.carContainer.height;
   };
 
   setup = (_, res) => {
@@ -122,20 +126,19 @@ export default class Scene {
 
     this.mouseFilter = new PIXI.Filter(null, shader, {
       u_time: 0,
-      u_image: res.car.texture,
       u_imagehover: res.background.texture,
       u_res: {
-        x: this.width * 0.6,
-        y: this.height * 0.7,
+        x: window.innerWidth,
+        y: window.innerHeight,
       },
       u_mouse: this.mouse,
     });
 
-    // this.carContainer.filters = [this.mouseFilter];
+    this.carContainer.filters = [this.mouseFilter];
 
     this.app.stage.interactive = true;
 
-    this.root.on('mousemove', this.pointerMove);
+    this.app.stage.on('mousemove', this.pointerMove);
 
     this.app.ticker.add(() => {
       this.mouseFilter.uniforms.u_time += 0.01;
