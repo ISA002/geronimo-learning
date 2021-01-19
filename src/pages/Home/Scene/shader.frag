@@ -8,9 +8,11 @@ uniform vec2 u_res;
 uniform sampler2D u_imagehover;
 
 uniform float u_time;
+uniform float u_circleRadius;
 
 varying vec2 vTextureCoord;
 uniform sampler2D uSampler;
+uniform vec2 u_backgroundSize;
 
 // ---------------- mouse effect ----------------
 float circle(in vec2 _st, in float _radius, in float blurriness) {
@@ -139,8 +141,10 @@ float fbm( in vec2 _st) {
 
 // ---------------- main ----------------
 void main() {
-    vec2 imageHoverSize = vec2(935., 719.);
-    vec2 imageCarSize = vec2(800., 533.);
+    vec2 imageHoverSize = vec2(
+        u_backgroundSize.x,
+        u_backgroundSize.y
+    );
 
     float containerW = u_res.x * 0.6;
     float containerH = u_res.y * 0.7;
@@ -153,7 +157,7 @@ void main() {
     vec2 circlePos = st - u_mouse / containerSize;
     circlePos.y *= containerSize.y / containerSize.x;
 
-    float c = circle(circlePos, 0.5 * containerSize.y / containerSize.x, 2.) * 2.5;
+    float c = circle(circlePos, u_circleRadius * containerSize.y / containerSize.x, 2.) * 2.5;
 
     float offx = vTextureCoord.x + sin(vTextureCoord.y + time_smal * .1);
     float offy = vTextureCoord.y - time_smal * 0.1 - cos(time_smal * .001) * .01;
@@ -193,7 +197,7 @@ void main() {
 
     vec2 uv_displaced = vec2(
         vTextureCoord.x + displace_k - 0.036,
-        vTextureCoord.y + displace_k - 0.05
+        vTextureCoord.y + displace_k - 0.04
     );
     vec4 imageWaterWrapper = texture2D(uSampler, uv_displaced);
 

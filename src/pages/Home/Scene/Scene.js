@@ -1,23 +1,27 @@
 import * as PIXI from 'pixi.js';
-import carImg from 'images/car.jpg';
-import backgroundImg from 'images/background.jpg';
 import shader from './shader.frag';
 import fit from 'math-fit';
+import gsap from 'gsap';
 
 window.PIXI = PIXI;
 export default class Scene {
-  constructor(container) {
+  constructor(container, images) {
     this.canvasContainer = container;
 
     this.app = new PIXI.Application({
       backgroundColor: 0xf1efe5,
+      resizeTo: window,
     });
 
     this.height = window.innerHeight;
     this.width = window.innerWidth;
-    this.mouse = { x: 1, y: 1 };
+    this.mouse = { x: 0, y: 0 };
+    this.backgroundPictureSize = { x: 0, y: 0 };
     this.cardWidth = null;
     this.cardHeight = null;
+    this.currentIndex = 0;
+    this.imagesArray = images;
+    this.circleRadius = { r: 0.5 };
 
     this.root = new PIXI.Container();
     this.app.stage.addChild(this.root);
@@ -26,12 +30,24 @@ export default class Scene {
 
     this.loader = new PIXI.Loader();
 
-    this.loader
-      .add('car', carImg)
-      .add('background', backgroundImg)
-      .load(this.setup);
-
     window.addEventListener('resize', this.resize);
+
+    this.tl = gsap
+      .timeline()
+      .to(this.circleRadius, {
+        r: 10,
+        duration: 1,
+        ease: [0.05, 0.1, 0.12, 0.15, 0.2, 0.4, 0.5, 1],
+      })
+      .add(() => {
+        this.currentIndex = (this.currentIndex + 1) % this.imagesArray.length;
+        this.resize();
+      })
+      .to(this.circleRadius, { r: 0, duration: 0 })
+      .to(this.circleRadius, { r: 0.5, duration: 2 })
+      .pause();
+
+    this.preload();
   }
 
   destroyListener = () => {
@@ -40,9 +56,28 @@ export default class Scene {
     this.app.stage.removeAllListeners();
   };
 
+  nextPicture = () => {
+    this.tl.restart();
+    this.tl.resume();
+  };
+
   resize = () => {
     this.height = window.innerHeight;
     this.width = window.innerWidth;
+
+    this.carTexture = new PIXI.Texture.from(
+      this.imagesArray[this.currentIndex]
+    );
+    this.carPicture.texture = this.carTexture;
+
+    this.backgroundTexture = new PIXI.Texture.from(
+      this.imagesArray[(this.currentIndex + 1) % this.imagesArray.length]
+    );
+    this.backgroundPictureSize.x = this.backgroundTexture.orig.width;
+    this.backgroundPictureSize.y = this.backgroundTexture.orig.height;
+
+    this.mouseFilter.uniforms.u_imagehover = this.backgroundTexture;
+    this.mouseFilter.uniforms.u_backgroundSize = this.backgroundPictureSize;
 
     this.mouseFilter.uniforms.u_res = {
       x: this.width,
@@ -83,11 +118,28 @@ export default class Scene {
     this.mouse.y = -event.data.global.y;
   };
 
-  setup = (_, res) => {
+  preload = () => {
+    this.imagesArray.forEach(item => {
+      this.loader.add(item, item);
+    });
+
+    this.loader.load().onComplete.add(() => {
+      this.setup();
+      this.render();
+    });
+  };
+
+  setup = () => {
     this.root.width = this.cardWidth;
     this.root.height = this.cardHeight;
 
-    this.carTexture = PIXI.Texture.from(res.car.url);
+    this.carTexture = new PIXI.Texture.from(
+      this.imagesArray[this.currentIndex]
+    );
+
+    this.backgroundTexture = new PIXI.Texture.from(
+      this.imagesArray[this.currentIndex + 1]
+    );
     this.carPicture = new PIXI.Sprite.from(this.carTexture);
     this.carContainer = new PIXI.Container();
 
@@ -105,12 +157,13 @@ export default class Scene {
 
     this.mouseFilter = new PIXI.Filter(null, shader, {
       u_time: 0,
-      u_imagehover: res.background.texture,
+      u_imagehover: this.backgroundTexture,
       u_res: {
         x: this.width,
         y: this.height,
       },
       u_mouse: this.mouse,
+      u_backgroundSize: this.backgroundPictureSize,
     });
 
     this.resize();
@@ -118,14 +171,17 @@ export default class Scene {
     this.carContainer.filters = [this.mouseFilter];
 
     this.app.stage.interactive = true;
+    this.carPicture.interactive = true;
     this.mask.interactive = true;
 
     this.app.stage.on('mousemove', this.pointerMove);
+    this.app.stage.on('mousedown', this.nextPicture);
+  };
 
-    this.app.renderer.resize(this.width, this.height);
-
+  render = () => {
     this.app.ticker.add(() => {
       this.mouseFilter.uniforms.u_time += 0.01;
+      this.mouseFilter.uniforms.u_circleRadius = this.circleRadius.r;
     });
   };
 }
