@@ -1,12 +1,13 @@
 import React from 'react';
 import style from './Home.scss';
 import Scene from './Scene/Scene';
+import imagesToSlider from './images';
 
 const Home = () => {
   const ref = React.useRef();
 
   React.useEffect(() => {
-    const scene = new Scene(ref.current);
+    const scene = new Scene(ref.current, imagesToSlider);
 
     return () => {
       scene.destroyListener();
